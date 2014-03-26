@@ -71,7 +71,7 @@ class UWrelBelongsTo {
 		$models = CActiveRecord::model($this->params['modelName'])->findAll();
 		foreach ($models as $m)
 			$list[$m->id] = (($this->params['optionName'])?$m->getAttribute($this->params['optionName']):$m->id);
-		return CHtml::activeDropDownList($model,$field->varname,$list,$htmlOptions=array());
+		return CHtml::activeDropDownList($model,$field->varname,$list,$htmlOptions=array('style'=>'width: 200px;'));
 	}
 	
 }

@@ -14,14 +14,14 @@ return array(
 
 	// autoloading model and component classes
 	'import'=>array(
-		'application.models.*',
-		'application.components.*',
+                'application.models.*',
+                'application.components.*',
 
-        'application.modules.user.models.*',
-        'application.modules.user.components.*',
+                'application.modules.user.models.*',
+                'application.modules.user.components.*',
 
-        'application.modules.rights.*',
-        'application.modules.rights.components.*',
+                'application.modules.rights.*',
+                'application.modules.rights.components.*',
 	),
 
 	'modules'=>array(
@@ -42,13 +42,13 @@ return array(
                 'hash' => 'md5',
  
                 # send activation email
-                'sendActivationMail' => true,
+                'sendActivationMail' => false,
  
                 # allow access for non-activated users
                 'loginNotActiv' => false,
  
                 # activate user on registration (only sendActivationMail = false)
-                'activeAfterRegister' => false,
+                'activeAfterRegister' => true,
  
                 # automatically login from registration
                 'autoLogin' => true,
@@ -77,7 +77,7 @@ return array(
         ),
  
         //Modules Rights
-   		'rights'=>array(
+        'rights'=>array(
  
                'superuserName'=>'Admin', // Name of the role with super user privileges. 
                'authenticatedName'=>'Authenticated',  // Name of the authenticated user role. 
@@ -125,10 +125,12 @@ return array(
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
 		),
-		
+		/*
 		'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 		),
+                 * 
+                 */
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(

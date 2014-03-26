@@ -93,7 +93,9 @@ class User extends CActiveRecord
 			'username'=>UserModule::t("username"),
 			'password'=>UserModule::t("password"),
 			'verifyPassword'=>UserModule::t("Retype Password"),
-			'email'=>UserModule::t("E-mail"),
+			'email'=>UserModule::t("Email Address"), //EDITED
+                        'firstname'=>UserModule::t("First Name"), //ADDED
+                        'lastname'=>UserModule::t("Last Name"), // ADDED
 			'verifyCode'=>UserModule::t("Verification Code"),
 			'activkey' => UserModule::t("activation key"),
 			'createtime' => UserModule::t("Registration date"),
