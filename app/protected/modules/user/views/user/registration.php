@@ -29,13 +29,13 @@ $this->breadcrumbs=array(
 	
 	<div class="row">
 	<?php echo $form->labelEx($model,'username'); ?>
-	<?php echo $form->textField($model,'username'); ?>
+	<?php echo $form->textField($model,'username',array('size'=>60,'maxlength'=>60)); ?>
 	<?php echo $form->error($model,'username'); ?>
 	</div>
 	
 	<div class="row">
 	<?php echo $form->labelEx($model,'password'); ?>
-	<?php echo $form->passwordField($model,'password'); ?>
+	<?php echo $form->passwordField($model,'password',array('size'=>61,'maxlength'=>60)); ?>
 	<?php echo $form->error($model,'password'); ?>
 	<p class="hint">
 	<?php echo UserModule::t("Minimal password length 4 symbols."); ?>
@@ -44,7 +44,7 @@ $this->breadcrumbs=array(
 	
 	<div class="row">
 	<?php echo $form->labelEx($model,'verifyPassword'); ?>
-	<?php echo $form->passwordField($model,'verifyPassword'); ?>
+	<?php echo $form->passwordField($model,'verifyPassword',array('size'=>61,'maxlength'=>60)); ?>
 	<?php echo $form->error($model,'verifyPassword'); ?>
 	</div>
 	
