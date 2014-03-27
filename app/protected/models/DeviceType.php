@@ -8,6 +8,7 @@
  * @property string $device_type_name
  *
  * The followings are the available model relations:
+ * @property DeviceBrands[] $deviceBrands
  * @property Devices[] $devices
  */
 class DeviceType extends CActiveRecord
@@ -44,6 +45,7 @@ class DeviceType extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'device_brands' => array(self::HAS_MANY, 'DeviceBrand', 'device_type_id'),
 			'devices' => array(self::HAS_MANY, 'Device', 'device_type_id'),
 		);
 	}
