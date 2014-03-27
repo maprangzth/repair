@@ -1,6 +1,6 @@
 <?php
 
-class DeviceBrandController extends Controller
+class DeviceBrandController extends RController
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -14,8 +14,9 @@ class DeviceBrandController extends Controller
 	public function filters()
 	{
 		return array(
-			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+			//'accessControl', // perform access control for CRUD operations
+			//'postOnly + delete', // we only allow deletion via POST request
+			'rights',
 		);
 	}
 
@@ -24,6 +25,7 @@ class DeviceBrandController extends Controller
 	 * This method is used by the 'accessControl' filter.
 	 * @return array access control rules
 	 */
+	/*
 	public function accessRules()
 	{
 		return array(
@@ -44,7 +46,7 @@ class DeviceBrandController extends Controller
 			),
 		);
 	}
-
+	*/
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -65,7 +67,7 @@ class DeviceBrandController extends Controller
 		$model=new DeviceBrand;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['DeviceBrand']))
 		{
@@ -89,7 +91,7 @@ class DeviceBrandController extends Controller
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['DeviceBrand']))
 		{

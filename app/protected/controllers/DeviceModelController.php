@@ -68,7 +68,7 @@ class DeviceModelController extends RController
 		$model=new DeviceModel;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['DeviceModel']))
 		{
@@ -92,7 +92,7 @@ class DeviceModelController extends RController
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['DeviceModel']))
 		{

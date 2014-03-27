@@ -1,6 +1,6 @@
 <?php
 
-class DeviceTypeController extends Controller
+class DeviceTypeController extends RController
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -14,8 +14,9 @@ class DeviceTypeController extends Controller
 	public function filters()
 	{
 		return array(
-			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+			//'accessControl', // perform access control for CRUD operations
+			//'postOnly + delete', // we only allow deletion via POST request
+			'rights',
 		);
 	}
 
@@ -24,6 +25,7 @@ class DeviceTypeController extends Controller
 	 * This method is used by the 'accessControl' filter.
 	 * @return array access control rules
 	 */
+	/*
 	public function accessRules()
 	{
 		return array(
@@ -44,6 +46,7 @@ class DeviceTypeController extends Controller
 			),
 		);
 	}
+	*/
 
 	/**
 	 * Displays a particular model.
@@ -65,7 +68,7 @@ class DeviceTypeController extends Controller
 		$model=new DeviceType;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['DeviceType']))
 		{
@@ -89,7 +92,7 @@ class DeviceTypeController extends Controller
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['DeviceType']))
 		{
