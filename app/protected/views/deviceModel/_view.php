@@ -10,7 +10,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('device_brand_id')); ?>:</b>
-	<?php echo CHtml::encode($data->device_brand_id); ?>
+	<?php echo CHtml::encode($data->device_brands->device_brand_name); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('device_model_name')); ?>:</b>
