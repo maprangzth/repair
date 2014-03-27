@@ -15,7 +15,7 @@ $this->menu=array(
 ?><h1><?php echo UserModule::t('Edit profile'); ?></h1>
 
 <?php if(Yii::app()->user->hasFlash('profileMessage')): ?>
-<div class="success">
+<div class="flash-success">
 <?php echo Yii::app()->user->getFlash('profileMessage'); ?>
 </div>
 <?php endif; ?>
