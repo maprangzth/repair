@@ -25,6 +25,8 @@ $this->menu=array(
 </div>
 
 <?php endif; ?>
+<?php 
+/*
 <table class="dataGrid">
 	<tr>
 		<th class="label"><?php echo CHtml::encode($model->getAttributeLabel('username')); ?></th>
@@ -61,3 +63,46 @@ $this->menu=array(
     	<td><?php echo CHtml::encode(User::itemAlias("UserStatus",$model->status)); ?></td>
 	</tr>
 </table>
+</br>
+</br>
+ * 
+ */
+?>
+
+<?php 
+
+// For all users
+	$attributes = array(
+			'username',
+	);
+	
+	$profileFields=ProfileField::model()->forAll()->sort()->findAll();
+	if ($profileFields) {
+		foreach($profileFields as $field) {
+			array_push($attributes,array(
+					'label' => UserModule::t($field->title),
+					'name' => $field->varname,
+					'value' => (($field->widgetView($model->profile))?$field->widgetView($model->profile):(($field->range)?Profile::range($field->range,$model->profile->getAttribute($field->varname)):$model->profile->getAttribute($field->varname))),
+
+				));
+		}
+	}
+	array_push($attributes,
+                'email',
+		'create_at',
+		array(
+			'name' => 'lastvisit_at',
+			'value' => (($model->lastvisit_at!='0000-00-00 00:00:00')?$model->lastvisit_at:UserModule::t('Not visited')),
+		),
+                array(
+                        'name' => 'status',
+                        'value' => User::itemAlias("UserStatus",$model->status)
+                )
+	);
+			
+	$this->widget('zii.widgets.CDetailView', array(
+		'data'=>$model,
+		'attributes'=>$attributes,
+	));
+
+?>
