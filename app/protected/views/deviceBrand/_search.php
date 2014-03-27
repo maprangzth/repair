@@ -17,6 +17,11 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model,'device_type_id'); ?>
+		<?php echo $form->textField($model,'device_type_id'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model,'device_brand_name'); ?>
 		<?php echo $form->textField($model,'device_brand_name',array('size'=>50,'maxlength'=>50)); ?>
 	</div>

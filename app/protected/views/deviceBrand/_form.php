@@ -20,6 +20,12 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'device_type_id'); ?>
+		<?php echo $form->textField($model,'device_type_id'); ?>
+		<?php echo $form->error($model,'device_type_id'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'device_brand_name'); ?>
 		<?php echo $form->textField($model,'device_brand_name',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'device_brand_name'); ?>
