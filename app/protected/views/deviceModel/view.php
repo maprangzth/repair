@@ -22,7 +22,7 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
-		'device_brand_id',
+		'device_brand_id'=>'device_brands.device_brand_name',
 		'device_model_name',
 	),
 )); ?>
