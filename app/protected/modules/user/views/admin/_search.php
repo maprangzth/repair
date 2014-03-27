@@ -19,12 +19,22 @@
         <?php echo $form->label($model,'email'); ?>
         <?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>128)); ?>
     </div>
+    
+    <div class="row">
+        <?php echo $form->label($model,'profile.employee_number'); ?>
+        <?php echo $form->textField($model,'employee_number',array('size'=>20,'maxlength'=>6)); ?>
+    </div>
 
+    <div class="row">
+        <?php echo $form->label($model,'profile.extension_number'); ?>
+        <?php echo $form->textField($model,'extension_number',array('size'=>20,'maxlength'=>5)); ?>
+    </div>
+    
     <div class="row">
         <?php echo $form->label($model,'activkey'); ?>
         <?php echo $form->textField($model,'activkey',array('size'=>60,'maxlength'=>128)); ?>
     </div>
-
+    
     <div class="row">
         <?php echo $form->label($model,'create_at'); ?>
         <?php echo $form->textField($model,'create_at'); ?>

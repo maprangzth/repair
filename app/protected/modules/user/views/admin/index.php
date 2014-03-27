@@ -41,32 +41,39 @@ $('.search-form form').submit(function(){
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		array(
-			'name' => 'id',
-			'type'=>'raw',
-			'value' => 'CHtml::link(CHtml::encode($data->id),array("admin/update","id"=>$data->id))',
-		),
+		
 		array(
 			'name' => 'username',
 			'type'=>'raw',
 			'value' => 'CHtml::link(UHtml::markSearch($data,"username"),array("admin/view","id"=>$data->id))',
+                        'htmlOptions'=>array('style'=>'text-align:left','width'=>100),
+		),
+                array(
+			'name'=>'employee_number',
+			'value'=>'$data->profile->employee_number',
+                        'htmlOptions'=>array('style'=>'text-align:center','width'=>55),
+		),
+		array(
+			'name'=>'extension_number',
+			'value'=>'$data->profile->extension_number',
+                        'htmlOptions'=>array('style'=>'text-align:center','width'=>50),
 		),
 		array(
 			'name'=>'email',
 			'type'=>'raw',
 			'value'=>'CHtml::link(UHtml::markSearch($data,"email"), "mailto:".$data->email)',
 		),
-		'create_at',
-		'lastvisit_at',
 		array(
 			'name'=>'superuser',
 			'value'=>'User::itemAlias("AdminStatus",$data->superuser)',
 			'filter'=>User::itemAlias("AdminStatus"),
+                        'htmlOptions'=>array('style'=>'text-align:center','width'=>50),
 		),
 		array(
 			'name'=>'status',
 			'value'=>'User::itemAlias("UserStatus",$data->status)',
 			'filter' => User::itemAlias("UserStatus"),
+                        'htmlOptions'=>array('style'=>'text-align:center','width'=>65),
 		),
 		array(
 			'class'=>'CButtonColumn',
