@@ -18,6 +18,13 @@ $this->menu=array(
 	<?php echo Yii::app()->user->getFlash('profileMessage'); ?>
 </div>
 <?php endif; ?>
+<?php if(Yii::app()->user->hasFlash('loginMessage')): ?>
+
+<div class="flash-success">
+	<?php echo Yii::app()->user->getFlash('loginMessage'); ?>
+</div>
+
+<?php endif; ?>
 <table class="dataGrid">
 	<tr>
 		<th class="label"><?php echo CHtml::encode($model->getAttributeLabel('username')); ?></th>
