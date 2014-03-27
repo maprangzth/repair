@@ -13,6 +13,7 @@
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
+        'enableClientValidation'=>true,
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -21,13 +22,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'device_type_id'); ?>
-		<?php echo $form->textField($model,'device_type_id'); ?>
+		<?php echo $form->dropDownList($model,'device_type_id', CHtml::listData(DeviceType::model()->findAll(), 'id', 'device_type_name'), array('empty'=>'Please select type of device.','style'=>'width:250px;')); ?>
 		<?php echo $form->error($model,'device_type_id'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'device_brand_name'); ?>
-		<?php echo $form->textField($model,'device_brand_name',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'device_brand_name',array('size'=>36,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'device_brand_name'); ?>
 	</div>
 
