@@ -18,8 +18,10 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'device_type_id'); ?>
-		<?php echo $form->textField($model,'device_type_id'); ?>
+		<?php echo $form->textField($model,'device_type_name'); ?>
 	</div>
+    
+        
 
 	<div class="row">
 		<?php echo $form->label($model,'device_brand_id'); ?>

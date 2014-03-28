@@ -22,6 +22,11 @@ class Device extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+        public $device_type_name;
+        public $device_brand_name;
+        public $device_model_name;
+        public $location_name;
+    
 	public function tableName()
 	{
 		return 'devices';
@@ -35,12 +40,13 @@ class Device extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('device_code, device_type_id, device_brand_id, device_model_id, location_id, device_create_at', 'required'),
+			array('device_code, device_type_id, device_brand_id, device_model_id, location_id', 'required'),
 			array('device_type_id, device_brand_id, device_model_id, location_id', 'numerical', 'integerOnly'=>true),
 			array('device_code', 'length', 'max'=>50),
+                        array('device_create_at', 'default', 'value' => date('Y-m-d H:i:s'), 'setOnEmpty' => true, 'on' => 'insert'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('device_code, device_type_id, device_brand_id, device_model_id, location_id, device_create_at', 'safe', 'on'=>'search'),
+			array('id, device_code, device_type_id, device_brand_id, device_model_id, location_id, device_type_name, device_brand_name, device_model_name, location_name, device_create_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -65,12 +71,17 @@ class Device extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
+			'id' => 'ID',
 			'device_code' => 'Device Code',
 			'device_type_id' => 'Device Type',
 			'device_brand_id' => 'Device Brand',
 			'device_model_id' => 'Device Model',
 			'location_id' => 'Location',
 			'device_create_at' => 'Create at',
+                        'device_type_name' => 'Device Type',
+                        'device_brand_name' => 'Device brand',
+                        'device_model_name' => 'Device Model',
+                        'location_name' => 'Location',
 		);
 	}
 
@@ -92,13 +103,19 @@ class Device extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+		$criteria->compare('id',$this->id);
 		$criteria->compare('device_code',$this->device_code,true);
 		$criteria->compare('device_type_id',$this->device_type_id);
 		$criteria->compare('device_brand_id',$this->device_brand_id);
 		$criteria->compare('device_model_id',$this->device_model_id);
 		$criteria->compare('location_id',$this->location_id);
 		$criteria->compare('device_create_at',$this->device_create_at,true);
-
+                
+                $criteria->compare('device_types.device_type_name', $this->device_type_name,true);
+                $criteria->compare('device_brands.device_brand_name', $this->device_brand_name,true);
+                $criteria->compare('device_models.device_model_name', $this->device_model_name,true);
+                $criteria->compare('locations.location_name', $this->location_name,true);
+                
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
