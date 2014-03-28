@@ -16,17 +16,20 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Device #<?php echo $model->device_code; ?></h1>
+<h1>View Device #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
+		'location_id',
+		'device_type_id',
+		'device_brand_id',
+		'device_model_id',
 		'device_code',
-		'device_type_id'=>'device_types.device_type_name',
-		'device_brand_id'=>'device_brands.device_brand_name',
-		'device_model_id'=>'device_models.device_model_name',
-		'location_id'=>'locations.location_name',
 		'device_create_at',
+		'device_buy_date',
+		'device_warranty_expire',
+		'device_remark',
 	),
 )); ?>

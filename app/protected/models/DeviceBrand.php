@@ -34,6 +34,8 @@ class DeviceBrand extends CActiveRecord
 			array('device_type_id, device_brand_name', 'required'),
 			array('device_type_id', 'numerical', 'integerOnly'=>true),
 			array('device_brand_name', 'length', 'max'=>50),
+                        array('device_brand_name', 'match', 'pattern' => '/^[A-Za-z]+$/u','message' => "Incorrect symbols (A-z)."),
+			array('device_brand_name', 'unique'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, device_type_id, device_brand_name', 'safe', 'on'=>'search'),
