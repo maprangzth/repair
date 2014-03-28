@@ -48,6 +48,7 @@ class LocationController extends RController
 	}
 	*/
 
+
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -68,7 +69,7 @@ class LocationController extends RController
 		$model=new Location;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Location']))
 		{
@@ -92,7 +93,7 @@ class LocationController extends RController
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Location']))
 		{

@@ -30,6 +30,7 @@ class Location extends CActiveRecord
 		return array(
 			array('location_name', 'required'),
 			array('location_name', 'length', 'max'=>50),
+                        array('location_name', 'unique'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, location_name', 'safe', 'on'=>'search'),

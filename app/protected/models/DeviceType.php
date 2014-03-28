@@ -31,6 +31,8 @@ class DeviceType extends CActiveRecord
 		return array(
 			array('device_type_name', 'required'),
 			array('device_type_name', 'length', 'max'=>50),
+                        array('device_type_name', 'match', 'pattern' => '/^[A-Za-z]+$/u','message' => "Incorrect symbols (A-z)."),
+			array('device_type_name', 'unique'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, device_type_name', 'safe', 'on'=>'search'),

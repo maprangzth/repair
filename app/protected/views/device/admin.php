@@ -45,27 +45,18 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
+		'id',
+		'location_id',
+		'device_type_id',
+		'device_brand_id',
+		'device_model_id',
 		'device_code',
-                array(
-			'name'=>'device_type_name',
-			'value'=>'$data->device_types->device_type_name',
-                        'htmlOptions'=>array('style'=>'text-align:center','width'=>150),
-		),
-                array(
-			'name'=>'device_brand_name',
-			'value'=>'$data->device_brands->device_brand_name',
-                        'htmlOptions'=>array('style'=>'text-align:center','width'=>100),
-		),
-                array(
-			'name'=>'device_model_name',
-			'value'=>'$data->device_models->device_model_name',
-                        'htmlOptions'=>array('style'=>'text-align:center','width'=>100),
-		),
-                array(
-			'name'=>'location_name',
-			'value'=>'$data->locations->location_name',
-                        'htmlOptions'=>array('style'=>'text-align:center','width'=>80),
-		),
+		/*
+		'device_create_at',
+		'device_buy_date',
+		'device_warranty_expire',
+		'device_remark',
+		*/
 		array(
 			'class'=>'CButtonColumn',
 		),

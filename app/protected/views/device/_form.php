@@ -19,13 +19,13 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'device_code'); ?>
-		<?php echo $form->textField($model,'device_code',array('size'=>36,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'device_code'); ?>
+        
+        <div class="row">
+		<?php echo $form->labelEx($model,'location_id'); ?>
+		<?php echo $form->dropDownList($model,'location_id', CHtml::listData(Location::model()->findAll(), 'id', 'location_name'), array('empty'=>'Please select location of device.','style'=>'width:250px;')); ?>
+		<?php echo $form->error($model,'location_id'); ?>
 	</div>
-
+        
 	<div class="row">
 		<?php echo $form->labelEx($model,'device_type_id'); ?>
 		<?php echo $form->dropDownList($model,'device_type_id', CHtml::listData(DeviceType::model()->findAll(), 'id', 'device_type_name'), array('empty'=>'Please select type of device.','style'=>'width:250px;')); ?>
@@ -44,10 +44,28 @@
 		<?php echo $form->error($model,'device_model_id'); ?>
 	</div>
 
+        <div class="row">
+		<?php echo $form->labelEx($model,'device_code'); ?>
+		<?php echo $form->textField($model,'device_code',array('size'=>36,'maxlength'=>50)); ?>
+		<?php echo $form->error($model,'device_code'); ?>
+	</div>
+
 	<div class="row">
-		<?php echo $form->labelEx($model,'location_id'); ?>
-		<?php echo $form->dropDownList($model,'location_id', CHtml::listData(Location::model()->findAll(), 'id', 'location_name'), array('empty'=>'Please select location of device.','style'=>'width:250px;')); ?>
-		<?php echo $form->error($model,'location_id'); ?>
+		<?php echo $form->labelEx($model,'device_buy_date'); ?>
+		<?php echo $form->textField($model,'device_buy_date',array('size'=>36)); ?>
+		<?php echo $form->error($model,'device_buy_date'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'device_warranty_expire'); ?>
+		<?php echo $form->textField($model,'device_warranty_expire',array('size'=>36)); ?>
+		<?php echo $form->error($model,'device_warranty_expire'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'device_remark'); ?>
+		<?php echo $form->textArea($model,'device_remark',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'device_remark'); ?>
 	</div>
 
 	<div class="row buttons">

@@ -27,6 +27,8 @@ class Department extends CActiveRecord
 		return array(
 			array('department_name', 'required'),
 			array('department_name', 'length', 'max'=>50),
+			array('department_name', 'match', 'pattern' => '/^[A-Za-z]+$/u','message' => "Incorrect symbols (A-z)."),
+			array('department_name', 'unique'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, department_name', 'safe', 'on'=>'search'),
@@ -41,7 +43,7 @@ class Department extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-                    'profiles'=>array(self::HAS_MANY, 'Profile', 'department_id'),
+                        'profiles'=>array(self::HAS_MANY, 'Profile', 'department_id'),
 		);
 	}
 
