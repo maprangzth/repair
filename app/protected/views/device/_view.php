@@ -6,23 +6,23 @@
 <div class="view">
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('device_code')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->device_code), array('view', 'id'=>$data->device_code)); ?>
+	<?php echo CHtml::link(CHtml::encode($data->device_code), array('view', 'id'=>$data->id)); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('device_type_id')); ?>:</b>
-	<?php echo CHtml::encode($data->device_type_id); ?>
+	<?php echo CHtml::encode($data->device_types->device_type_name); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('device_brand_id')); ?>:</b>
-	<?php echo CHtml::encode($data->device_brand_id); ?>
+	<?php echo CHtml::encode($data->device_brands->device_brand_name); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('device_model_id')); ?>:</b>
-	<?php echo CHtml::encode($data->device_model_id); ?>
+	<?php echo CHtml::encode($data->device_models->device_model_name); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('location_id')); ?>:</b>
-	<?php echo CHtml::encode($data->location_id); ?>
+	<?php echo CHtml::encode($data->locations->location_name); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('device_create_at')); ?>:</b>

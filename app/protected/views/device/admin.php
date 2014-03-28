@@ -46,11 +46,26 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'filter'=>$model,
 	'columns'=>array(
 		'device_code',
-		'device_type_id',
-		'device_brand_id',
-		'device_model_id',
-		'location_id',
-		'device_create_at',
+                array(
+			'name'=>'device_type_name',
+			'value'=>'$data->device_types->device_type_name',
+                        'htmlOptions'=>array('style'=>'text-align:center','width'=>150),
+		),
+                array(
+			'name'=>'device_brand_name',
+			'value'=>'$data->device_brands->device_brand_name',
+                        'htmlOptions'=>array('style'=>'text-align:center','width'=>100),
+		),
+                array(
+			'name'=>'device_model_name',
+			'value'=>'$data->device_models->device_model_name',
+                        'htmlOptions'=>array('style'=>'text-align:center','width'=>100),
+		),
+                array(
+			'name'=>'location_name',
+			'value'=>'$data->locations->location_name',
+                        'htmlOptions'=>array('style'=>'text-align:center','width'=>80),
+		),
 		array(
 			'class'=>'CButtonColumn',
 		),

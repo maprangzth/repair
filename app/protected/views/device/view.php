@@ -4,14 +4,14 @@
 
 $this->breadcrumbs=array(
 	'Devices'=>array('index'),
-	$model->device_code,
+	$model->id,
 );
 
 $this->menu=array(
 	array('label'=>'List Device', 'url'=>array('index')),
 	array('label'=>'Create Device', 'url'=>array('create')),
-	array('label'=>'Update Device', 'url'=>array('update', 'id'=>$model->device_code)),
-	array('label'=>'Delete Device', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->device_code),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Update Device', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Delete Device', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Manage Device', 'url'=>array('admin')),
 );
 ?>
@@ -21,11 +21,12 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
+		'id',
 		'device_code',
-		'device_type_id',
-		'device_brand_id',
-		'device_model_id',
-		'location_id',
+		'device_type_id'=>'device_types.device_type_name',
+		'device_brand_id'=>'device_brands.device_brand_name',
+		'device_model_id'=>'device_models.device_model_name',
+		'location_id'=>'locations.location_name',
 		'device_create_at',
 	),
 )); ?>

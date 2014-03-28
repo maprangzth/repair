@@ -1,6 +1,6 @@
 <?php
 
-class DeviceController extends RController
+class DeviceController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -14,9 +14,8 @@ class DeviceController extends RController
 	public function filters()
 	{
 		return array(
-			//'accessControl', // perform access control for CRUD operations
-			//'postOnly + delete', // we only allow deletion via POST request
-			'rights',
+			'accessControl', // perform access control for CRUD operations
+			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -25,7 +24,6 @@ class DeviceController extends RController
 	 * This method is used by the 'accessControl' filter.
 	 * @return array access control rules
 	 */
-	/*
 	public function accessRules()
 	{
 		return array(
@@ -46,7 +44,6 @@ class DeviceController extends RController
 			),
 		);
 	}
-	*/
 
 	/**
 	 * Displays a particular model.
@@ -74,7 +71,7 @@ class DeviceController extends RController
 		{
 			$model->attributes=$_POST['Device'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->device_code));
+				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('create',array(
@@ -98,7 +95,7 @@ class DeviceController extends RController
 		{
 			$model->attributes=$_POST['Device'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->device_code));
+				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('update',array(
