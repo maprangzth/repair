@@ -17,8 +17,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'device_brand_id'); ?>
-		<?php echo $form->textField($model,'device_brand_id'); ?>
+		<?php echo $form->label($model,'device_brands.device_brand_name'); ?>
+		<?php echo $form->textField($model,'device_brand_name'); ?>
 	</div>
 
 	<div class="row">

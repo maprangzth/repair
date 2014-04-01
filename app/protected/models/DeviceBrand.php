@@ -31,14 +31,13 @@ class DeviceBrand extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('device_type_id, device_brand_name', 'required'),
-			array('device_type_id', 'numerical', 'integerOnly'=>true),
+			array('device_brand_name', 'required'),
 			array('device_brand_name', 'length', 'max'=>50),
                         array('device_brand_name', 'match', 'pattern' => '/^[A-Za-z]+$/u','message' => "Incorrect symbols (A-z)."),
 			array('device_brand_name', 'unique'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, device_type_id, device_brand_name', 'safe', 'on'=>'search'),
+			array('id, device_brand_name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -50,7 +49,6 @@ class DeviceBrand extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'device_types' => array(self::BELONGS_TO, 'DeviceType', 'device_type_id'),
 			'device_models' => array(self::HAS_MANY, 'DeviceModel', 'device_brand_id'),
 			'devices' => array(self::HAS_MANY, 'Device', 'device_brand_id'),
 		);
@@ -63,7 +61,6 @@ class DeviceBrand extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'device_type_id' => 'Device Type',
 			'device_brand_name' => 'Device Brand',
 		);
 	}
@@ -87,7 +84,6 @@ class DeviceBrand extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('device_type_id',$this->device_type_id);
 		$criteria->compare('device_brand_name',$this->device_brand_name,true);
 
 		return new CActiveDataProvider($this, array(
