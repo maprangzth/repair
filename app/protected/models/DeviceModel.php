@@ -17,6 +17,9 @@ class DeviceModel extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+    
+        public $device_brand_name;
+         
 	public function tableName()
 	{
 		return 'device_models';
@@ -37,7 +40,7 @@ class DeviceModel extends CActiveRecord
 			array('device_model_name', 'unique'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, device_brand_id, device_model_name', 'safe', 'on'=>'search'),
+			array('id, device_brand_id, device_model_name, device_brand_name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,6 +66,7 @@ class DeviceModel extends CActiveRecord
 			'id' => 'ID',
 			'device_brand_id' => 'Device Brand',
 			'device_model_name' => 'Device Model',
+                        'device_brand_name' => 'Device Brand',
 		);
 	}
 
@@ -87,6 +91,13 @@ class DeviceModel extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('device_brand_id',$this->device_brand_id);
 		$criteria->compare('device_model_name',$this->device_model_name,true);
+                
+                if($this->device_brand_name)
+                {
+                        $criteria->together  =  true;
+                        $criteria->with = array('device_brands');
+                        $criteria->compare('device_brands.device_brand_name',$this->device_brand_name,true);
+                }
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

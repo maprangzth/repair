@@ -56,7 +56,8 @@ class Device extends CActiveRecord
                         array('device_buy_date, device_warranty_expire, device_remark', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, location_id, device_type_id, device_brand_id, device_model_id, device_code, device_create_at, device_buy_date, device_warranty_expire, device_remark, location_name, device_type_name, device_brand_name, device_model_name', 'safe', 'on'=>'search'),
+			array('id, location_id, device_type_id, device_brand_id, device_model_id, device_code, device_create_at, device_buy_date, device_warranty_expire, device_remark,'
+                            . ' location_name, device_type_name, device_brand_name, device_model_name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -92,6 +93,10 @@ class Device extends CActiveRecord
 			'device_buy_date' => 'Device buy date',
 			'device_warranty_expire' => 'Device warrany expire',
 			'device_remark' => 'Device Remark',
+                        'location_name' => 'Location',
+                        'device_type_name' => 'Device Type',
+                        'device_brand_name' => 'Device Brand',
+			'device_model_name' => 'Device Model',
 		);
 	}
 
@@ -123,11 +128,34 @@ class Device extends CActiveRecord
 		$criteria->compare('device_buy_date',$this->device_buy_date,true);
 		$criteria->compare('device_warranty_expire',$this->device_warranty_expire,true);
 		$criteria->compare('device_remark',$this->device_remark,true);
-
-                $criteria->compare('device_types.device_type_name', $this->device_type_name,true);
-                $criteria->compare('device_brands.device_brand_name', $this->device_brand_name,true);
-                $criteria->compare('device_models.device_model_name', $this->device_model_name,true);
-                $criteria->compare('locations.location_name', $this->location_name,true);
+                
+                if($this->location_name)
+                {
+                        $criteria->together  =  true;
+                        $criteria->with = array('locations');
+                        $criteria->compare('locations.location_name',$this->location_name,true);
+                }
+                
+                if($this->device_type_name)
+                {
+                        $criteria->together  =  true;
+                        $criteria->with = array('device_types');
+                        $criteria->compare('device_types.device_type_name',$this->device_type_name,true);
+                }
+                
+                if($this->device_brand_name)
+                {
+                        $criteria->together  =  true;
+                        $criteria->with = array('device_brands');
+                        $criteria->compare('device_brands.device_brand_name',$this->device_brand_name,true);
+                }
+                
+                if($this->device_model_name)
+                {
+                        $criteria->together  =  true;
+                        $criteria->with = array('device_models');
+                        $criteria->compare('device_models.device_model_name',$this->device_model_name,true);
+                }
                 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

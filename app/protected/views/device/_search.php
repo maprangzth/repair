@@ -12,28 +12,23 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'location_id'); ?>
-		<?php echo $form->textField($model,'location_id'); ?>
+		<?php echo $form->label($model,'locations.location_name'); ?>
+		<?php echo $form->textField($model,'location_name'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'location_id'); ?>
-		<?php echo $form->textField($model,'location_id'); ?>
+		<?php echo $form->label($model,'device_types.device_type_name'); ?>
+		<?php echo $form->textField($model,'device_type_name'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'device_type_id'); ?>
-		<?php echo $form->textField($model,'device_type_id'); ?>
+		<?php echo $form->label($model,'device_brands.device_brand_name'); ?>
+		<?php echo $form->textField($model,'device_brand_name'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'device_brand_id'); ?>
-		<?php echo $form->textField($model,'device_brand_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'device_model_id'); ?>
-		<?php echo $form->textField($model,'device_model_id'); ?>
+		<?php echo $form->label($model,'device_models.device_model_name'); ?>
+		<?php echo $form->textField($model,'device_model_name'); ?>
 	</div>
 
         <div class="row">

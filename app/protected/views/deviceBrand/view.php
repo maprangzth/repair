@@ -22,7 +22,6 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
-		'device_type_id'=>'device_types.device_type_name',
 		'device_brand_name',
 	),
 )); ?>
