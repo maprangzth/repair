@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Host: localhost
--- Generation Time: Mar 26, 2014 at 04:15 PM
+-- Generation Time: Apr 03, 2014 at 07:52 PM
 -- Server version: 5.0.51
 -- PHP Version: 5.2.6
 
@@ -33,6 +33,8 @@ CREATE TABLE IF NOT EXISTS `authassignment` (
 -- 
 
 INSERT INTO `authassignment` VALUES ('Admin', '1', NULL, 'N;');
+INSERT INTO `authassignment` VALUES ('Helpdesk', '3', NULL, 'N;');
+INSERT INTO `authassignment` VALUES ('Helpdesk', '4', NULL, 'N;');
 
 -- --------------------------------------------------------
 
@@ -54,9 +56,12 @@ CREATE TABLE IF NOT EXISTS `authitem` (
 -- Dumping data for table `authitem`
 -- 
 
-INSERT INTO `authitem` VALUES ('Admin', 2, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Admin', 2, 'Administrator', NULL, 'N;');
 INSERT INTO `authitem` VALUES ('Authenticated', 2, NULL, NULL, 'N;');
 INSERT INTO `authitem` VALUES ('Guest', 2, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Helpdesk', 2, 'IT-Helpdesk', NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Helpdesk-Mgr-Eng-Clerk', 2, 'Helpdesk-Mgr-Eng-Clerk', NULL, 'N;');
+INSERT INTO `authitem` VALUES ('EmployeeWD', 2, 'EmployeeWD', NULL, 'N;');
 INSERT INTO `authitem` VALUES ('Department.View', 0, NULL, NULL, 'N;');
 INSERT INTO `authitem` VALUES ('Department.Create', 0, NULL, NULL, 'N;');
 INSERT INTO `authitem` VALUES ('Department.Update', 0, NULL, NULL, 'N;');
@@ -112,6 +117,42 @@ CREATE TABLE IF NOT EXISTS `authitemchild` (
 -- Dumping data for table `authitemchild`
 -- 
 
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Department.Admin');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Department.Create');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Department.Delete');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Department.Index');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Department.Update');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Department.View');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Device.Admin');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Device.Create');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Device.Delete');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Device.Index');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Device.Update');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Device.View');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'DeviceBrand.Admin');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'DeviceBrand.Create');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'DeviceBrand.Delete');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'DeviceBrand.Index');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'DeviceBrand.Update');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'DeviceBrand.View');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'DeviceModel.Admin');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'DeviceModel.Create');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'DeviceModel.Delete');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'DeviceModel.Index');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'DeviceModel.Update');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'DeviceModel.View');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'DeviceType.Admin');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'DeviceType.Create');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'DeviceType.Delete');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'DeviceType.Index');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'DeviceType.Update');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'DeviceType.View');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Location.Admin');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Location.Create');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Location.Delete');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Location.Index');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Location.Update');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Location.View');
 
 -- --------------------------------------------------------
 
@@ -125,15 +166,25 @@ CREATE TABLE IF NOT EXISTS `departments` (
   `department_name` varchar(50) NOT NULL COMMENT 'Department',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `department_name_UNIQUE` (`department_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 -- 
 -- Dumping data for table `departments`
 -- 
 
 INSERT INTO `departments` VALUES (1, 'AME');
-INSERT INTO `departments` VALUES (3, 'SPW');
-INSERT INTO `departments` VALUES (2, 'TDE');
+INSERT INTO `departments` VALUES (2, 'FA Lab');
+INSERT INTO `departments` VALUES (3, 'IT');
+INSERT INTO `departments` VALUES (4, 'Mechanical Lab');
+INSERT INTO `departments` VALUES (5, 'PDE');
+INSERT INTO `departments` VALUES (6, 'Servo');
+INSERT INTO `departments` VALUES (7, 'SPW');
+INSERT INTO `departments` VALUES (8, 'STW');
+INSERT INTO `departments` VALUES (13, 'TDE');
+INSERT INTO `departments` VALUES (11, 'Tooling Office');
+INSERT INTO `departments` VALUES (10, 'Tooling PM & Setup');
+INSERT INTO `departments` VALUES (9, 'Tooling Repair');
+INSERT INTO `departments` VALUES (12, 'TSD');
 
 -- --------------------------------------------------------
 
@@ -143,23 +194,29 @@ INSERT INTO `departments` VALUES (2, 'TDE');
 
 DROP TABLE IF EXISTS `devices`;
 CREATE TABLE IF NOT EXISTS `devices` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `device_code` varchar(50) NOT NULL COMMENT 'Device Code',
   `device_type_id` int(11) NOT NULL COMMENT 'Device Type',
   `device_brand_id` int(11) NOT NULL COMMENT 'Device Brand',
   `device_model_id` int(11) NOT NULL COMMENT 'Device Model',
   `location_id` int(11) NOT NULL COMMENT 'Location',
   `device_create_at` timestamp NOT NULL default CURRENT_TIMESTAMP COMMENT 'Create at',
-  PRIMARY KEY  (`device_code`),
+  `device_buy_date` timestamp NOT NULL default '0000-00-00 00:00:00' COMMENT 'Device buy date',
+  `device_warranty_expire` timestamp NOT NULL default '0000-00-00 00:00:00' COMMENT 'Device warranty expire',
+  `device_remark` varchar(255) NOT NULL COMMENT 'Remark',
+  PRIMARY KEY  (`id`),
   KEY `device_type_device` (`device_type_id`),
   KEY `device_location_device` (`location_id`),
   KEY `device_model_device` (`device_model_id`),
   KEY `device_brand_device` (`device_brand_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 -- 
 -- Dumping data for table `devices`
 -- 
 
+INSERT INTO `devices` VALUES (1, 'DELL', 1, 2, 1, 6, '2014-03-31 11:24:55', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'IT-Helpdesk Spare B6');
+INSERT INTO `devices` VALUES (2, 'WDT02848', 1, 2, 2, 6, '2014-03-31 11:28:36', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'IT-Helpdesk Spare B6');
 
 -- --------------------------------------------------------
 
@@ -173,7 +230,7 @@ CREATE TABLE IF NOT EXISTS `device_brands` (
   `device_brand_name` varchar(50) NOT NULL COMMENT 'Device Brand',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `device_brand_name` (`device_brand_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 -- 
 -- Dumping data for table `device_brands`
@@ -182,6 +239,7 @@ CREATE TABLE IF NOT EXISTS `device_brands` (
 INSERT INTO `device_brands` VALUES (1, 'ACER');
 INSERT INTO `device_brands` VALUES (2, 'DELL');
 INSERT INTO `device_brands` VALUES (3, 'HP');
+INSERT INTO `device_brands` VALUES (5, 'LENOVO');
 INSERT INTO `device_brands` VALUES (4, 'TOSHIBA');
 
 -- --------------------------------------------------------
@@ -198,12 +256,14 @@ CREATE TABLE IF NOT EXISTS `device_models` (
   PRIMARY KEY  (`id`),
   UNIQUE KEY `device_model_name` (`device_model_name`),
   KEY `device_model_device_brand_id` (`device_brand_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 -- 
 -- Dumping data for table `device_models`
 -- 
 
+INSERT INTO `device_models` VALUES (1, 2, 'Optiplex 3010');
+INSERT INTO `device_models` VALUES (2, 2, 'Optiplex 780');
 
 -- --------------------------------------------------------
 
@@ -217,12 +277,17 @@ CREATE TABLE IF NOT EXISTS `device_types` (
   `device_type_name` varchar(50) NOT NULL COMMENT 'Device Type',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `device_type_name` (`device_type_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 -- 
 -- Dumping data for table `device_types`
 -- 
 
+INSERT INTO `device_types` VALUES (4, 'Accessories');
+INSERT INTO `device_types` VALUES (1, 'Computer');
+INSERT INTO `device_types` VALUES (2, 'Laptop');
+INSERT INTO `device_types` VALUES (5, 'Other');
+INSERT INTO `device_types` VALUES (3, 'Printer');
 
 -- --------------------------------------------------------
 
@@ -267,14 +332,16 @@ CREATE TABLE IF NOT EXISTS `profiles` (
   `department_id` varchar(50) NOT NULL,
   PRIMARY KEY  (`user_id`),
   UNIQUE KEY `employee_number` (`employee_number`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 -- 
 -- Dumping data for table `profiles`
 -- 
 
-INSERT INTO `profiles` VALUES (1, 'Admin', 'Administrator', 000000, 00000, '6', '0');
-INSERT INTO `profiles` VALUES (2, 'Demo', 'Demo', 999999, 00000, '0', '0');
+INSERT INTO `profiles` VALUES (1, 'Admin', 'Administrator', 000000, 00000, '0', '0');
+INSERT INTO `profiles` VALUES (2, 'Demo', 'Demo', 000001, 00000, '0', '0');
+INSERT INTO `profiles` VALUES (3, 'Trainee', 'ITStudent', 000006, 77634, '6', '3');
+INSERT INTO `profiles` VALUES (4, 'Trainee', 'ITStudent', 000003, 77277, '3', '3');
 
 -- --------------------------------------------------------
 
@@ -318,6 +385,52 @@ INSERT INTO `profiles_fields` VALUES (6, 'department_id', 'Department', 'INTEGER
 -- --------------------------------------------------------
 
 -- 
+-- Table structure for table `requests`
+-- 
+
+DROP TABLE IF EXISTS `requests`;
+CREATE TABLE IF NOT EXISTS `requests` (
+  `id` int(11) NOT NULL auto_increment,
+  `request_fname` varchar(50) NOT NULL COMMENT 'First name',
+  `request_lname` varchar(50) NOT NULL COMMENT 'Last name',
+  `request_en` int(11) NOT NULL COMMENT 'En.',
+  `request_ext` int(5) NOT NULL COMMENT 'Ext.',
+  `request_email` varchar(125) NOT NULL COMMENT 'E-mail',
+  `location_id` int(11) NOT NULL COMMENT 'Location',
+  `department_id` int(11) NOT NULL COMMENT 'Department',
+  `device_id` int(11) NOT NULL COMMENT 'Device',
+  `request_problem` varchar(500) NOT NULL COMMENT 'Requests problem',
+  `request_detail` text NOT NULL COMMENT 'Requests detail',
+  `request_remark` text NOT NULL COMMENT 'Requests remark',
+  `request_create_date` timestamp NOT NULL default CURRENT_TIMESTAMP COMMENT 'Requests date',
+  `request_get_date` timestamp NOT NULL default '0000-00-00 00:00:00' COMMENT 'Get request date',
+  `request_start_repair_date` timestamp NOT NULL default '0000-00-00 00:00:00' COMMENT 'Start repair',
+  `request_end_repair_date` timestamp NOT NULL default '0000-00-00 00:00:00' COMMENT 'End repair',
+  `request_clame_date` timestamp NOT NULL default '0000-00-00 00:00:00' COMMENT 'Clame date',
+  `request_clame_remark` varchar(500) NOT NULL COMMENT 'Clame remark',
+  `request_close_date` timestamp NOT NULL default '0000-00-00 00:00:00' COMMENT 'Closed date',
+  `user_repair_id` int(11) NOT NULL COMMENT 'Repair by',
+  `user_close_id` int(11) NOT NULL COMMENT 'Close by',
+  `request_answer` text NOT NULL COMMENT 'Requests answer',
+  `request_repair_detail` text NOT NULL COMMENT 'Repair detail',
+  `request_status` enum('wait','get','repair','forward','repair_out','repair_end','close') NOT NULL COMMENT 'Requests status',
+  `request_end_remark` text NOT NULL COMMENT 'End remark',
+  PRIMARY KEY  (`id`),
+  KEY `user_repair_request` (`user_repair_id`),
+  KEY `user_close_request` (`user_close_id`),
+  KEY `location_request` (`location_id`),
+  KEY `department_request` (`department_id`),
+  KEY `device_request` (`device_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `requests`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
 -- Table structure for table `rights`
 -- 
 
@@ -333,6 +446,12 @@ CREATE TABLE IF NOT EXISTS `rights` (
 -- Dumping data for table `rights`
 -- 
 
+INSERT INTO `rights` VALUES ('Admin', 2, 0);
+INSERT INTO `rights` VALUES ('Authenticated', 2, 4);
+INSERT INTO `rights` VALUES ('Helpdesk', 2, 1);
+INSERT INTO `rights` VALUES ('Helpdesk-Mgr-Eng-Clerk', 2, 2);
+INSERT INTO `rights` VALUES ('Guest', 2, 5);
+INSERT INTO `rights` VALUES ('EmployeeWD', 2, 3);
 
 -- --------------------------------------------------------
 
@@ -356,14 +475,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `email` (`email`),
   KEY `status` (`status`),
   KEY `superuser` (`superuser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 -- 
 -- Dumping data for table `users`
 -- 
 
-INSERT INTO `users` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', '2014-03-25 16:43:29', '2014-03-26 16:10:15', 1, 1);
-INSERT INTO `users` VALUES (2, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'demo@example.com', '099f825543f7850cc038b90aaff39fac', '2014-03-25 16:43:29', '2014-03-25 19:46:28', 0, 1);
+INSERT INTO `users` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', '2014-03-25 16:43:29', '2014-04-03 19:34:45', 1, 1);
+INSERT INTO `users` VALUES (2, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'demo@example.com', '099f825543f7850cc038b90aaff39fac', '2014-03-25 16:43:29', '2014-04-02 15:58:58', 0, 1);
+INSERT INTO `users` VALUES (3, 'it_student_b6', 'f65c10ef2cf4fb089208c220296240a7', 'itstudent.trainee@wdc.com', 'a68e114ebb1a165db672404d5ac74fbd', '2014-04-01 16:28:03', '2014-04-03 14:03:50', 0, 1);
+INSERT INTO `users` VALUES (4, 'it_student_b3', 'f65c10ef2cf4fb089208c220296240a7', 'itstudent.trainee3@wdc.com', 'e783f5e5e3c282f7b672def73d7856e7', '2014-04-01 16:32:39', '0000-00-00 00:00:00', 0, 1);
 
 -- 
 -- Constraints for dumped tables
@@ -389,3 +510,13 @@ ALTER TABLE `device_models`
 -- 
 ALTER TABLE `profiles`
   ADD CONSTRAINT `user_profile_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+-- 
+-- Constraints for table `requests`
+-- 
+ALTER TABLE `requests`
+  ADD CONSTRAINT `requests_ibfk_49` FOREIGN KEY (`user_close_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `requests_ibfk_43` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `requests_ibfk_44` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `requests_ibfk_45` FOREIGN KEY (`device_id`) REFERENCES `devices` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `requests_ibfk_48` FOREIGN KEY (`user_repair_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
