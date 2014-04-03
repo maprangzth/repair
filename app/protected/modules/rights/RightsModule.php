@@ -32,7 +32,9 @@ class RightsModule extends CWebModule
         /**
 	* @property string the name of the helpdesk role.
 	*/
-	public $helpdeskName = 'IT-Helpdesk';
+	public $helpdeskName = 'Helpdesk';
+        public $helpdeskMgrName = 'Helpdesk-Mgr-Eng-Clerk';
+        public $employeeName = 'EmployeeWD';
 	/**
 	* @property string the name of the user model class.
 	*/
@@ -129,7 +131,9 @@ class RightsModule extends CWebModule
 					'class'=>'RInstaller',
 					'superuserName'=>$this->superuserName,
 					'authenticatedName'=>$this->authenticatedName,
-                                        'helpdeskName'=>  $this->helpdeskName,
+                                        'helpdeskName'=>$this->helpdeskName,
+                                        'helpdeskMgrName'=>  $this->helpdeskMgrName,
+                                        'employeeName'=>  $this->employeeName,
 					'guestName'=>Yii::app()->user->guestName,
 					'defaultRoles'=>Yii::app()->authManager->defaultRoles,
 				),

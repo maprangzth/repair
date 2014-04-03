@@ -73,6 +73,7 @@ class Device extends CActiveRecord
                         'device_types' => array(self::BELONGS_TO, 'DeviceType', 'device_type_id'),
 			'device_brands' => array(self::BELONGS_TO, 'DeviceBrand', 'device_brand_id'),
 			'device_models' => array(self::BELONGS_TO, 'DeviceModel', 'device_model_id'),
+                        'requests' => array(self::HAS_MANY, 'Request', 'device_id'),
 			
 		);
 	}

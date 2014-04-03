@@ -28,23 +28,29 @@
 
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
+                        'activeCssClass'=>'active',
+                        'activateParents'=>true,
+                        'encodeLabel' => false,
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				/* array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest), */
-                /* array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest), */
-                array('label'=>'Rights', 'url'=>array('/rights'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->superuserName)),
-                array('url'=>Yii::app()->getModule('user')->loginUrl, 'label'=>Yii::app()->getModule('user')->t("Login"), 'visible'=>Yii::app()->user->isGuest),
-                array('url'=>Yii::app()->getModule('user')->registrationUrl, 'label'=>Yii::app()->getModule('user')->t("Register"), 'visible'=>Yii::app()->user->isGuest),
-                array('url'=>Yii::app()->getModule('user')->profileUrl, 'label'=>Yii::app()->getModule('user')->t("Profile"), 'visible'=>!Yii::app()->user->isGuest),
-                array('label'=>'Location', 'url'=>array('/location/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->superuserName)),
-                array('label'=>'Department', 'url'=>array('/department/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->superuserName)),
-                array('label'=>'Device', 'url'=>array('/device/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->superuserName)),
-                array('label'=>'Device Type', 'url'=>array('/devicetype/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->superuserName)),
-                array('label'=>'Device Brand', 'url'=>array('/devicebrand/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->superuserName)),
-                array('label'=>'Device Model', 'url'=>array('/devicemodel/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->superuserName)),
-                array('url'=>Yii::app()->getModule('user')->logoutUrl, 'label'=>Yii::app()->getModule('user')->t("Logout").' ('.Yii::app()->user->name.')', 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'About', 'url'=>array('/site/page','view'=>'about'), 'visible'=>!Yii::app()->user->checkAccess(Rights::module()->superuserName)&& !Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
+				array('label'=>'Contact', 'url'=>array('/site/contact'), 'visible'=>!Yii::app()->user->checkAccess(Rights::module()->superuserName)&& !Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
+                                array('label'=>'Rights', 'url'=>array('/rights'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->superuserName)),
+                                array('url'=>Yii::app()->getModule('user')->loginUrl, 'label'=>Yii::app()->getModule('user')->t("Login"), 'visible'=>Yii::app()->user->isGuest),
+                                array('url'=>Yii::app()->getModule('user')->registrationUrl, 'label'=>Yii::app()->getModule('user')->t("Register"), 'visible'=>Yii::app()->user->isGuest),
+                                array('url'=>array('/user/profile'), 'label'=>Yii::app()->getModule('user')->t("Profile"), 'visible'=>!Yii::app()->user->isGuest),
+                                array('label'=>'Location', 'url'=>array('/location/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
+                                array('label'=>'Department', 'url'=>array('/department/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
+                               /* array('label'=>'Device Manement', 'url'=>'', 
+                                    'items'=>array( */
+                                        array('label'=>'Device', 'url'=>array('/device/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
+                                        array('label'=>'Device Type', 'url'=>array('/devicetype/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
+                                        array('label'=>'Device Brand', 'url'=>array('/devicebrand/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
+                                        array('label'=>'Device Model', 'url'=>array('/devicemodel/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
+                                    //), 
+                                    //'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)
+                                //),
+                                array('url'=>Yii::app()->getModule('user')->logoutUrl, 'label'=>Yii::app()->getModule('user')->t("Logout").' ('.Yii::app()->user->name.')', 'visible'=>!Yii::app()->user->isGuest),
 			),
 		)); ?>
 	</div><!-- mainmenu -->

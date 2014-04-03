@@ -110,7 +110,7 @@ return array(
         'authManager'=>array(
             'class'=>'RDbAuthManager',
             'connectionID'=>'db',
-            'defaultRoles'=>array('Authenticated', 'Guest'),
+            'defaultRoles'=>array('Authenticated', 'Guest','EmloyeeWD'),
             'itemTable'=>'authitem',
             'itemChildTable'=>'authitemchild',
             'assignmentTable'=>'authassignment',

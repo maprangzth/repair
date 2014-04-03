@@ -47,6 +47,7 @@ class Location extends CActiveRecord
 		return array(
 			'devices' => array(self::HAS_MANY, 'Device', 'location_id'),
                         'profiles'=>array(self::HAS_MANY, 'Profile', 'location_id'),
+                        'requests' => array(self::HAS_MANY, 'Request', 'location_id'),
 		);
 	}
 

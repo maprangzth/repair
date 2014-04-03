@@ -44,6 +44,7 @@ class Department extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
                         'profiles'=>array(self::HAS_MANY, 'Profile', 'department_id'),
+                        'requests' => array(self::HAS_MANY, 'Request', 'department_id'),
 		);
 	}
 
