@@ -139,14 +139,82 @@ class DeviceController extends RController
 	{
 		$model=new Device('search');
 		$model->unsetAttributes();  // clear any default values
+                
+                if (isset($_GET['pageSize'])) {
+                    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+                    unset($_GET['pageSize']);
+                }
+                
 		if(isset($_GET['Device']))
 			$model->attributes=$_GET['Device'];
+                
+                if(Yii::app()->request->getParam('export')) {
+                    $this->actionExport();
+                    Yii::app()->end();
+                }
 
 		$this->render('admin',array(
 			'model'=>$model,
 		));
 	}
 
+        public function actionExport()
+        {
+            $fp = fopen('php://temp', 'w');
+
+            /* 
+             * Write a header of csv file
+             */
+            $headers = array(
+                    'device_code',
+                    'locations.location_name',
+                    'device_types.device_type_name',
+                    'device_brands.device_brand_name',
+                    'device_models.device_model_name',
+                );
+            $row = array();
+            foreach($headers as $header) {
+                $row[] = Device::model()->getAttributeLabel($header);
+            }
+            fputcsv($fp,$row);
+
+            /*
+             * Init dataProvider for first page
+             */
+            $model=new Device('search');
+            $model->unsetAttributes();  // clear any default values
+            if(isset($_GET['Device'])) {
+                $model->attributes=$_GET['Device'];
+            }
+            $dp = $model->search();
+            $dp->setPagination(false);
+
+            /*
+             * Get models, write to a file
+             */
+
+            $models = $dp->getData();
+            foreach($models as $model) {
+                $row = array();
+                foreach($headers as $head) {
+                    $row[] = CHtml::value($model,$head);
+                }
+                fputcsv($fp,$row);
+            }
+
+            /*
+             * save csv content to a Session
+             */
+            rewind($fp);
+            Yii::app()->user->setState('export',stream_get_contents($fp));
+            fclose($fp);
+        }
+        
+        public function actionGetExportFile()
+        {
+                Yii::app()->request->sendFile('Device-List.csv',Yii::app()->user->getState('export'));
+                Yii::app()->user->clearState('export');
+        }
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.

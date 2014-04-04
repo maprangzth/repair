@@ -23,7 +23,24 @@ $('.search-form form').submit(function(){
 	});
 	return false;
 });
+
+
+
 ");
+/*
+$('#export-button').on('click',function() {
+    $.fn.yiiGridView.export();
+});
+$.fn.yiiGridView.export = function() {
+    $.fn.yiiGridView.update('device-grid',{ 
+        success: function() {
+            $('#device-grid').removeClass('grid-view-loading');
+            window.location = '". $this->createUrl('GetExportFile')  . "';
+        },
+        data: $('.search-form form').serialize() + '&export=true'
+    });
+}
+*/
 ?>
 
 <h1>Manage Devices</h1>
@@ -33,14 +50,11 @@ You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&g
 or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
 </p>
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
-<?php $this->renderPartial('_search',array(
-	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
+<?php echo CHtml::button('Export to excel (.csv)', array('id'=>'export-button','class'=>'span-3 button')); ?>
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php 
+    $pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
+    $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'device-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
@@ -74,7 +88,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'device_remark',
 		*/
 		array(
-			'class'=>'CButtonColumn',
-		),
+                        'class'=>'CButtonColumn',
+                        'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,50=>50,100=>100,150=>150),array(
+                                  'onchange'=>"$.fn.yiiGridView.update('device-grid',{ data:{pageSize: $(this).val() }})",
+                    )),
+                ),
 	),
 )); ?>
