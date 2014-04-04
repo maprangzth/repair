@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Host: localhost
--- Generation Time: Apr 03, 2014 at 11:07 PM
+-- Generation Time: Apr 04, 2014 at 05:32 PM
 -- Server version: 5.0.51
 -- PHP Version: 5.2.6
 
@@ -35,6 +35,8 @@ CREATE TABLE IF NOT EXISTS `authassignment` (
 INSERT INTO `authassignment` VALUES ('Admin', '1', NULL, 'N;');
 INSERT INTO `authassignment` VALUES ('Helpdesk', '3', NULL, 'N;');
 INSERT INTO `authassignment` VALUES ('Helpdesk', '4', NULL, 'N;');
+INSERT INTO `authassignment` VALUES ('EmployeeWD', '5', NULL, 'N;');
+INSERT INTO `authassignment` VALUES ('Admin', '5', NULL, 'N;');
 
 -- --------------------------------------------------------
 
@@ -1067,7 +1069,7 @@ CREATE TABLE IF NOT EXISTS `profiles` (
   `department_id` varchar(50) NOT NULL,
   PRIMARY KEY  (`user_id`),
   UNIQUE KEY `employee_number` (`employee_number`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 -- 
 -- Dumping data for table `profiles`
@@ -1077,6 +1079,7 @@ INSERT INTO `profiles` VALUES (1, 'Admin', 'Administrator', 000000, 00000, '0', 
 INSERT INTO `profiles` VALUES (2, 'Demo', 'Demo', 000001, 00000, '0', '0');
 INSERT INTO `profiles` VALUES (3, 'Trainee', 'ITStudent', 000006, 77634, '6', '3');
 INSERT INTO `profiles` VALUES (4, 'Trainee', 'ITStudent', 000003, 77277, '3', '3');
+INSERT INTO `profiles` VALUES (5, 'Souwannachairob', 'Monfangmickarush', 115256, 77945, '3', '3');
 
 -- --------------------------------------------------------
 
@@ -1210,16 +1213,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `email` (`email`),
   KEY `status` (`status`),
   KEY `superuser` (`superuser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 -- 
 -- Dumping data for table `users`
 -- 
 
-INSERT INTO `users` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', '2014-03-25 16:43:29', '2014-04-03 21:34:06', 1, 1);
+INSERT INTO `users` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', '2014-03-25 16:43:29', '2014-04-04 17:30:20', 1, 1);
 INSERT INTO `users` VALUES (2, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'demo@example.com', '099f825543f7850cc038b90aaff39fac', '2014-03-25 16:43:29', '2014-04-02 15:58:58', 0, 1);
-INSERT INTO `users` VALUES (3, 'it_student_b6', 'f65c10ef2cf4fb089208c220296240a7', 'itstudent.trainee@wdc.com', 'a68e114ebb1a165db672404d5ac74fbd', '2014-04-01 16:28:03', '2014-04-03 14:03:50', 0, 1);
+INSERT INTO `users` VALUES (3, 'it_student_b6', 'f65c10ef2cf4fb089208c220296240a7', 'itstudent.trainee@wdc.com', 'a68e114ebb1a165db672404d5ac74fbd', '2014-04-01 16:28:03', '2014-04-04 11:12:51', 0, 1);
 INSERT INTO `users` VALUES (4, 'it_student_b3', 'f65c10ef2cf4fb089208c220296240a7', 'itstudent.trainee3@wdc.com', 'e783f5e5e3c282f7b672def73d7856e7', '2014-04-01 16:32:39', '0000-00-00 00:00:00', 0, 1);
+INSERT INTO `users` VALUES (5, 'Monfang_S', '1364768a5062610cb8aff90cb9ff097b', 'Monfangmickarush.Souwannachairob@wdc.com', '890462578c764b355f9342f4c338fa27', '2014-04-04 15:08:09', '2014-04-04 16:25:29', 0, 1);
 
 -- 
 -- Constraints for dumped tables

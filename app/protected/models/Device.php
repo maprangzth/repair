@@ -158,9 +158,15 @@ class Device extends CActiveRecord
                         $criteria->compare('device_models.device_model_name',$this->device_model_name,true);
                 }
                 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
+                //$criteria->order = 'device_code ASC';
+                $criteria->order = 'location_id ASC';
+                
+		return new CActiveDataProvider(get_class($this), array(
+                        'pagination'=>array(
+                                'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+                        ),
+                        'criteria'=>$criteria,
+                ));
 	}
 
 	/**
