@@ -24,7 +24,18 @@ $('.search-form form').submit(function(){
 	return false;
 });
 
-
+$('#export-button').on('click',function() {
+    $.fn.yiiGridView.export();
+});
+$.fn.yiiGridView.export = function() {
+    $.fn.yiiGridView.update('device-grid',{ 
+        success: function() {
+            $('#device-grid').removeClass('grid-view-loading');
+            window.location = '". $this->createUrl('GetExportFile')  . "';
+        },
+        data: $('.search-form form').serialize() + '&export=true'
+    });
+}
 
 ");
 /*
