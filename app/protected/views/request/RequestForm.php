@@ -25,7 +25,7 @@
         'enableClientValidation'=>true,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required. | กรุณากรอกข้อมูลในช่องที่มีเครื่องหมาย <span class="required">*</span> ให้ครบถ้วน</p>
+	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
