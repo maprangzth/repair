@@ -17,13 +17,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'request_fname'); ?>
-		<?php echo $form->textField($model,'request_fname',array('size'=>50,'maxlength'=>50)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'request_lname'); ?>
-		<?php echo $form->textField($model,'request_lname',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->label($model,'request_by_user'); ?>
+		<?php echo $form->textField($model,'request_by_user',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
 	<div class="row">
@@ -82,8 +77,18 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model,'user_accept_request'); ?>
+		<?php echo $form->textField($model,'user_accept_request',array('size'=>50,'maxlength'=>50)); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model,'request_start_repair_date'); ?>
 		<?php echo $form->textField($model,'request_start_repair_date'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'user_repair'); ?>
+		<?php echo $form->textField($model,'user_repair',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
 	<div class="row">
@@ -92,28 +97,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'request_clame_date'); ?>
-		<?php echo $form->textField($model,'request_clame_date'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'request_clame_remark'); ?>
-		<?php echo $form->textField($model,'request_clame_remark',array('size'=>60,'maxlength'=>500)); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'request_close_date'); ?>
 		<?php echo $form->textField($model,'request_close_date'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'user_repair_id'); ?>
-		<?php echo $form->textField($model,'user_repair_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'user_close_id'); ?>
-		<?php echo $form->textField($model,'user_close_id'); ?>
+		<?php echo $form->label($model,'user_close'); ?>
+		<?php echo $form->textField($model,'user_close',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
 	<div class="row">
