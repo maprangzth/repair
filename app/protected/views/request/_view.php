@@ -9,12 +9,8 @@
 	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('request_fname')); ?>:</b>
-	<?php echo CHtml::encode($data->request_fname); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('request_lname')); ?>:</b>
-	<?php echo CHtml::encode($data->request_lname); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('request_by_user')); ?>:</b>
+	<?php echo CHtml::encode($data->request_by_user); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('request_en')); ?>:</b>
@@ -33,11 +29,11 @@
 	<?php echo CHtml::encode($data->location_id); ?>
 	<br />
 
-	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('department_id')); ?>:</b>
 	<?php echo CHtml::encode($data->department_id); ?>
 	<br />
 
+	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('device_id')); ?>:</b>
 	<?php echo CHtml::encode($data->device_id); ?>
 	<br />
@@ -62,32 +58,28 @@
 	<?php echo CHtml::encode($data->request_get_date); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('user_accept_request')); ?>:</b>
+	<?php echo CHtml::encode($data->user_accept_request); ?>
+	<br />
+
 	<b><?php echo CHtml::encode($data->getAttributeLabel('request_start_repair_date')); ?>:</b>
 	<?php echo CHtml::encode($data->request_start_repair_date); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('user_repair')); ?>:</b>
+	<?php echo CHtml::encode($data->user_repair); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('request_end_repair_date')); ?>:</b>
 	<?php echo CHtml::encode($data->request_end_repair_date); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('request_clame_date')); ?>:</b>
-	<?php echo CHtml::encode($data->request_clame_date); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('request_clame_remark')); ?>:</b>
-	<?php echo CHtml::encode($data->request_clame_remark); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('request_close_date')); ?>:</b>
 	<?php echo CHtml::encode($data->request_close_date); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('user_repair_id')); ?>:</b>
-	<?php echo CHtml::encode($data->user_repair_id); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('user_close_id')); ?>:</b>
-	<?php echo CHtml::encode($data->user_close_id); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('user_close')); ?>:</b>
+	<?php echo CHtml::encode($data->user_close); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('request_answer')); ?>:</b>

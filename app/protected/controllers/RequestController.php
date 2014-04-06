@@ -1,6 +1,6 @@
 <?php
 
-class RequestController extends RController
+class RequestController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -14,9 +14,8 @@ class RequestController extends RController
 	public function filters()
 	{
 		return array(
-			//'accessControl', // perform access control for CRUD operations
-			//'postOnly + delete', // we only allow deletion via POST request
-			'rights',
+			'accessControl', // perform access control for CRUD operations
+			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -25,7 +24,6 @@ class RequestController extends RController
 	 * This method is used by the 'accessControl' filter.
 	 * @return array access control rules
 	 */
-	/*
 	public function accessRules()
 	{
 		return array(
@@ -46,8 +44,7 @@ class RequestController extends RController
 			),
 		);
 	}
-	*/
-        
+
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -81,34 +78,6 @@ class RequestController extends RController
 			'model'=>$model,
 		));
 	}
-              
-        function actionRequestForm($id = null) 
-        {
-                $model = new Request();
-                
-                $this->performAjaxValidation($model);
-
-                if (!empty($_POST['Request'])) {
-                    $id = $_POST['Request']['id'];
-
-                    if (!empty($id)) {
-                        $model = Request::model()->findByPk($id);
-                    }
-                    
-                    $model->attributes = $_POST['Request'];
-                    if ($model->save()) {
-                        $this->redirect(array("RequestHistory"));
-                    }
-                }
-
-                if (!empty($id)) {
-                    $model = Request::model()->findByPk($id);
-                }
-
-                $this->render('requestform', array(
-                        'model' => $model
-                ));
-        }
 
 	/**
 	 * Updates a particular model.
