@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 if(!Yii::app()->user->isGuest) {
 	$this->layout='//layouts/column2';
         $this->menu=array(
-                array('label'=>'List Request', 'url'=>array('index')),
+                array('label'=>'List Request', 'url'=>array('RequestGetRequest')),
                 array('label'=>'Create Request', 'url'=>array('create')),
         );
 }

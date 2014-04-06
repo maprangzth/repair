@@ -109,6 +109,28 @@ class RequestController extends RController
 			'model'=>$model,
 		));
 	}
+        
+        public function actionAcceptRequest($id)
+	{
+		$model=$this->loadModel($id);
+
+		// Uncomment the following line if AJAX validation is needed
+		$this->performAjaxValidation($model);
+
+		if(isset($_POST['Request']))
+		{       
+                        $model->request_get_date = new CDbExpression('NOW()');
+                        $model->request_status = 'get';
+                        
+			//$model->attributes=$_POST['Request'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->id));
+		}
+
+		$this->render('update',array(
+			'model'=>$model,
+		));
+	}
 
 	/**
 	 * Deletes a particular model.
