@@ -88,7 +88,7 @@ if(!Yii::app()->user->isGuest) {
 		<?php echo $form->textArea($model,'request_detail',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'request_detail'); ?>
 	</div>
-
+        
 	<div class="row">
 		<?php echo $form->labelEx($model,'request_remark'); ?>
 		<?php echo $form->textArea($model,'request_remark',array('rows'=>6, 'cols'=>50)); ?>
@@ -98,7 +98,11 @@ if(!Yii::app()->user->isGuest) {
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Submit'); ?>
 	</div>
-
+        <?php echo $form->hiddenField($model, 'request_get_date'); ?>
+        <?php echo $form->hiddenField($model, 'user_accept_request'); ?>
+        <?php echo $form->hiddenField($model, 'request_status'); ?>
+        <?php echo $form->hiddenField($model, 'request_answer'); ?>
+        <?php echo $form->hiddenField($model, 'request_start_repair_date'); ?>
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->

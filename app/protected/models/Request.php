@@ -57,11 +57,13 @@ class Request extends CActiveRecord
                     
 			array('request_email', 'length', 'max'=>125),
 			array('request_problem', 'length', 'max'=>500),
+                        array('request_remark', 'length', 'max'=>500),
+                        array('request_answer', 'length', 'max'=>500),
+                        array('request_repair_detail', 'length', 'max'=>500),
+                        array('request_end_remark', 'length', 'max'=>500),
 			array('request_status', 'length', 'max'=>10),
                     
                         array('request_create_date', 'default', 'value' => date('Y-m-d H:i:s'), 'setOnEmpty' => true, 'on' => 'insert'),
-                        //array('request_get_date', 'default', 'value' => date('Y-m-d H:i:s'), 'setOnEmpty' => true, 'on' => 'insert'),
-                        //array('request_start_repair_date', 'default', 'value' => date('Y-m-d H:i:s'), 'setOnEmpty' => true, 'on' => 'insert'),
 			array('request_get_date, request_start_repair_date, request_end_repair_date, request_close_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -202,7 +204,7 @@ class Request extends CActiveRecord
                 case 'completed':
                     return 'Completed';
                 case 'close':
-                    return 'Closed job';
+                    return 'Closed Job';
             }
         }
         

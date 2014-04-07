@@ -15,7 +15,7 @@ $this->breadcrumbs=array(
             array(
                     'name' => 'device_id',
                     'type' => 'html',
-                    'value' => array($model, 'getButtonEndRepairView'),
+                    'value' => array($model, 'getButtonCloseJobView'),
                     'htmlOptions' => array(
                         'width' => '100px',
                         'align' => 'center'
