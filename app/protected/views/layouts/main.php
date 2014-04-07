@@ -44,8 +44,8 @@
                                 //array('url'=>Yii::app()->getModule('user')->registrationUrl, 'label'=>Yii::app()->getModule('user')->t("Register"), 'visible'=>Yii::app()->user->isGuest),
                                 array('url'=>array('/user/profile'), 'label'=>Yii::app()->getModule('user')->t("Profile"), 'visible'=>!Yii::app()->user->isGuest),
                                 array('label'=>'Queues', 'url'=>array('/request/RequestGetRequest'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
-                                array('label'=>'Pending', 'url'=>array('/request/RequestGetRepair'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
-                                array('label'=>'Completed', 'url'=>array('/request/EndRepair'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
+                                array('label'=>'To Pending', 'url'=>array('/request/RequestGetRepair'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
+                                array('label'=>'To Completed', 'url'=>array('/request/EndRepair'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                                 array('label'=>'Close Job', 'url'=>array('/request/CloseJob'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                                 
                                 array('label'=>'IT-Helpdesk Manage',

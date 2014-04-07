@@ -1,7 +1,7 @@
 <?php
 $this->pageTitle=Yii::app()->name . ' - Queue Request';
 $this->breadcrumbs=array(
-	'Queue Request',
+	'QueueRequest',
 );
 ?>
 

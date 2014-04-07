@@ -5,12 +5,12 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>End Repair</h1>
+<h1>Queue To Complete</h1>
 
 <?php   
     $this->widget('zii.widgets.grid.CGridView', array(
         'id' => 'request-grid',
-        'dataProvider' => $model->searchEndRepair(),
+        'dataProvider' => $model->searchToComplete(),
         'columns' => array(
             array(
                     'name' => 'device_id',

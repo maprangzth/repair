@@ -139,7 +139,17 @@ $username = Yii::app()->session['username'];
             )); ?>
 		<?php echo $form->error($model,'user_accept_request'); ?>
 	</div>
-
+        
+        <div class="row">
+		<?php echo $form->labelEx($model,'request_answer'); ?>
+		<?php echo $form->textArea($model,'request_answer', array(
+                            'disabled' => "disabled",
+                            'rows'=>6,
+                            'cols'=>82,
+            )); ?>
+		<?php echo $form->error($model,'request_answer'); ?>
+	</div>
+        
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Start Repair'); ?>
 	</div>

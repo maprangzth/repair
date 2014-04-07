@@ -1,23 +1,23 @@
 <?php
-
+$this->pageTitle=Yii::app()->name . ' - Close Job';
 $this->breadcrumbs=array(
-	'View Request',
+	'CloseJob',
 );
 ?>
 
-<h1>View Request</h1>
+<h1>Close Job</h1>
 
 <?php   
     $this->widget('zii.widgets.grid.CGridView', array(
         'id' => 'request-grid',
-        'dataProvider' => $model->searchRequest(),
+        'dataProvider' => $model->searchCloseJob(),
         'columns' => array(
             array(
-                    'name' => 'devices.device_code',
+                    'name' => 'device_id',
                     'type' => 'html',
-                    'value' => array($model, "getButtonGetRequestView"),
+                    'value' => array($model, 'getButtonEndRepairView'),
                     'htmlOptions' => array(
-                        'width' => '150px',
+                        'width' => '100px',
                         'align' => 'center'
                     )
             ),
@@ -25,7 +25,14 @@ $this->breadcrumbs=array(
                 'name' => 'request_problem',
                 'value' => '$data->request_problem',
                 'htmlOptions' => array(
-                    'width' => '500px'
+                    'width' => '300px'
+                )
+            ),
+            array(
+                'name' => 'location_id',
+                'value' => '$data->locations->location_name',
+                'htmlOptions' => array(
+                    'width' => '50px'
                 )
             ),
             array(
@@ -39,7 +46,7 @@ $this->breadcrumbs=array(
                 'name' => 'request_create_date',
                 'value' => '$data->request_create_date',
                 'htmlOptions' => array(
-                    'width' => '120px',
+                    'width' => '100px',
                     'align' => 'center'
                 )
             ),
@@ -47,7 +54,7 @@ $this->breadcrumbs=array(
                 'name' => 'request_status',
                 'value' => array($model, 'getRequestStatus'),
                 'htmlOptions' => array(
-                    'width' => '100px',
+                    'width' => '85px',
                     'align' => 'center'
                 )
             )

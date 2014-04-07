@@ -224,9 +224,18 @@ class Request extends CActiveRecord
                     ));
         }
 
-        public function searchEndRepair() {
+        public function searchToComplete() {
             $criteria = new CDbCriteria();
-            $criteria->condition = "request_status IN ('pending', 'completed')";
+            $criteria->condition = "request_status IN ('pending')";
+            
+            return new CActiveDataProvider($this, array(
+                        'criteria' => $criteria
+                    ));
+        }
+        
+        public function searchCloseJob() {
+            $criteria = new CDbCriteria();
+            $criteria->condition = "request_status IN ('completed','close')";
             
             return new CActiveDataProvider($this, array(
                         'criteria' => $criteria
@@ -249,6 +258,13 @@ class Request extends CActiveRecord
         
         public function getButtonEndRepairView($data, $row) {
             $param = array('request/EndRepairForm', 'id' => $data->id);
+            $link = CHtml::link($data->devices->device_code, $param);
+
+            return $link;
+        }
+        
+        public function getButtonCloseJobView($data, $row) {
+            $param = array('request/CloseJobForm', 'id' => $data->id);
             $link = CHtml::link($data->devices->device_code, $param);
 
             return $link;

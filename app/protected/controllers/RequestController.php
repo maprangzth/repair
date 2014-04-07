@@ -168,7 +168,7 @@ class RequestController extends RController
                         
                         //$model->attributes=$_POST['Request'];
 			if($model->save())
-				$this->redirect(array('RequestGetRepair'));
+				$this->redirect(array('EndRepair'));
 		}
 
 		$this->render('RequestGetRepairForm',array(
@@ -186,15 +186,38 @@ class RequestController extends RController
 		if(isset($_POST['Request']))
 		{       
                         $model->request_end_repair_date = new CDbExpression('NOW()');
-                        $model->user_close = Yii::app()->user->username;
+                        //$model->user_close = Yii::app()->user->username;
                         $model->request_status = 'completed';
                         
                         //$model->attributes=$_POST['Request'];
 			if($model->save())
-				$this->redirect(array('EndRepair'));
+				$this->redirect(array('CloseJob'));
 		}
 
 		$this->render('EndRepairForm',array(
+			'model'=>$model,
+		));
+	}
+        
+        public function actionCloseJobForm($id)
+	{
+		$model=$this->loadModel($id);
+
+		// Uncomment the following line if AJAX validation is needed
+		$this->performAjaxValidation($model);
+
+		if(isset($_POST['Request']))
+		{       
+                        $model->request_close_date = new CDbExpression('NOW()');
+                        $model->user_close = Yii::app()->user->username;
+                        $model->request_status = 'close';
+                        
+                        //$model->attributes=$_POST['Request'];
+			if($model->save())
+				$this->redirect(array('CloseJob'));
+		}
+
+		$this->render('CloseJobForm',array(
 			'model'=>$model,
 		));
 	}
@@ -280,6 +303,13 @@ class RequestController extends RController
         public function actionEndRepair() {
             $model = new Request();
             $this->render('EndRepair', array(
+                'model' => $model
+            ));
+        }
+        
+        public function actionCloseJob() {
+            $model = new Request();
+            $this->render('CloseJob', array(
                 'model' => $model
             ));
         }

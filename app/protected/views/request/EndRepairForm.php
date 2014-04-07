@@ -131,6 +131,16 @@ $username = Yii::app()->session['username'];
 		<?php echo $form->error($model,'user_accept_request'); ?>
 	</div>
         
+        <div class="row">
+		<?php echo $form->labelEx($model,'request_answer'); ?>
+		<?php echo $form->textArea($model,'request_answer', array(
+                            'disabled' => "disabled",
+                            'rows'=>6,
+                            'cols'=>82,
+            )); ?>
+		<?php echo $form->error($model,'request_answer'); ?>
+	</div>
+        
         <div class="column">
             <?php echo $form->labelEx($model, 'request_start_repair_date'); ?>
             <?php echo $form->textField($model, 'request_start_repair_date', array(
@@ -147,6 +157,16 @@ $username = Yii::app()->session['username'];
                             'size' => 50,
                 )); ?>
 		<?php echo $form->error($model,'user_repair'); ?>
+	</div>
+        
+        <div class="row">
+		<?php echo $form->labelEx($model,'request_repair_detail'); ?>
+		<?php echo $form->textArea($model,'request_repair_detail', array(
+                            //'disabled' => "disabled",
+                            'rows'=>6,
+                            'cols'=>82,
+            )); ?>
+		<?php echo $form->error($model,'request_repair_detail'); ?>
 	</div>
         
 	<div class="row buttons">
