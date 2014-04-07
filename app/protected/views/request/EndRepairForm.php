@@ -21,7 +21,7 @@ $username = Yii::app()->session['username'];
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
+	<div class="column">
 		<?php echo $form->labelEx($model,'device_id'); ?>
 		<?php echo $form->textField($model,'device_id', array(
                             'disabled' => 'disabled',
@@ -40,7 +40,7 @@ $username = Yii::app()->session['username'];
 		<?php echo $form->error($model,'request_by_user'); ?>
 	</div>
 
-	<div class="row">
+	<div class="column">
 		<?php echo $form->labelEx($model,'request_en'); ?>
 		<?php echo $form->textField($model,'request_en',array(
                             'disabled' => 'disabled',
@@ -58,7 +58,7 @@ $username = Yii::app()->session['username'];
 		<?php echo $form->error($model,'request_ext'); ?>
 	</div>
 
-	<div class="row">
+	<div class="column">
 		<?php echo $form->labelEx($model,'request_email'); ?>
 		<?php echo $form->textField($model,'request_email', array(
                             'disabled' => 'disabled',
@@ -77,7 +77,7 @@ $username = Yii::app()->session['username'];
 		<?php echo $form->error($model,'location_id'); ?>
 	</div>
 
-	<div class="row">
+	<div class="column">
 		<?php echo $form->labelEx($model,'department_id'); ?>
 		<?php echo $form->textField($model,'department_id', array(
                             'disabled' => 'disabled',
@@ -99,7 +99,7 @@ $username = Yii::app()->session['username'];
 	<div class="row">
 		<?php echo $form->labelEx($model,'request_problem'); ?>
 		<?php echo $form->textField($model,'request_problem', array(
-                            'disabled' => 'disabled', 'size' => 107,)); ?>
+                            'disabled' => 'disabled', 'size' => 108,)); ?>
 		<?php echo $form->error($model,'request_problem'); ?>
 	</div>
 
@@ -108,30 +108,53 @@ $username = Yii::app()->session['username'];
 		<?php echo $form->textArea($model,'request_detail', array(
                             'disabled' => "disabled",
                             'rows'=>6,
-                            'cols'=>80,
+                            'cols'=>82,
             )); ?>
 		<?php echo $form->error($model,'request_detail'); ?>
 	</div>
 
-        <div>
+        <div class="column">
             <?php echo $form->labelEx($model, 'request_get_date'); ?>
             <?php echo $form->textField($model, 'request_get_date', array(
                             'disabled' => 'disabled',
                             'size' => 50
             )); ?>
+            <?php echo $form->error($model,'request_get_date'); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'request_status'); ?>
-		<?php echo $form->textField($model,'request_status'); ?>
-                <?php echo ZHtml::enumDropDownList($model,'request_status'); ?>
-		<?php echo $form->error($model,'request_status'); ?>
+        
+         <div class="row">
+		<?php echo $form->labelEx($model,'user_accept_request'); ?>
+		<?php echo $form->textField($model,'user_accept_request', array(
+                            'disabled' => 'disabled',
+                            'size' => 50,
+                )); ?>
+		<?php echo $form->error($model,'user_accept_request'); ?>
 	</div>
-
+        
+        <div class="column">
+            <?php echo $form->labelEx($model, 'request_start_repair_date'); ?>
+            <?php echo $form->textField($model, 'request_start_repair_date', array(
+                            'disabled' => 'disabled',
+                            'size' => 50
+            )); ?>
+            <?php echo $form->error($model,'request_start_repair_date'); ?>
+	</div>
+        
+        <div class="row">
+		<?php echo $form->labelEx($model,'user_repair'); ?>
+		<?php echo $form->textField($model,'user_repair', array(
+                            'disabled' => 'disabled',
+                            'size' => 50,
+                )); ?>
+		<?php echo $form->error($model,'user_repair'); ?>
+	</div>
+        
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Accept Request'); ?>
+		<?php echo CHtml::submitButton('End Repair'); ?>
 	</div>
 
+        <?php echo $form->hiddenField($model, 'request_status'); ?>
+        
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->

@@ -2,16 +2,22 @@
 
 /* @var $this RequestController */
 /* @var $model Request */
-/* @var $form CActiveForm */
-/*
-//$username = Yii::app()->session['username'];
-//$user_en = Yii::app()->session['employee_number'];
-//$user_ext = Yii::app()->session['extension_number'];
-//$user_location = Yii::app()->session['location_id'];
-//$user_department = Yii::app()->session['department_id'];
- * 
- */
+$this->pageTitle=Yii::app()->name . ' - Request Form';
+$this->breadcrumbs=array(
+	'Request',
+	'Request Form',
+);
+if(!Yii::app()->user->isGuest) {
+	$this->layout='//layouts/column2';
+	$this->menu=array(
+                array('label'=>'List Request', 'url'=>array('index')),
+                array('label'=>'Manage Request', 'url'=>array('admin')),
+        );
+}
+
 ?>
+
+<h1>Request Form</h1>
 
 <div class="form">
 
@@ -31,25 +37,25 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'request_by_user'); ?>
-		<?php echo $form->textField($model,'request_by_user',array('size'=>66,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'request_by_user',array('size'=>65,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'request_by_user'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'request_en'); ?>
-		<?php echo $form->textField($model,'request_en',array('size'=>66,'maxlength'=>6)); ?>
+		<?php echo $form->textField($model,'request_en',array('size'=>65,'maxlength'=>6)); ?>
 		<?php echo $form->error($model,'request_en'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'request_ext'); ?>
-		<?php echo $form->textField($model,'request_ext',array('size'=>66,'maxlength'=>5)); ?>
+		<?php echo $form->textField($model,'request_ext',array('size'=>65,'maxlength'=>5)); ?>
 		<?php echo $form->error($model,'request_ext'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'request_email'); ?>
-		<?php echo $form->textField($model,'request_email',array('size'=>66,'maxlength'=>125)); ?>
+		<?php echo $form->textField($model,'request_email',array('size'=>65,'maxlength'=>125)); ?>
 		<?php echo $form->error($model,'request_email'); ?>
 	</div>
 
@@ -73,7 +79,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'request_problem'); ?>
-		<?php echo $form->textField($model,'request_problem',array('size'=>66,'maxlength'=>500)); ?>
+		<?php echo $form->textField($model,'request_problem',array('size'=>65,'maxlength'=>500)); ?>
 		<?php echo $form->error($model,'request_problem'); ?>
 	</div>
 

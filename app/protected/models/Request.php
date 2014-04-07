@@ -60,7 +60,8 @@ class Request extends CActiveRecord
 			array('request_status', 'length', 'max'=>10),
                     
                         array('request_create_date', 'default', 'value' => date('Y-m-d H:i:s'), 'setOnEmpty' => true, 'on' => 'insert'),
-                        array('request_get_date', 'default', 'value' => date('Y-m-d H:i:s'), 'setOnEmpty' => true, 'on' => 'insert'),
+                        //array('request_get_date', 'default', 'value' => date('Y-m-d H:i:s'), 'setOnEmpty' => true, 'on' => 'insert'),
+                        //array('request_start_repair_date', 'default', 'value' => date('Y-m-d H:i:s'), 'setOnEmpty' => true, 'on' => 'insert'),
 			array('request_get_date, request_start_repair_date, request_end_repair_date, request_close_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -100,7 +101,7 @@ class Request extends CActiveRecord
 			'request_detail' => 'Detail',
 			'request_remark' => 'Remark',
 			'request_create_date' => 'Requested date',
-			'request_get_date' => 'Accepted request date',
+			'request_get_date' => 'Accepted date',
 			'user_accept_request' => 'Accepted by',
 			'request_start_repair_date' => 'Start repair date',
 			'user_repair' => 'Repair by',
@@ -163,8 +164,19 @@ class Request extends CActiveRecord
 
         public function searchRequest() {
             $criteria = new CDbCriteria();
-            $criteria->condition = "request_start_repair_date = '0000-00-00 00:00:00'";
-
+            $criteria->condition = "request_status = 'wait'";
+            
+            //$criteria->order = 'request_create_date';
+            return new CActiveDataProvider($this, array(
+                        'criteria' => $criteria
+            ));
+        }
+        
+        public function searchRequestRepair() {
+            $criteria = new CDbCriteria();
+            $criteria->condition = "request_status = 'accepted'";
+            
+            //$criteria->order = 'request_create_date';
             return new CActiveDataProvider($this, array(
                         'criteria' => $criteria
             ));
@@ -172,7 +184,7 @@ class Request extends CActiveRecord
         
         public function searchCheckRequest() {
             $criteria = new CDbCriteria();
-            $criteria->condition = "request_start_repair_date = '0000-00-00 00:00:00'";
+            $criteria->condition = "request_status != 'close'";
             
             return new CActiveDataProvider($this, array(
                         'criteria' => $criteria
@@ -181,23 +193,23 @@ class Request extends CActiveRecord
         
          public function getRequestStatus($data, $row) {
             switch ($data->request_status) {
-                case "wait":
-                    return "Waiting";
-                case "get":
-                    return "Accepted";
-                case "repair":
-                    return "Pending";
-                case "repair_end":
-                    return "Completed";
-                case "close":
-                    return "Closed job";
+                case 'wait':
+                    return 'Waiting';
+                case 'accepted':
+                    return 'Accepted';
+                case 'pending':
+                    return 'Pending';
+                case 'completed':
+                    return 'Completed';
+                case 'close':
+                    return 'Closed job';
             }
         }
         
         public function beforeValidate() {
             if ($this->isNewRecord) {
-                $this->request_create_date = new CDbExpression("NOW()");
-                $this->request_status = "wait";
+                $this->request_create_date = new CDbExpression('NOW()');
+                $this->request_status = 'wait';
             }
 
             return parent::beforeValidate();
@@ -205,28 +217,38 @@ class Request extends CActiveRecord
         
         public function searchGetRepair() {
             $criteria = new CDbCriteria();
-            $criteria->condition = "request_status IN ('get', 'repair')";
+            $criteria->condition = "request_status IN ('accepted', 'pending')";
 
             return new CActiveDataProvider($this, array(
                         'criteria' => $criteria
                     ));
         }
 
-        public function searchRepairEnd() {
-            $condition = "
-                request_end_repair_date != '0000-00-00 00:00:00'
-                AND request_close_date = '0000-00-00 00:00:00'
-            ";
+        public function searchEndRepair() {
             $criteria = new CDbCriteria();
-            $criteria->condition = $condition;
-
+            $criteria->condition = "request_status IN ('pending', 'completed')";
+            
             return new CActiveDataProvider($this, array(
                         'criteria' => $criteria
                     ));
         }
         
         public function getButtonGetRequestView($data, $row) {
-            $param = array('request/update', 'id' => $data->id);
+            $param = array('request/RequestGetRequestForm', 'id' => $data->id);
+            $link = CHtml::link($data->devices->device_code, $param);
+
+            return $link;
+        }
+        
+        public function getButtonGetRepairView($data, $row) {
+            $param = array('request/RequestGetRepairForm', 'id' => $data->id);
+            $link = CHtml::link($data->devices->device_code, $param);
+
+            return $link;
+        }
+        
+        public function getButtonEndRepairView($data, $row) {
+            $param = array('request/EndRepairForm', 'id' => $data->id);
             $link = CHtml::link($data->devices->device_code, $param);
 
             return $link;

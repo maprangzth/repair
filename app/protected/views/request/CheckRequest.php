@@ -1,5 +1,5 @@
 <?php
-
+$this->pageTitle=Yii::app()->name . ' - Check Request';
 $this->breadcrumbs=array(
         'Requests',
 	'Check Request',
@@ -18,7 +18,7 @@ $this->breadcrumbs=array(
                     'type' => 'html',
                     'value' => '$data->devices->device_code',
                     'htmlOptions' => array(
-                        'width' => '150px',
+                        'width' => '105px',
                         'align' => 'center'
                     )
             ),
@@ -26,7 +26,14 @@ $this->breadcrumbs=array(
                 'name' => 'request_problem',
                 'value' => '$data->request_problem',
                 'htmlOptions' => array(
-                    'width' => '480px'
+                    'width' => '300px'
+                )
+            ),
+            array(
+                'name' => 'location_id',
+                'value' => '$data->locations->location_name',
+                'htmlOptions' => array(
+                    'width' => '65px'
                 )
             ),
             array(
@@ -48,7 +55,7 @@ $this->breadcrumbs=array(
                 'name' => 'request_status',
                 'value' => array($model, 'getRequestStatus'),
                 'htmlOptions' => array(
-                    'width' => '100px',
+                    'width' => '115px',
                     'align' => 'center'
                 )
             )
