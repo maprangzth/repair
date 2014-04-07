@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Host: localhost
--- Generation Time: Apr 04, 2014 at 05:32 PM
+-- Generation Time: Apr 07, 2014 at 06:12 PM
 -- Server version: 5.0.51
 -- PHP Version: 5.2.6
 
@@ -100,6 +100,20 @@ INSERT INTO `authitem` VALUES ('Location.Update', 0, NULL, NULL, 'N;');
 INSERT INTO `authitem` VALUES ('Location.Delete', 0, NULL, NULL, 'N;');
 INSERT INTO `authitem` VALUES ('Location.Index', 0, NULL, NULL, 'N;');
 INSERT INTO `authitem` VALUES ('Location.Admin', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.View', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.Create', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.Update', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.Delete', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.Index', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.Admin', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.RequestGetRequest', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.CheckRequest', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.RequestForm', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.RequestGetRequestForm', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.RequestGetRepairForm', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.RequestGetRepair', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.EndRepairForm', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.EndRepair', 0, NULL, NULL, 'N;');
 
 -- --------------------------------------------------------
 
@@ -119,6 +133,11 @@ CREATE TABLE IF NOT EXISTS `authitemchild` (
 -- Dumping data for table `authitemchild`
 -- 
 
+INSERT INTO `authitemchild` VALUES ('Guest', 'Request.CheckRequest');
+INSERT INTO `authitemchild` VALUES ('Guest', 'Request.Create');
+INSERT INTO `authitemchild` VALUES ('Guest', 'Request.Index');
+INSERT INTO `authitemchild` VALUES ('Guest', 'Request.RequestForm');
+INSERT INTO `authitemchild` VALUES ('Guest', 'Request.View');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Department.Admin');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Department.Create');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Department.Delete');
@@ -155,6 +174,20 @@ INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Location.Delete');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Location.Index');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Location.Update');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Location.View');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.Admin');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.CheckRequest');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.Create');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.Delete');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.EndRepair');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.EndRepairForm');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.Index');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.RequestForm');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.RequestGetRepair');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.RequestGetRepairForm');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.RequestGetRequest');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.RequestGetRequestForm');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.Update');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.View');
 
 -- --------------------------------------------------------
 
@@ -1076,7 +1109,7 @@ CREATE TABLE IF NOT EXISTS `profiles` (
 -- 
 
 INSERT INTO `profiles` VALUES (1, 'Admin', 'Administrator', 000000, 00000, '0', '0');
-INSERT INTO `profiles` VALUES (2, 'Demo', 'Demo', 000001, 00000, '0', '0');
+INSERT INTO `profiles` VALUES (2, 'Demo', 'Demo', 000001, 33333, '3', '0');
 INSERT INTO `profiles` VALUES (3, 'Trainee', 'ITStudent', 000006, 77634, '6', '3');
 INSERT INTO `profiles` VALUES (4, 'Trainee', 'ITStudent', 000003, 77277, '3', '3');
 INSERT INTO `profiles` VALUES (5, 'Souwannachairob', 'Monfangmickarush', 115256, 77945, '3', '3');
@@ -1128,43 +1161,42 @@ INSERT INTO `profiles_fields` VALUES (6, 'department_id', 'Department', 'INTEGER
 
 DROP TABLE IF EXISTS `requests`;
 CREATE TABLE IF NOT EXISTS `requests` (
-  `id` int(11) NOT NULL auto_increment,
-  `request_fname` varchar(50) NOT NULL COMMENT 'First name',
-  `request_lname` varchar(50) NOT NULL COMMENT 'Last name',
+  `id` int(11) NOT NULL auto_increment COMMENT 'ID',
+  `request_by_user` varchar(50) character set utf8 NOT NULL COMMENT 'Requested by',
   `request_en` int(11) NOT NULL COMMENT 'En.',
   `request_ext` int(5) NOT NULL COMMENT 'Ext.',
-  `request_email` varchar(125) NOT NULL COMMENT 'E-mail',
+  `request_email` varchar(125) character set utf8 NOT NULL COMMENT 'E-mail',
   `location_id` int(11) NOT NULL COMMENT 'Location',
   `department_id` int(11) NOT NULL COMMENT 'Department',
   `device_id` int(11) NOT NULL COMMENT 'Device',
-  `request_problem` varchar(500) NOT NULL COMMENT 'Requests problem',
-  `request_detail` text NOT NULL COMMENT 'Requests detail',
-  `request_remark` text NOT NULL COMMENT 'Requests remark',
+  `request_problem` varchar(500) character set utf8 NOT NULL COMMENT 'Requests problem',
+  `request_detail` text character set utf8 NOT NULL COMMENT 'Requests detail',
+  `request_remark` text character set utf8 NOT NULL COMMENT 'Requests remark',
   `request_create_date` timestamp NOT NULL default CURRENT_TIMESTAMP COMMENT 'Requests date',
-  `request_get_date` timestamp NOT NULL default '0000-00-00 00:00:00' COMMENT 'Get request date',
-  `request_start_repair_date` timestamp NOT NULL default '0000-00-00 00:00:00' COMMENT 'Start repair',
-  `request_end_repair_date` timestamp NOT NULL default '0000-00-00 00:00:00' COMMENT 'End repair',
-  `request_clame_date` timestamp NOT NULL default '0000-00-00 00:00:00' COMMENT 'Clame date',
-  `request_clame_remark` varchar(500) NOT NULL COMMENT 'Clame remark',
-  `request_close_date` timestamp NOT NULL default '0000-00-00 00:00:00' COMMENT 'Closed date',
-  `user_repair_id` int(11) NOT NULL COMMENT 'Repair by',
-  `user_close_id` int(11) NOT NULL COMMENT 'Close by',
-  `request_answer` text NOT NULL COMMENT 'Requests answer',
-  `request_repair_detail` text NOT NULL COMMENT 'Repair detail',
-  `request_status` enum('wait','get','repair','forward','repair_out','repair_end','close') NOT NULL COMMENT 'Requests status',
-  `request_end_remark` text NOT NULL COMMENT 'End remark',
+  `request_get_date` datetime NOT NULL COMMENT 'Accepted request date',
+  `user_accept_request` varchar(50) character set utf8 NOT NULL COMMENT 'Accepted by',
+  `request_start_repair_date` datetime NOT NULL COMMENT 'Start repair date',
+  `user_repair` varchar(50) character set utf8 NOT NULL COMMENT 'Repair by',
+  `request_end_repair_date` datetime NOT NULL COMMENT 'End repair date',
+  `request_close_date` datetime NOT NULL COMMENT 'Close job date',
+  `user_close` varchar(50) character set utf8 NOT NULL COMMENT 'Close job by',
+  `request_answer` text character set utf8 NOT NULL COMMENT 'Cause symptoms',
+  `request_repair_detail` text character set utf8 NOT NULL COMMENT 'Repair detail',
+  `request_status` enum('wait','accepted','pending','forward','repair_out','completed','close') character set utf8 NOT NULL COMMENT 'Requests status',
+  `request_end_remark` text character set utf8 NOT NULL COMMENT 'End remark',
   PRIMARY KEY  (`id`),
-  KEY `user_repair_request` (`user_repair_id`),
-  KEY `user_close_request` (`user_close_id`),
   KEY `location_request` (`location_id`),
   KEY `department_request` (`department_id`),
   KEY `device_request` (`device_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 -- 
 -- Dumping data for table `requests`
 -- 
 
+INSERT INTO `requests` VALUES (1, 'Komsan_K', 111111, 11111, 'k.kamsamur', 6, 3, 696, 'TEST', 'Test', '', '2014-04-07 13:39:10', '2014-04-07 14:33:49', 'admin', '2014-04-07 14:41:22', 'admin', '2014-04-07 16:26:45', '0000-00-00 00:00:00', 'it_student_b6', '', '', 'completed', '');
+INSERT INTO `requests` VALUES (2, 'Komsan_K', 111111, 11111, 'k.kamsamur@gmail.com', 6, 10, 696, 'TEST', 'TEST', '', '2014-04-07 15:00:57', '2014-04-07 15:02:49', 'admin', '2014-04-07 15:07:32', 'admin', '2014-04-07 16:13:14', '0000-00-00 00:00:00', 'it_student_b6', '', '', 'completed', '');
+INSERT INTO `requests` VALUES (3, 'Komsan_K', 111111, 11111, 'k.kamsamur@gmail.com', 1, 1, 1, 'TEST', 'test detail.', '', '2014-04-07 15:17:53', '2014-04-07 15:38:29', 'it_student_b6', '2014-04-07 16:26:52', 'it_student_b6', '2014-04-07 16:29:10', '0000-00-00 00:00:00', 'it_student_b6', '', '', 'completed', '');
 
 -- --------------------------------------------------------
 
@@ -1219,9 +1251,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 -- 
 
-INSERT INTO `users` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', '2014-03-25 16:43:29', '2014-04-04 17:30:20', 1, 1);
+INSERT INTO `users` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', '2014-03-25 16:43:29', '2014-04-07 17:59:52', 1, 1);
 INSERT INTO `users` VALUES (2, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'demo@example.com', '099f825543f7850cc038b90aaff39fac', '2014-03-25 16:43:29', '2014-04-02 15:58:58', 0, 1);
-INSERT INTO `users` VALUES (3, 'it_student_b6', 'f65c10ef2cf4fb089208c220296240a7', 'itstudent.trainee@wdc.com', 'a68e114ebb1a165db672404d5ac74fbd', '2014-04-01 16:28:03', '2014-04-04 11:12:51', 0, 1);
+INSERT INTO `users` VALUES (3, 'it_student_b6', 'f65c10ef2cf4fb089208c220296240a7', 'itstudent.trainee@wdc.com', 'a68e114ebb1a165db672404d5ac74fbd', '2014-04-01 16:28:03', '2014-04-07 17:25:25', 0, 1);
 INSERT INTO `users` VALUES (4, 'it_student_b3', 'f65c10ef2cf4fb089208c220296240a7', 'itstudent.trainee3@wdc.com', 'e783f5e5e3c282f7b672def73d7856e7', '2014-04-01 16:32:39', '0000-00-00 00:00:00', 0, 1);
 INSERT INTO `users` VALUES (5, 'Monfang_S', '1364768a5062610cb8aff90cb9ff097b', 'Monfangmickarush.Souwannachairob@wdc.com', '890462578c764b355f9342f4c338fa27', '2014-04-04 15:08:09', '2014-04-04 16:25:29', 0, 1);
 
@@ -1254,8 +1286,6 @@ ALTER TABLE `profiles`
 -- Constraints for table `requests`
 -- 
 ALTER TABLE `requests`
-  ADD CONSTRAINT `requests_ibfk_43` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `requests_ibfk_44` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `requests_ibfk_45` FOREIGN KEY (`device_id`) REFERENCES `devices` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `requests_ibfk_48` FOREIGN KEY (`user_repair_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `requests_ibfk_49` FOREIGN KEY (`user_close_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `department_request` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `device_request` FOREIGN KEY (`device_id`) REFERENCES `devices` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `location_request` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;

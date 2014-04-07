@@ -98,11 +98,12 @@ class RequestController extends RController
 		if(isset($_POST['Request']))
 		{       
                         $model->request_get_date = new CDbExpression('NOW()');
+                        
                         $model->request_status = 'get';
                         
 			//$model->attributes=$_POST['Request'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('RequestGetRequest'));
 		}
 
 		$this->render('update',array(
@@ -110,7 +111,26 @@ class RequestController extends RController
 		));
 	}
         
-        public function actionAcceptRequest($id)
+        public function actionRequestForm()
+	{
+		$model=new Request;
+
+		// Uncomment the following line if AJAX validation is needed
+		$this->performAjaxValidation($model);
+
+		if(isset($_POST['Request']))
+		{
+			$model->attributes=$_POST['Request'];
+			if($model->save())
+				$this->redirect(array('CheckRequest'));
+		}
+
+		$this->render('RequestForm',array(
+			'model'=>$model,
+		));
+	}
+        
+        public function actionRequestGetRequestForm($id)
 	{
 		$model=$this->loadModel($id);
 
@@ -120,14 +140,61 @@ class RequestController extends RController
 		if(isset($_POST['Request']))
 		{       
                         $model->request_get_date = new CDbExpression('NOW()');
-                        $model->request_status = 'get';
-                        
-			//$model->attributes=$_POST['Request'];
+                        $model->user_accept_request = Yii::app()->user->username;
+                        $model->request_status = 'accepted';
+			
+                        //$model->attributes=$_POST['Request'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('RequestGetRepair'));
 		}
 
-		$this->render('update',array(
+		$this->render('RequestGetRequestForm',array(
+			'model'=>$model,
+		));
+	}
+        
+        public function actionRequestGetRepairForm($id)
+	{
+		$model=$this->loadModel($id);
+
+		// Uncomment the following line if AJAX validation is needed
+		$this->performAjaxValidation($model);
+
+		if(isset($_POST['Request']))
+		{       
+                        $model->request_start_repair_date = new CDbExpression('NOW()');
+                        $model->user_repair = Yii::app()->user->username;
+                        $model->request_status = 'pending';
+                        
+                        //$model->attributes=$_POST['Request'];
+			if($model->save())
+				$this->redirect(array('RequestGetRepair'));
+		}
+
+		$this->render('RequestGetRepairForm',array(
+			'model'=>$model,
+		));
+	}
+        
+        public function actionEndRepairForm($id)
+	{
+		$model=$this->loadModel($id);
+
+		// Uncomment the following line if AJAX validation is needed
+		$this->performAjaxValidation($model);
+
+		if(isset($_POST['Request']))
+		{       
+                        $model->request_end_repair_date = new CDbExpression('NOW()');
+                        $model->user_close = Yii::app()->user->username;
+                        $model->request_status = 'completed';
+                        
+                        //$model->attributes=$_POST['Request'];
+			if($model->save())
+				$this->redirect(array('EndRepair'));
+		}
+
+		$this->render('EndRepairForm',array(
 			'model'=>$model,
 		));
 	}
@@ -189,8 +256,8 @@ class RequestController extends RController
         
         public function actionRequestGetRequest() {
             $model = new Request();
-            $this->render("RequestGetRequest", array(
-                "model" => $model
+            $this->render('RequestGetRequest', array(
+                'model' => $model
             ));
         }
         
@@ -202,6 +269,21 @@ class RequestController extends RController
                 'model' => $model
             ));
         }
+        
+        public function actionRequestGetRepair() {
+            $model = new Request();
+            $this->render('RequestGetRepair', array(
+                'model' => $model
+            ));
+        }
+        
+        public function actionEndRepair() {
+            $model = new Request();
+            $this->render('EndRepair', array(
+                'model' => $model
+            ));
+        }
+        
 	/**
 	 * Performs the AJAX validation.
 	 * @param Request $model the model to be validated
