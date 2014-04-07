@@ -64,6 +64,7 @@ class RequestController extends RController
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
+        /*
 	public function actionCreate()
 	{
 		$model=new Request;
@@ -88,6 +89,7 @@ class RequestController extends RController
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
+        /*
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
@@ -97,11 +99,7 @@ class RequestController extends RController
 
 		if(isset($_POST['Request']))
 		{       
-                        $model->request_get_date = new CDbExpression('NOW()');
-                        
-                        $model->request_status = 'get';
-                        
-			//$model->attributes=$_POST['Request'];
+			$model->attributes=$_POST['Request'];
 			if($model->save())
 				$this->redirect(array('RequestGetRequest'));
 		}
@@ -110,7 +108,7 @@ class RequestController extends RController
 			'model'=>$model,
 		));
 	}
-        
+        */
         public function actionRequestForm()
 	{
 		$model=new Request;
@@ -138,12 +136,13 @@ class RequestController extends RController
 		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Request']))
-		{       
+		{
+                    
                         $model->request_get_date = new CDbExpression('NOW()');
                         $model->user_accept_request = Yii::app()->user->username;
                         $model->request_status = 'accepted';
-			
-                        //$model->attributes=$_POST['Request'];
+                        $model->attributes=$_POST['DeviceType'];
+                        
 			if($model->save())
 				$this->redirect(array('RequestGetRepair'));
 		}
@@ -161,12 +160,13 @@ class RequestController extends RController
 		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Request']))
-		{       
+		{      
+                        $model->attributes=$_POST['Request'];
+                        
                         $model->request_start_repair_date = new CDbExpression('NOW()');
                         $model->user_repair = Yii::app()->user->username;
                         $model->request_status = 'pending';
                         
-                        //$model->attributes=$_POST['Request'];
 			if($model->save())
 				$this->redirect(array('EndRepair'));
 		}

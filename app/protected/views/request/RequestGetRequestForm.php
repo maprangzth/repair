@@ -2,7 +2,7 @@
 
 /* @var $this RequestController */
 /* @var $model Request */
-$username = Yii::app()->session['username'];
+//$username = Yii::app()->session['username'];
 
 $this->breadcrumbs=array(
 	'Requests'=>array('RequestGetRequest'),
@@ -29,23 +29,14 @@ if(!Yii::app()->user->isGuest) {
 	// controller action is handling ajax validation correctly.
 	// See class documentation of CActiveForm for details on this,
 	// you need to use the performAjaxValidation()-method described there.
-	'enableAjaxValidation'=>false,
+	'enableAjaxValidation'=>true,
+        'enableClientValidation'=>true,
 )); ?>
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'device_id'); ?>
-		<?php echo $form->textField($model,'device_id', array(
-                            'disabled' => 'disabled',
-                            'size' => 50,
-                            'value' => $model->devices->device_code,
-                )); ?>
-		<?php echo $form->error($model,'device_id'); ?>
-	</div>
-        
         <div class="row">
-		<?php echo $form->labelEx($model,'request_by_user'); ?>
+		<?php echo $form->labelEx($model,'Request By'); ?>
 		<?php echo $form->textField($model,'request_by_user',array(
                             'disabled' => 'disabled',
                             'size' => 50,
@@ -54,7 +45,7 @@ if(!Yii::app()->user->isGuest) {
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'request_en'); ?>
+		<?php echo $form->labelEx($model,'En'); ?>
 		<?php echo $form->textField($model,'request_en',array(
                             'disabled' => 'disabled',
                             'size' => 50,
@@ -63,7 +54,7 @@ if(!Yii::app()->user->isGuest) {
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'request_ext'); ?>
+		<?php echo $form->labelEx($model,'Ext'); ?>
 		<?php echo $form->textField($model,'request_ext', array(
                             'disabled' => 'disabled',
                             'size' => 50,
@@ -81,7 +72,7 @@ if(!Yii::app()->user->isGuest) {
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'location_id'); ?>
+		<?php echo $form->labelEx($model,'Location'); ?>
 		<?php echo $form->textField($model,'location_id', array(
                             'disabled' => 'disabled',
                             'size' => 50,
@@ -91,7 +82,7 @@ if(!Yii::app()->user->isGuest) {
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'department_id'); ?>
+		<?php echo $form->labelEx($model,'Department'); ?>
 		<?php echo $form->textField($model,'department_id', array(
                             'disabled' => 'disabled',
                             'size' => 50,
@@ -110,14 +101,14 @@ if(!Yii::app()->user->isGuest) {
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'request_problem'); ?>
+		<?php echo $form->labelEx($model,'Problem'); ?>
 		<?php echo $form->textField($model,'request_problem', array(
                             'disabled' => 'disabled', 'size' => 105,)); ?>
 		<?php echo $form->error($model,'request_problem'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'request_detail'); ?>
+		<?php echo $form->labelEx($model,'Detail'); ?>
 		<?php echo $form->textArea($model,'request_detail', array(
                             'disabled' => "disabled",
                             'rows'=>6,
@@ -125,15 +116,24 @@ if(!Yii::app()->user->isGuest) {
             )); ?>
 		<?php echo $form->error($model,'request_detail'); ?>
 	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Accept Request'); ?>
+    
+        <div class="row">
+		<?php echo $form->labelEx($model,'request_remark'); ?>
+		<?php echo $form->textArea($model,'request_remark', array(
+                            'disabled' => "disabled",
+                            'rows'=>6,
+                            'cols'=>80,
+            )); ?>
+		<?php echo $form->error($model,'request_remark'); ?>
 	</div>
 
+        <div class="row buttons">
+                <?php echo CHtml::submitButton('Accept Request'); ?>
+        </div>
+    
         <?php echo $form->hiddenField($model, 'request_get_date'); ?>
         <?php echo $form->hiddenField($model, 'user_accept_request'); ?>
         <?php echo $form->hiddenField($model, 'request_status'); ?>
-        
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
