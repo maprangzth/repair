@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Host: localhost
--- Generation Time: Apr 07, 2014 at 06:12 PM
+-- Generation Time: Apr 08, 2014 at 01:29 AM
 -- Server version: 5.0.51
 -- PHP Version: 5.2.6
 
@@ -1188,15 +1188,14 @@ CREATE TABLE IF NOT EXISTS `requests` (
   KEY `location_request` (`location_id`),
   KEY `department_request` (`department_id`),
   KEY `device_request` (`device_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 -- 
 -- Dumping data for table `requests`
 -- 
 
-INSERT INTO `requests` VALUES (1, 'Komsan_K', 111111, 11111, 'k.kamsamur', 6, 3, 696, 'TEST', 'Test', '', '2014-04-07 13:39:10', '2014-04-07 14:33:49', 'admin', '2014-04-07 14:41:22', 'admin', '2014-04-07 16:26:45', '0000-00-00 00:00:00', 'it_student_b6', '', '', 'completed', '');
-INSERT INTO `requests` VALUES (2, 'Komsan_K', 111111, 11111, 'k.kamsamur@gmail.com', 6, 10, 696, 'TEST', 'TEST', '', '2014-04-07 15:00:57', '2014-04-07 15:02:49', 'admin', '2014-04-07 15:07:32', 'admin', '2014-04-07 16:13:14', '0000-00-00 00:00:00', 'it_student_b6', '', '', 'completed', '');
-INSERT INTO `requests` VALUES (3, 'Komsan_K', 111111, 11111, 'k.kamsamur@gmail.com', 1, 1, 1, 'TEST', 'test detail.', '', '2014-04-07 15:17:53', '2014-04-07 15:38:29', 'it_student_b6', '2014-04-07 16:26:52', 'it_student_b6', '2014-04-07 16:29:10', '0000-00-00 00:00:00', 'it_student_b6', '', '', 'completed', '');
+INSERT INTO `requests` VALUES (7, 'Komsan_K', 200000, 77777, 'k.kamsamur@gmail.com', 6, 2, 212, 'Blue screen', 'ใช้ไปสักพักเครื่องรีบูทเองและขึ้น Bluescreen', '', '2014-04-08 00:02:51', '2014-04-08 00:07:56', 'admin', '2014-04-08 00:08:48', 'admin', '2014-04-08 00:10:05', '2014-04-08 00:10:36', 'admin', 'HDD is bad sector.', '', 'close', '');
+INSERT INTO `requests` VALUES (8, 'Komsan_K', 555555, 55555, '-', 6, 3, 253, 'Cann''t boot to Windows.', 'Computer alway to Windows repair', 'Add admin right for Komsan_K,Thank you.', '2014-04-08 00:18:09', '2014-04-08 00:18:44', 'admin', '2014-04-08 00:19:29', 'admin', '2014-04-08 00:20:12', '2014-04-08 00:20:35', 'admin', 'HDD bad', '', 'close', '');
 
 -- --------------------------------------------------------
 
@@ -1251,7 +1250,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 -- 
 
-INSERT INTO `users` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', '2014-03-25 16:43:29', '2014-04-07 17:59:52', 1, 1);
+INSERT INTO `users` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', '2014-03-25 16:43:29', '2014-04-08 01:16:03', 1, 1);
 INSERT INTO `users` VALUES (2, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'demo@example.com', '099f825543f7850cc038b90aaff39fac', '2014-03-25 16:43:29', '2014-04-02 15:58:58', 0, 1);
 INSERT INTO `users` VALUES (3, 'it_student_b6', 'f65c10ef2cf4fb089208c220296240a7', 'itstudent.trainee@wdc.com', 'a68e114ebb1a165db672404d5ac74fbd', '2014-04-01 16:28:03', '2014-04-07 17:25:25', 0, 1);
 INSERT INTO `users` VALUES (4, 'it_student_b3', 'f65c10ef2cf4fb089208c220296240a7', 'itstudent.trainee3@wdc.com', 'e783f5e5e3c282f7b672def73d7856e7', '2014-04-01 16:32:39', '0000-00-00 00:00:00', 0, 1);
