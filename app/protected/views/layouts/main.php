@@ -25,7 +25,7 @@
 <div class="container" id="page">
 
 	<div id="header">
-            <?php echo CHtml::image(Yii::app()->request->baseUrl."/images/HelpdeskBangkok.png","IT-Helpdesk : Ext. 77277"); ?>
+            <?php echo CHtml::image(Yii::app()->request->baseUrl."/images/cover-wd.png","IT-Helpdesk : Ext. 77277"); ?>
 	</div><!-- header -->
 
 	<div id="mainMbMenu">
