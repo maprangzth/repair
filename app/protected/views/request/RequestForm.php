@@ -85,13 +85,13 @@ if(!Yii::app()->user->isGuest) {
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'request_detail'); ?>
-		<?php echo $form->textArea($model,'request_detail',array('rows'=>6, 'cols'=>66)); ?>
+		<?php echo $form->textArea($model,'request_detail',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'request_detail'); ?>
 	</div>
         
 	<div class="row">
 		<?php echo $form->labelEx($model,'request_remark'); ?>
-		<?php echo $form->textArea($model,'request_remark',array('rows'=>6, 'cols'=>66)); ?>
+		<?php echo $form->textArea($model,'request_remark',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'request_remark'); ?>
 	</div>
 
