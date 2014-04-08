@@ -53,11 +53,12 @@ class Device extends CActiveRecord
 			array('device_create_at', 'default', 'value' => date('Y-m-d H:i:s'), 'setOnEmpty' => true, 'on' => 'insert'),
 			array('device_buy_date,device_warranty_expire', 'default', 'value' => '0000-00-00 00:00:00', 'setOnEmpty' => true, 'on' => 'insert'),
 			array('device_remark', 'length', 'max'=>255),
-                        array('device_buy_date, device_warranty_expire, device_remark', 'safe'),
+                        array('device_owner', 'length', 'max'=>255),
+                        array('device_buy_date, device_warranty_expire, device_remark, device_owner', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, location_id, device_type_id, device_brand_id, device_model_id, device_code, device_create_at, device_buy_date, device_warranty_expire, device_remark,'
-                            . ' location_name, device_type_name, device_brand_name, device_model_name', 'safe', 'on'=>'search'),
+                            . ' location_name, device_type_name, device_brand_name, device_model_name, device_owner', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -91,6 +92,7 @@ class Device extends CActiveRecord
 			'device_model_id' => 'Device Model',
 			'device_code' => 'Device Code',
 			'device_create_at' => 'Device create at',
+                        'device_owner' => 'Device Owner',
 			'device_buy_date' => 'Device buy date',
 			'device_warranty_expire' => 'Device warrany expire',
 			'device_remark' => 'Device Remark',
@@ -126,6 +128,7 @@ class Device extends CActiveRecord
 		$criteria->compare('device_model_id',$this->device_model_id);
 		$criteria->compare('device_code',$this->device_code,true);
 		$criteria->compare('device_create_at',$this->device_create_at,true);
+                $criteria->compare('device_owner',$this->device_owner,true);
 		$criteria->compare('device_buy_date',$this->device_buy_date,true);
 		$criteria->compare('device_warranty_expire',$this->device_warranty_expire,true);
 		$criteria->compare('device_remark',$this->device_remark,true);

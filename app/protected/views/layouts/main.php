@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author" content="">
+	<meta name="description" content="repair-system-wd">
+	<meta name="author" content="k.kamsamur@gmail.com">
 
 	<!-- blueprint CSS framework -->
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
@@ -25,8 +25,7 @@
 <div class="container" id="page">
 
 	<div id="header">
-	<!-->	<div id="logo"><?php //echo CHtml::encode(Yii::app()->name); ?></div> <!-->
-                <div id="logo"><?php echo CHtml::image(Yii::app()->request->baseUrl."/images/HelpdeskBangkok-Sales.png","IT-Helpdesk : Ext. 77277"); ?></div>
+            <?php echo CHtml::image(Yii::app()->request->baseUrl."/images/HelpdeskBangkok.png","IT-Helpdesk : Ext. 77277"); ?>
 	</div><!-- header -->
 
 	<div id="mainMbMenu">
@@ -50,6 +49,7 @@
                                 
                                 array('label'=>'IT-Helpdesk Manage',
                                     'items'=>array(
+                                        array('label'=>'Report Repair', 'url'=>array('/request/admin'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                                         array('label'=>'Location', 'url'=>array('/location/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                                         array('label'=>'Department', 'url'=>array('/department/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                                         array('label'=>'Device', 'url'=>array('/device/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
