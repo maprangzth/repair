@@ -19,7 +19,7 @@ $this->menu=array(
 }
 ?>
 
-<h1>View Request #<?php echo $model->id; ?></h1>
+<h1>View Request For #<?php echo $model->devices->device_code; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -29,9 +29,9 @@ $this->menu=array(
 		'request_en',
 		'request_ext',
 		'request_email',
-		'location_id',
-		'department_id',
-		'device_id',
+		'locations.location_name',
+		'departments.department_name',
+		'devices.device_code',
 		'request_problem',
 		'request_detail',
 		'request_remark',

@@ -18,8 +18,8 @@ if(!Yii::app()->user->isGuest) {
 ?>
 
 <h1>Request Form</h1>
-
-<div class="form">
+<div class="search-form">
+<div class="wide form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'request-form',
@@ -58,13 +58,13 @@ if(!Yii::app()->user->isGuest) {
 		<?php echo $form->textField($model,'request_email',array('size'=>65,'maxlength'=>125)); ?>
 		<?php echo $form->error($model,'request_email'); ?>
 	</div>
-
+        
 	<div class="row">
 		<?php echo $form->labelEx($model,'location_id'); ?>
 		<?php echo $form->dropDownList($model,'location_id', CHtml::listData(Location::model()->findAll(array('order' => 'location_name ASC')), 'id', 'location_name'), array('empty'=>'Please select your location.','style'=>'width:250px;')); ?>
 		<?php echo $form->error($model,'location_id'); ?>
 	</div>
-
+        
 	<div class="row">
 		<?php echo $form->labelEx($model,'department_id'); ?>
 		<?php echo $form->dropDownList($model,'department_id', CHtml::listData(Department::model()->findAll(array('order' => 'department_name ASC')), 'id', 'department_name'), array('empty'=>'Please select your department.','style'=>'width:250px;')); ?>
@@ -85,13 +85,13 @@ if(!Yii::app()->user->isGuest) {
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'request_detail'); ?>
-		<?php echo $form->textArea($model,'request_detail',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'request_detail',array('rows'=>6, 'cols'=>66)); ?>
 		<?php echo $form->error($model,'request_detail'); ?>
 	</div>
         
 	<div class="row">
 		<?php echo $form->labelEx($model,'request_remark'); ?>
-		<?php echo $form->textArea($model,'request_remark',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'request_remark',array('rows'=>6, 'cols'=>66)); ?>
 		<?php echo $form->error($model,'request_remark'); ?>
 	</div>
 
@@ -106,3 +106,4 @@ if(!Yii::app()->user->isGuest) {
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+</div>

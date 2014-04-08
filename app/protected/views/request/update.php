@@ -19,6 +19,4 @@ if(!Yii::app()->user->isGuest) {
 }
 ?>
 
-<h1>Request Accept # <?php echo $model->devices->device_code; ?></h1>
-
-<?php $this->renderPartial('RequestGetRequestForm', array('model'=>$model)); ?>
+<?php $this->renderPartial('EndRepairForm', array('model'=>$model)); ?>

@@ -89,7 +89,7 @@ class RequestController extends RController
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-        /*
+        
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
@@ -101,14 +101,14 @@ class RequestController extends RController
 		{       
 			$model->attributes=$_POST['Request'];
 			if($model->save())
-				$this->redirect(array('RequestGetRequest'));
+				$this->redirect(array('admin'));
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
 		));
 	}
-        */
+        
         public function actionRequestForm()
 	{
 		$model=new Request;
@@ -254,14 +254,92 @@ class RequestController extends RController
 	{
 		$model=new Request('search');
 		$model->unsetAttributes();  // clear any default values
+                
+                if (isset($_GET['pageSize'])) {
+                    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+                    unset($_GET['pageSize']);
+                }
+                
 		if(isset($_GET['Request']))
 			$model->attributes=$_GET['Request'];
-
+                
+                if(Yii::app()->request->getParam('export')) {
+                    $this->actionExport();
+                    Yii::app()->end();
+                }
+                
 		$this->render('admin',array(
 			'model'=>$model,
 		));
 	}
+        
+        public function actionExport()
+        {
+            $fp = fopen('php://temp', 'w');
 
+            /* 
+             * Write a header of csv file
+             */
+            $headers = array(
+                    'devices.device_code',
+                    'request_by_user',
+                    'request_en',
+                    'request_ext',
+                    'request_email',
+                    'locations.location_name',
+                    'request_create_date',
+                    'request_get_date',
+                    'user_accept_request',
+                    'request_start_repair_date',
+                    'request_end_repair_date',
+                    'user_repair',
+                    'request_close_date',
+                    'user_close',
+                    'request_status',
+                );
+            $row = array();
+            foreach($headers as $header) {
+                $row[] = Request::model()->getAttributeLabel($header);
+            }
+            fputcsv($fp,$row);
+
+            /*
+             * Init dataProvider for first page
+             */
+            $model=new Request('search');
+            $model->unsetAttributes();  // clear any default values
+            if(isset($_GET['Request'])) {
+                $model->attributes=$_GET['Request'];
+            }
+            $dp = $model->search();
+            $dp->setPagination(false);
+
+            /*
+             * Get models, write to a file
+             */
+
+            $models = $dp->getData();
+            foreach($models as $model) {
+                $row = array();
+                foreach($headers as $head) {
+                    $row[] = CHtml::value($model,$head);
+                }
+                fputcsv($fp,$row);
+            }
+
+            /*
+             * save csv content to a Session
+             */
+            rewind($fp);
+            Yii::app()->user->setState('export',stream_get_contents($fp));
+            fclose($fp);
+        }
+        
+        public function actionGetExportFile()
+        {
+                Yii::app()->request->sendFile('Request-Report.csv',Yii::app()->user->getState('export'));
+                Yii::app()->user->clearState('export');
+        }
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.

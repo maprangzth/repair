@@ -49,7 +49,13 @@
 		<?php echo $form->textField($model,'device_code',array('size'=>36,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'device_code'); ?>
 	</div>
-
+        
+        <div class="row">
+		<?php echo $form->labelEx($model,'device_owner'); ?>
+		<?php echo $form->textField($model,'device_owner',array('size'=>36)); ?>
+		<?php echo $form->error($model,'device_owner'); ?>
+	</div>
+        
 	<div class="row">
 		<?php echo $form->labelEx($model,'device_buy_date'); ?>
 		<?php echo $form->textField($model,'device_buy_date',array('size'=>36)); ?>
