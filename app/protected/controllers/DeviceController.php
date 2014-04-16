@@ -173,6 +173,7 @@ class DeviceController extends RController
                     'device_types.device_type_name',
                     'device_brands.device_brand_name',
                     'device_models.device_model_name',
+                    'device_owner',
                 );
             $row = array();
             foreach($headers as $header) {

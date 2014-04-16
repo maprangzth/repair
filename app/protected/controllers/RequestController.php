@@ -380,7 +380,7 @@ class RequestController extends RController
         
         public function actionGetExportFile()
         {
-                Yii::app()->request->sendFile('Request-Report.csv',Yii::app()->user->getState('export'));
+                Yii::app()->request->sendFile('Repair-Report.csv',Yii::app()->user->getState('export'));
                 Yii::app()->user->clearState('export');
         }
 	/**
