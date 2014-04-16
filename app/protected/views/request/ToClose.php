@@ -43,10 +43,34 @@ $this->breadcrumbs=array(
                 )
             ),
             array(
+			'name'=>'request_email',
+			'type'=>'raw',
+			'value'=>'CHtml::link(UHtml::markSearch($data,"request_email"), "mailto:".$data->request_email)',
+            ),
+            /*
+            array(
                 'name' => 'request_create_date',
                 'value' => '$data->request_create_date',
                 'htmlOptions' => array(
                     'width' => '125px',
+                    'align' => 'center'
+                )
+            ),
+             * 
+             */
+            array(
+                'name' => 'request_start_repair_date',
+                'value' => '$data->request_create_date',
+                'htmlOptions' => array(
+                    'width' => '165px',
+                    'align' => 'center'
+                )
+            ),
+            array(
+                'name' => 'request_end_repair_date',
+                'value' => '$data->request_create_date',
+                'htmlOptions' => array(
+                    'width' => '165px',
                     'align' => 'center'
                 )
             ),

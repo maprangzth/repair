@@ -46,11 +46,11 @@
                                 array('label'=>'To Pending', 'url'=>array('/request/RequestGetRepair'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                                 array('label'=>'To Complete', 'url'=>array('/request/EndRepair'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                                 array('label'=>'Waiting To Close', 'url'=>array('/request/ToClose'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
-                                array('label'=>'Closed Job', 'url'=>array('/request/ClosedJob'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                             
                                 array('label'=>'IT-Helpdesk Manage',
                                     'items'=>array(
-                                        array('label'=>'Report Repair', 'url'=>array('/request/admin'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
+                                        array('label'=>'Closed Job', 'url'=>array('/request/ClosedJob'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
+                                        array('label'=>'Repair', 'url'=>array('/request/admin'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                                         array('label'=>'Location', 'url'=>array('/location/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                                         array('label'=>'Department', 'url'=>array('/department/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                                         array('label'=>'Device', 'url'=>array('/device/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),

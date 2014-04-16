@@ -76,6 +76,10 @@ $.fn.yiiGridView.export = function() {
                         'name'=>'location_id',
                         'value'=>'$data->locations->location_name',
                 ),
+                array(
+                    'name' => 'request_status',
+                    'value' => array($model, 'getRequestStatus'),
+                ),
 		/*
 		'department_id',
 		'device_id',
