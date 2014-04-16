@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Host: localhost
--- Generation Time: Apr 09, 2014 at 12:30 AM
+-- Generation Time: Apr 16, 2014 at 06:10 PM
 -- Server version: 5.0.51
 -- PHP Version: 5.2.6
 
@@ -35,8 +35,7 @@ CREATE TABLE IF NOT EXISTS `authassignment` (
 INSERT INTO `authassignment` VALUES ('Admin', '1', NULL, 'N;');
 INSERT INTO `authassignment` VALUES ('Helpdesk', '3', NULL, 'N;');
 INSERT INTO `authassignment` VALUES ('Helpdesk', '4', NULL, 'N;');
-INSERT INTO `authassignment` VALUES ('EmployeeWD', '5', NULL, 'N;');
-INSERT INTO `authassignment` VALUES ('Admin', '5', NULL, 'N;');
+INSERT INTO `authassignment` VALUES ('Helpdesk-Mgr-Eng-Clerk', '5', NULL, 'N;');
 
 -- --------------------------------------------------------
 
@@ -107,13 +106,16 @@ INSERT INTO `authitem` VALUES ('Request.Delete', 0, NULL, NULL, 'N;');
 INSERT INTO `authitem` VALUES ('Request.Index', 0, NULL, NULL, 'N;');
 INSERT INTO `authitem` VALUES ('Request.Admin', 0, NULL, NULL, 'N;');
 INSERT INTO `authitem` VALUES ('Request.RequestGetRequest', 0, NULL, NULL, 'N;');
-INSERT INTO `authitem` VALUES ('Request.CheckRequest', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.CheckStatusForm', 0, NULL, NULL, 'N;');
 INSERT INTO `authitem` VALUES ('Request.RequestForm', 0, NULL, NULL, 'N;');
 INSERT INTO `authitem` VALUES ('Request.RequestGetRequestForm', 0, NULL, NULL, 'N;');
 INSERT INTO `authitem` VALUES ('Request.RequestGetRepairForm', 0, NULL, NULL, 'N;');
 INSERT INTO `authitem` VALUES ('Request.RequestGetRepair', 0, NULL, NULL, 'N;');
 INSERT INTO `authitem` VALUES ('Request.EndRepairForm', 0, NULL, NULL, 'N;');
 INSERT INTO `authitem` VALUES ('Request.EndRepair', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.CloseJobForm', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.CloseJob', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.CheckStatus', 0, NULL, NULL, 'N;');
 
 -- --------------------------------------------------------
 
@@ -133,7 +135,8 @@ CREATE TABLE IF NOT EXISTS `authitemchild` (
 -- Dumping data for table `authitemchild`
 -- 
 
-INSERT INTO `authitemchild` VALUES ('Guest', 'Request.CheckRequest');
+INSERT INTO `authitemchild` VALUES ('Guest', 'Request.CheckStatus');
+INSERT INTO `authitemchild` VALUES ('Guest', 'Request.CheckStatusForm');
 INSERT INTO `authitemchild` VALUES ('Guest', 'Request.Create');
 INSERT INTO `authitemchild` VALUES ('Guest', 'Request.Index');
 INSERT INTO `authitemchild` VALUES ('Guest', 'Request.RequestForm');
@@ -176,6 +179,12 @@ INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Location.Update');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Location.View');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.Admin');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.CheckRequest');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.CheckRequestStatus');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.CheckRequestStatusForm');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.CheckStatus');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.CheckStatusForm');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.CloseJob');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.CloseJobForm');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.Create');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.Delete');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.EndRepair');
@@ -1195,7 +1204,7 @@ INSERT INTO `profiles` VALUES (1, 'Admin', 'Administrator', 000000, 00000, '0', 
 INSERT INTO `profiles` VALUES (2, 'Demo', 'Demo', 000001, 33333, '3', '0');
 INSERT INTO `profiles` VALUES (3, 'Trainee', 'ITStudent', 000006, 77634, '6', '0');
 INSERT INTO `profiles` VALUES (4, 'Trainee', 'ITStudent', 000003, 77277, '3', '0');
-INSERT INTO `profiles` VALUES (5, 'Souwannachairob', 'Monfangmickarush', 115256, 77945, '3', '0');
+INSERT INTO `profiles` VALUES (5, 'Souwannachairob', 'Monfangmickarush', 115256, 77945, '3', '3');
 
 -- --------------------------------------------------------
 
@@ -1265,18 +1274,23 @@ CREATE TABLE IF NOT EXISTS `requests` (
   `user_close` varchar(50) character set utf8 NOT NULL COMMENT 'Close job by',
   `request_answer` text character set utf8 NOT NULL COMMENT 'Cause symptoms',
   `request_repair_detail` text character set utf8 NOT NULL COMMENT 'Repair detail',
-  `request_status` enum('wait','accepted','pending','forward','repair_out','completed','close') character set utf8 NOT NULL COMMENT 'Requests status',
+  `request_status` enum('waiting','accepted','pending','forward','repair_out','completed','closed') character set utf8 NOT NULL COMMENT 'Requests status',
   `request_end_remark` text character set utf8 NOT NULL COMMENT 'End remark',
   PRIMARY KEY  (`id`),
   KEY `location_request` (`location_id`),
   KEY `department_request` (`department_id`),
   KEY `device_request` (`device_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 -- 
 -- Dumping data for table `requests`
 -- 
 
+INSERT INTO `requests` VALUES (1, 'Komsan_k', 111111, 11111, 'k.kamsamur@gmail.com', 6, 3, 223, 'Test', 'Test', '', '2014-04-10 12:31:39', '2014-04-10 16:23:24', 'admin', '2014-04-10 16:24:39', 'admin', '2014-04-10 16:24:50', '2014-04-10 16:33:08', 'admin', '', '', 'closed', '');
+INSERT INTO `requests` VALUES (2, 'Komsan_k', 111111, 11111, 'k.kamsamur@gmail.com', 6, 35, 217, 'Test', 'Test', 'Can''t repair your computer No. WDT4L00323', '2014-04-10 12:34:22', '2014-04-10 16:28:02', 'admin', '2014-04-10 16:30:31', 'admin', '2014-04-10 16:30:34', '0000-00-00 00:00:00', '', '', '', 'completed', '');
+INSERT INTO `requests` VALUES (3, 'Komsan_k', 111111, 11111, 'k.kamsamur@gmail.com', 1, 37, 231, 'Test', 'test', '', '2014-04-10 12:38:11', '2014-04-10 16:55:13', 'admin', '2014-04-10 16:55:21', 'admin', '2014-04-10 16:55:52', '0000-00-00 00:00:00', 'admin', 'test', '', 'completed', '');
+INSERT INTO `requests` VALUES (4, 'Komsan_k', 111111, 11111, 'k.kamsamur@gmail.com', 4, 33, 726, 'Test', 'Test', '', '2014-04-10 12:44:04', '2014-04-10 16:55:28', 'admin', '2014-04-16 11:22:00', 'admin', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '', 'pending', '');
+INSERT INTO `requests` VALUES (5, 'Komsan_k', 111111, 11111, 'k.kamsamur@gmail.com', 7, 37, 205, 'Test', 'Test', 'Test', '2014-04-10 13:03:22', '2014-04-16 11:20:55', 'admin', '2014-04-16 16:32:00', 'admin', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '', 'pending', '');
 
 -- --------------------------------------------------------
 
@@ -1331,11 +1345,11 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 -- 
 
-INSERT INTO `users` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', '2014-03-25 16:43:29', '2014-04-08 16:20:28', 1, 1);
+INSERT INTO `users` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', '2014-03-25 16:43:29', '2014-04-16 16:42:26', 1, 1);
 INSERT INTO `users` VALUES (2, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'demo@example.com', '099f825543f7850cc038b90aaff39fac', '2014-03-25 16:43:29', '2014-04-02 15:58:58', 0, 1);
 INSERT INTO `users` VALUES (3, 'it_student_b6', 'f65c10ef2cf4fb089208c220296240a7', 'itstudent.trainee@wdc.com', 'a68e114ebb1a165db672404d5ac74fbd', '2014-04-01 16:28:03', '2014-04-07 17:25:25', 0, 1);
 INSERT INTO `users` VALUES (4, 'it_student_b3', 'f65c10ef2cf4fb089208c220296240a7', 'itstudent.trainee3@wdc.com', 'e783f5e5e3c282f7b672def73d7856e7', '2014-04-01 16:32:39', '0000-00-00 00:00:00', 0, 1);
-INSERT INTO `users` VALUES (5, 'Monfang_S', '1364768a5062610cb8aff90cb9ff097b', 'Monfangmickarush.Souwannachairob@wdc.com', '890462578c764b355f9342f4c338fa27', '2014-04-04 15:08:09', '2014-04-04 16:25:29', 0, 1);
+INSERT INTO `users` VALUES (5, 'Monfang_S', '1364768a5062610cb8aff90cb9ff097b', 'Monfangmickarush.Souwannachairob@wdc.com', '890462578c764b355f9342f4c338fa27', '2014-04-04 15:08:09', '2014-04-09 17:34:49', 0, 1);
 
 -- 
 -- Constraints for dumped tables
