@@ -74,6 +74,7 @@ class DeviceController extends RController
 		if(isset($_POST['Device']))
 		{
 			$model->attributes=$_POST['Device'];
+                        $model->device_code = strtoupper($model->device_code);
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -98,6 +99,7 @@ class DeviceController extends RController
 		if(isset($_POST['Device']))
 		{
 			$model->attributes=$_POST['Device'];
+                        $model->device_code = strtoupper($model->device_code);
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

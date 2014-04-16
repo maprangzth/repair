@@ -17,7 +17,8 @@ $this->breadcrumbs=array(
 
 <p><?php echo UserModule::t("Please fill out the following form with your login credentials:"); ?></p>
 
-<div class="form">
+<div class="search-form">
+<div class="wide form">
 <?php echo CHtml::beginForm(); ?>
 
 	<p class="note"><?php echo UserModule::t('Fields with <span class="required">*</span> are required.'); ?></p>
@@ -39,18 +40,22 @@ $this->breadcrumbs=array(
 		<?php echo CHtml::link(UserModule::t("Register"),Yii::app()->getModule('user')->registrationUrl); ?> | <?php echo CHtml::link(UserModule::t("Lost Password?"),Yii::app()->getModule('user')->recoveryUrl); ?>
 		</p>
 	</div>
-	*/ ?>
+	
 	<div class="row rememberMe">
 		<?php echo CHtml::activeCheckBox($model,'rememberMe'); ?>
 		<?php echo CHtml::activeLabelEx($model,'rememberMe'); ?>
 	</div>
-
+        */ ?>
 	<div class="row submit">
-		<?php echo CHtml::submitButton(UserModule::t("Login")); ?>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <?php echo CHtml::submitButton(UserModule::t("Login")); ?>
 	</div>
 	
 <?php echo CHtml::endForm(); ?>
 </div><!-- form -->
+</div>
 
 
 <?php

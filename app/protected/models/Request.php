@@ -112,7 +112,7 @@ class Request extends CActiveRecord
 			'user_close' => 'Close job by',
 			'request_answer' => 'Cause symptoms',
 			'request_repair_detail' => 'Repair detail',
-			'request_status' => 'Requests status',
+			'request_status' => 'Status',
 			'request_end_remark' => 'End remark',
 		);
 	}
@@ -166,7 +166,7 @@ class Request extends CActiveRecord
 
         public function searchRequest() {
             $criteria = new CDbCriteria();
-            $criteria->condition = "request_status = 'wait'";
+            $criteria->condition = "request_status = 'waiting'";
             
             //$criteria->order = 'request_create_date';
             return new CActiveDataProvider($this, array(
@@ -184,18 +184,21 @@ class Request extends CActiveRecord
             ));
         }
         
-        public function searchCheckRequest() {
+        public function searchCheckStatus() {
             $criteria = new CDbCriteria();
-            $criteria->condition = "request_status != 'close'";
+            $criteria->condition = "request_status != 'closed'";
             
-            return new CActiveDataProvider($this, array(
-                        'criteria' => $criteria
-            ));
+            return new CActiveDataProvider(get_class($this), array(
+                        'pagination'=>array(
+                                'pageSize'=> 20,
+                        ),
+                        'criteria'=>$criteria,
+                ));
         }
         
          public function getRequestStatus($data, $row) {
             switch ($data->request_status) {
-                case 'wait':
+                case 'waiting':
                     return 'Waiting';
                 case 'accepted':
                     return 'Accepted';
@@ -203,15 +206,15 @@ class Request extends CActiveRecord
                     return 'Pending';
                 case 'completed':
                     return 'Completed';
-                case 'close':
-                    return 'Closed Job';
+                case 'closed':
+                    return 'Closed';
             }
         }
         
         public function beforeValidate() {
             if ($this->isNewRecord) {
                 $this->request_create_date = new CDbExpression('NOW()');
-                $this->request_status = 'wait';
+                $this->request_status = 'waiting';
             }
 
             return parent::beforeValidate();
@@ -219,7 +222,7 @@ class Request extends CActiveRecord
         
         public function searchGetRepair() {
             $criteria = new CDbCriteria();
-            $criteria->condition = "request_status IN ('accepted', 'pending')";
+            $criteria->condition = "request_status IN ('accepted')";
 
             return new CActiveDataProvider($this, array(
                         'criteria' => $criteria
@@ -235,14 +238,24 @@ class Request extends CActiveRecord
                     ));
         }
         
-        public function searchCloseJob() {
+        public function searchClosedJob() {
             $criteria = new CDbCriteria();
-            $criteria->condition = "request_status IN ('completed','close')";
+            $criteria->condition = "request_status IN ('closed')";
             
             return new CActiveDataProvider($this, array(
                         'criteria' => $criteria
                     ));
         }
+        
+        public function searchToClose() {
+            $criteria = new CDbCriteria();
+            $criteria->condition = "request_status IN ('completed')";
+            
+            return new CActiveDataProvider($this, array(
+                        'criteria' => $criteria
+                    ));
+        }
+        
         
         public function getButtonGetRequestView($data, $row) {
             $param = array('request/RequestGetRequestForm', 'id' => $data->id);
@@ -266,7 +279,21 @@ class Request extends CActiveRecord
         }
         
         public function getButtonCloseJobView($data, $row) {
-            $param = array('request/CloseJobForm', 'id' => $data->id);
+            $param = array('request/ToCloseForm', 'id' => $data->id);
+            $link = CHtml::link($data->devices->device_code, $param);
+
+            return $link;
+        }
+        
+        public function getButtonClosedJobView($data, $row) {
+            $param = array('request/ClosedJobForm', 'id' => $data->id);
+            $link = CHtml::link($data->devices->device_code, $param);
+
+            return $link;
+        }
+        
+        public function getButtonGetCheckView($data, $row) {
+            $param = array('request/CheckStatusForm', 'id' => $data->id);
             $link = CHtml::link($data->devices->device_code, $param);
 
             return $link;

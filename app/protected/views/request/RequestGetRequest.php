@@ -32,7 +32,7 @@ $this->breadcrumbs=array(
                 'name' => 'location_id',
                 'value' => '$data->locations->location_name',
                 'htmlOptions' => array(
-                    'width' => '50px'
+                    'width' => '65px'
                 )
             ),
             array(
@@ -46,7 +46,7 @@ $this->breadcrumbs=array(
                 'name' => 'request_create_date',
                 'value' => '$data->request_create_date',
                 'htmlOptions' => array(
-                    'width' => '100px',
+                    'width' => '125px',
                     'align' => 'center'
                 )
             ),
@@ -54,7 +54,7 @@ $this->breadcrumbs=array(
                 'name' => 'request_status',
                 'value' => array($model, 'getRequestStatus'),
                 'htmlOptions' => array(
-                    'width' => '85px',
+                    'width' => '50px',
                     'align' => 'center'
                 )
             )
