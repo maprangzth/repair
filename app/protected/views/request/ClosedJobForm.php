@@ -6,7 +6,7 @@
 
 $this->breadcrumbs=array(
 	'Requests',
-	'Close Job',
+	'Closed Job',
 );
 if(!Yii::app()->user->isGuest) {
 	$this->layout='//layouts/column2';
@@ -19,7 +19,7 @@ if(!Yii::app()->user->isGuest) {
 }
 ?>
 
-<h1>Close Job For # <?php echo $model->devices->device_code; ?></h1>
+<h1>Closed Job # <?php echo $model->devices->device_code; ?></h1>
 
 <div class="form">
 

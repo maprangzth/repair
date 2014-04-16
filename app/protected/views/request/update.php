@@ -19,4 +19,4 @@ if(!Yii::app()->user->isGuest) {
 }
 ?>
 
-<?php $this->renderPartial('EndRepairForm', array('model'=>$model)); ?>
+<?php $this->renderPartial('ClosedJobForm', array('model'=>$model)); ?>

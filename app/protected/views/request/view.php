@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 /* @var $this RequestController */
 /* @var $model Request */
@@ -10,9 +10,9 @@ $this->breadcrumbs=array(
 if(!Yii::app()->user->isGuest) {
 	$this->layout='//layouts/column2';
 $this->menu=array(
-	array('label'=>'List Request', 'url'=>array('RequestGetRequest')),
+	//array('label'=>'List Request', 'url'=>array('admin')),
 	//array('label'=>'Create Request', 'url'=>array('create')),
-	array('label'=>'Update Request', 'url'=>array('update', 'id'=>$model->id)),
+	//array('label'=>'Update Request', 'url'=>array('update', 'id'=>$model->id)),
 	array('label'=>'Delete Request', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Manage Request', 'url'=>array('admin')),
 );

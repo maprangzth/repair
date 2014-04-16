@@ -35,7 +35,11 @@
  */
 class Request extends CActiveRecord
 {
-	/**
+    
+        public $device_code; 
+        public $location_name;
+
+        /**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
@@ -67,7 +71,7 @@ class Request extends CActiveRecord
 			array('request_get_date, request_start_repair_date, request_end_repair_date, request_close_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, request_by_user, request_en, request_ext, request_email, location_id, department_id, device_id, request_problem, request_detail, request_remark, request_create_date, request_get_date, user_accept_request, request_start_repair_date, user_repair, request_end_repair_date, request_close_date, user_close, request_answer, request_repair_detail, request_status, request_end_remark', 'safe', 'on'=>'search'),
+			array('id, request_by_user, request_en, device_code, location_name, request_ext, request_email, location_id, department_id, device_id, request_problem, request_detail, request_remark, request_create_date, request_get_date, user_accept_request, request_start_repair_date, user_repair, request_end_repair_date, request_close_date, user_close, request_answer, request_repair_detail, request_status, request_end_remark', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -114,6 +118,9 @@ class Request extends CActiveRecord
 			'request_repair_detail' => 'Repair detail',
 			'request_status' => 'Status',
 			'request_end_remark' => 'End remark',
+                        'device_code' => 'Device',
+                        'location_name' => 'Location',
+                    
 		);
 	}
 
@@ -137,8 +144,8 @@ class Request extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('request_by_user',$this->request_by_user,true);
-		$criteria->compare('request_en',$this->request_en);
-		$criteria->compare('request_ext',$this->request_ext);
+		$criteria->compare('request_en',$this->request_en,true);
+		$criteria->compare('request_ext',$this->request_ext,true);
 		$criteria->compare('request_email',$this->request_email,true);
 		$criteria->compare('location_id',$this->location_id);
 		$criteria->compare('department_id',$this->department_id);
@@ -158,6 +165,20 @@ class Request extends CActiveRecord
 		$criteria->compare('request_repair_detail',$this->request_repair_detail,true);
 		$criteria->compare('request_status',$this->request_status,true);
 		$criteria->compare('request_end_remark',$this->request_end_remark,true);
+                
+                if($this->device_code)
+                {
+                        $criteria->together  =  true;
+                        $criteria->with = array('devices');
+                        $criteria->compare('devices.device_code',$this->device_code,true);
+                }
+                
+                if($this->location_name)
+                {
+                        $criteria->together  =  true;
+                        $criteria->with = array('locations');
+                        $criteria->compare('locations.location_name',$this->location_name,true);
+                }
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -168,6 +189,29 @@ class Request extends CActiveRecord
             $criteria = new CDbCriteria();
             $criteria->condition = "request_status = 'waiting'";
             
+            $criteria->compare('request_by_user',$this->request_by_user,true);
+            $criteria->compare('request_en',$this->request_en);
+            $criteria->compare('request_ext',$this->request_ext);
+            $criteria->compare('request_email',$this->request_email,true);
+            $criteria->compare('location_id',$this->location_id);
+            $criteria->compare('department_id',$this->department_id);
+            $criteria->compare('device_id',$this->device_id);
+            $criteria->compare('request_problem',$this->request_problem,true);
+            $criteria->compare('request_detail',$this->request_detail,true);
+            $criteria->compare('request_remark',$this->request_remark,true);
+            $criteria->compare('request_create_date',$this->request_create_date,true);
+            $criteria->compare('request_get_date',$this->request_get_date,true);
+            $criteria->compare('user_accept_request',$this->user_accept_request,true);
+            $criteria->compare('request_start_repair_date',$this->request_start_repair_date,true);
+            $criteria->compare('user_repair',$this->user_repair,true);
+            $criteria->compare('request_end_repair_date',$this->request_end_repair_date,true);
+            $criteria->compare('request_close_date',$this->request_close_date,true);
+            $criteria->compare('user_close',$this->user_close,true);
+            $criteria->compare('request_answer',$this->request_answer,true);
+            $criteria->compare('request_repair_detail',$this->request_repair_detail,true);
+            $criteria->compare('request_status',$this->request_status,true);
+            $criteria->compare('request_end_remark',$this->request_end_remark,true);
+            
             //$criteria->order = 'request_create_date';
             return new CActiveDataProvider($this, array(
                         'criteria' => $criteria
@@ -176,6 +220,29 @@ class Request extends CActiveRecord
         
         public function searchRequestRepair() {
             $criteria = new CDbCriteria();
+            
+            $criteria->compare('request_by_user',$this->request_by_user,true);
+            $criteria->compare('request_en',$this->request_en);
+            $criteria->compare('request_ext',$this->request_ext);
+            $criteria->compare('request_email',$this->request_email,true);
+            $criteria->compare('location_id',$this->location_id);
+            $criteria->compare('department_id',$this->department_id);
+            $criteria->compare('device_id',$this->device_id);
+            $criteria->compare('request_problem',$this->request_problem,true);
+            $criteria->compare('request_detail',$this->request_detail,true);
+            $criteria->compare('request_remark',$this->request_remark,true);
+            $criteria->compare('request_create_date',$this->request_create_date,true);
+            $criteria->compare('request_get_date',$this->request_get_date,true);
+            $criteria->compare('user_accept_request',$this->user_accept_request,true);
+            $criteria->compare('request_start_repair_date',$this->request_start_repair_date,true);
+            $criteria->compare('user_repair',$this->user_repair,true);
+            $criteria->compare('request_end_repair_date',$this->request_end_repair_date,true);
+            $criteria->compare('request_close_date',$this->request_close_date,true);
+            $criteria->compare('user_close',$this->user_close,true);
+            $criteria->compare('request_answer',$this->request_answer,true);
+            $criteria->compare('request_repair_detail',$this->request_repair_detail,true);
+            $criteria->compare('request_end_remark',$this->request_end_remark,true);
+            
             $criteria->condition = "request_status = 'accepted'";
             
             //$criteria->order = 'request_create_date';
@@ -187,6 +254,29 @@ class Request extends CActiveRecord
         public function searchCheckStatus() {
             $criteria = new CDbCriteria();
             $criteria->condition = "request_status != 'closed'";
+            
+            $criteria->compare('request_by_user',$this->request_by_user,true);
+            $criteria->compare('request_en',$this->request_en);
+            $criteria->compare('request_ext',$this->request_ext);
+            $criteria->compare('request_email',$this->request_email,true);
+            $criteria->compare('location_id',$this->location_id);
+            $criteria->compare('department_id',$this->department_id);
+            $criteria->compare('device_id',$this->device_id);
+            $criteria->compare('request_problem',$this->request_problem,true);
+            $criteria->compare('request_detail',$this->request_detail,true);
+            $criteria->compare('request_remark',$this->request_remark,true);
+            $criteria->compare('request_create_date',$this->request_create_date,true);
+            $criteria->compare('request_get_date',$this->request_get_date,true);
+            $criteria->compare('user_accept_request',$this->user_accept_request,true);
+            $criteria->compare('request_start_repair_date',$this->request_start_repair_date,true);
+            $criteria->compare('user_repair',$this->user_repair,true);
+            $criteria->compare('request_end_repair_date',$this->request_end_repair_date,true);
+            $criteria->compare('request_close_date',$this->request_close_date,true);
+            $criteria->compare('user_close',$this->user_close,true);
+            $criteria->compare('request_answer',$this->request_answer,true);
+            $criteria->compare('request_repair_detail',$this->request_repair_detail,true);
+            $criteria->compare('request_status',$this->request_status,true);
+            $criteria->compare('request_end_remark',$this->request_end_remark,true);
             
             return new CActiveDataProvider(get_class($this), array(
                         'pagination'=>array(
@@ -223,7 +313,7 @@ class Request extends CActiveRecord
         public function searchGetRepair() {
             $criteria = new CDbCriteria();
             $criteria->condition = "request_status IN ('accepted')";
-
+            
             return new CActiveDataProvider($this, array(
                         'criteria' => $criteria
                     ));
@@ -232,7 +322,7 @@ class Request extends CActiveRecord
         public function searchToComplete() {
             $criteria = new CDbCriteria();
             $criteria->condition = "request_status IN ('pending')";
-            
+           
             return new CActiveDataProvider($this, array(
                         'criteria' => $criteria
                     ));

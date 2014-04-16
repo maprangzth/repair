@@ -43,7 +43,7 @@ $.fn.yiiGridView.export = function() {
 ?>
 
 <h1>Manage Requests</h1>
-
+<?php /*
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
@@ -51,6 +51,9 @@ $.fn.yiiGridView.export = function() {
 )); ?>
 </div><!-- search-form -->
 </br></br>
+ * 
+ */
+?>
 <div class="button">
 <?php echo CHtml::button('Export to excel (.csv)', array('id'=>'export-button','class'=>'span-3 button')); ?>
 </div>
@@ -63,8 +66,7 @@ $.fn.yiiGridView.export = function() {
 	'filter'=>$model,
 	'columns'=>array(
                 array(
-			'name' => 'device_id',
-			'type'=>'raw',
+			'name' => 'device_code',
 			'value' => '$data->devices->device_code',
                         //'value' => 'CHtml::link(UHtml::markSearch($data,"devices->device_code"))'
 		),
@@ -73,7 +75,7 @@ $.fn.yiiGridView.export = function() {
 		'request_ext',
 		'request_email',
 		array(
-                        'name'=>'location_id',
+                        'name'=>'location_name',
                         'value'=>'$data->locations->location_name',
                 ),
                 array(

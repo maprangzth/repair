@@ -1,11 +1,11 @@
 <?php
-$this->pageTitle=Yii::app()->name . ' - Queue Request';
+$this->pageTitle=Yii::app()->name . ' - Request Queue';
 $this->breadcrumbs=array(
-	'QueueRequest',
+	'RequestQueue',
 );
 ?>
 
-<h1>Queue Request</h1>
+<h1>Request Queue</h1>
 
 <?php   
     $this->widget('zii.widgets.grid.CGridView', array(
