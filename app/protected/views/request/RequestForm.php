@@ -89,15 +89,11 @@ if(!Yii::app()->user->isGuest) {
 		<?php echo $form->error($model,'request_detail'); ?>
 	</div>
         
-	<div class="row">
-		<?php echo $form->labelEx($model,'request_remark'); ?>
-		<?php echo $form->textArea($model,'request_remark',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'request_remark'); ?>
-	</div>
-
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Submit'); ?>
 	</div>
+        
+        <?php echo $form->hiddenField($model, 'request_remark'); ?>
         <?php echo $form->hiddenField($model, 'request_get_date'); ?>
         <?php echo $form->hiddenField($model, 'user_accept_request'); ?>
         <?php echo $form->hiddenField($model, 'request_status'); ?>

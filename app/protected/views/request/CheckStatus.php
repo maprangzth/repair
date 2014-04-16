@@ -1,23 +1,26 @@
 <?php
-$this->pageTitle=Yii::app()->name . ' - Queue To Complete';
+$this->pageTitle=Yii::app()->name . ' - Check Status';
 $this->breadcrumbs=array(
-	'QueueToComplete',
+        'Request',
+	'CheckStatus',
 );
 ?>
 
-<h1>Queue To Complete</h1>
-
+<h1>Check Status</h1>
+<?php 
+    echo CHtml::htmlButton ('Refresh', array('onClick'=>'window.location="'.Yii::app()->getRequest()->getUrl().'"'));
+?>
 <?php   
     $this->widget('zii.widgets.grid.CGridView', array(
         'id' => 'request-grid',
-        'dataProvider' => $model->searchToComplete(),
+        'dataProvider' => $model->searchCheckStatus(),
         'columns' => array(
             array(
                     'name' => 'device_id',
                     'type' => 'html',
-                    'value' => array($model, 'getButtonEndRepairView'),
+                    'value' => array($model, 'getButtonGetCheckView'),
                     'htmlOptions' => array(
-                        'width' => '100px',
+                        'width' => '105px',
                         'align' => 'center'
                     )
             ),
@@ -39,12 +42,20 @@ $this->breadcrumbs=array(
                 'name' => 'request_by_user',
                 'value' => '$data->request_by_user',
                 'htmlOptions' => array(
-                    'width' => '100px'
+                    'width' => '120px'
                 )
             ),
             array(
                 'name' => 'request_create_date',
                 'value' => '$data->request_create_date',
+                'htmlOptions' => array(
+                    'width' => '125px',
+                    'align' => 'center'
+                )
+            ),
+            array(
+                'name' => 'request_end_repair_date',
+                'value' => '$data->request_end_repair_date',
                 'htmlOptions' => array(
                     'width' => '125px',
                     'align' => 'center'

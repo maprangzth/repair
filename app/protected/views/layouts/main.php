@@ -25,7 +25,7 @@
 <div class="container" id="page">
 
 	<div id="header">
-            <?php echo CHtml::image(Yii::app()->request->baseUrl."/images/cover-wd.png","IT-Helpdesk : Ext. 77277"); ?>
+            <?php echo CHtml::image(Yii::app()->request->baseUrl."/images/cover-wd.png","IT-Helpdesk : Call center 77277"); ?>
 	</div><!-- header -->
 
 	<div id="mainMbMenu">
@@ -36,7 +36,7 @@
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
 				array('label'=>'Request Form', 'url'=>array('/request/RequestForm'), 'visible'=>Yii::app()->user->isGuest),
-                                array('label'=>'Check Request', 'url'=>array('/request/checkrequest'), 'visible'=>Yii::app()->user->isGuest),
+                                array('label'=>'Check Status', 'url'=>array('/request/CheckStatus'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Contact', 'url'=>array('/site/contact'), 'visible'=>!Yii::app()->user->checkAccess(Rights::module()->superuserName)&& !Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                                 array('label'=>'Rights', 'url'=>array('/rights'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->superuserName)),
                                 array('url'=>Yii::app()->getModule('user')->loginUrl, 'label'=>Yii::app()->getModule('user')->t("IT-Helpdesk Login"), 'visible'=>Yii::app()->user->isGuest),
@@ -44,9 +44,10 @@
                                 array('url'=>array('/user/profile'), 'label'=>Yii::app()->getModule('user')->t("Profile"), 'visible'=>!Yii::app()->user->isGuest),
                                 array('label'=>'Queues', 'url'=>array('/request/RequestGetRequest'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                                 array('label'=>'To Pending', 'url'=>array('/request/RequestGetRepair'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
-                                array('label'=>'To Completed', 'url'=>array('/request/EndRepair'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
-                                array('label'=>'Close Job', 'url'=>array('/request/CloseJob'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
-                                
+                                array('label'=>'To Complete', 'url'=>array('/request/EndRepair'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
+                                array('label'=>'Waiting To Close', 'url'=>array('/request/ToClose'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
+                                array('label'=>'Closed Job', 'url'=>array('/request/ClosedJob'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
+                            
                                 array('label'=>'IT-Helpdesk Manage',
                                     'items'=>array(
                                         array('label'=>'Report Repair', 'url'=>array('/request/admin'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
@@ -109,7 +110,9 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-            Copyright &copy; <?php echo date('Y'); ?> <a href="http://www.sut.ac.th" target="_blank">Suranaree University of Technology</a> || Western Digital (Thailand) Co.Ltd. 
+            Copyright &copy; <?php echo date('Y'); ?> 
+            <a href="http://www.sut.ac.th" target="_blank">Suranaree University of Technology</a>
+            || <a href="http://wdth.wdc.com/" target="_blank">Western Digital (Thailand) Co.Ltd.</a>
 		All Rights Reserved.
 	</div><!-- footer -->
 

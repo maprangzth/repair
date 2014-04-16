@@ -117,10 +117,9 @@ if(!Yii::app()->user->isGuest) {
 		<?php echo $form->error($model,'request_detail'); ?>
 	</div>
     
-        <div class="row">
+       <div class="row">
 		<?php echo $form->labelEx($model,'request_remark'); ?>
 		<?php echo $form->textArea($model,'request_remark', array(
-                            'disabled' => "disabled",
                             'rows'=>6,
                             'cols'=>80,
             )); ?>

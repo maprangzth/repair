@@ -72,6 +72,7 @@ class DeviceBrandController extends RController
 		if(isset($_POST['DeviceBrand']))
 		{
 			$model->attributes=$_POST['DeviceBrand'];
+                        $model->device_brand_name = strtoupper($model->device_brand_name);
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -96,6 +97,7 @@ class DeviceBrandController extends RController
 		if(isset($_POST['DeviceBrand']))
 		{
 			$model->attributes=$_POST['DeviceBrand'];
+                        $model->device_brand_name = strtoupper($model->device_brand_name);
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

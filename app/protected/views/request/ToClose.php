@@ -1,21 +1,21 @@
 <?php
-$this->pageTitle=Yii::app()->name . ' - Queue To Complete';
+$this->pageTitle=Yii::app()->name . ' - Queue To Close Job';
 $this->breadcrumbs=array(
-	'QueueToComplete',
+	'QueueCloseJob',
 );
 ?>
 
-<h1>Queue To Complete</h1>
+<h1>Queue To Close Job</h1>
 
 <?php   
     $this->widget('zii.widgets.grid.CGridView', array(
         'id' => 'request-grid',
-        'dataProvider' => $model->searchToComplete(),
+        'dataProvider' => $model->searchToClose(),
         'columns' => array(
             array(
                     'name' => 'device_id',
                     'type' => 'html',
-                    'value' => array($model, 'getButtonEndRepairView'),
+                    'value' => array($model, 'getButtonCloseJobView'),
                     'htmlOptions' => array(
                         'width' => '100px',
                         'align' => 'center'

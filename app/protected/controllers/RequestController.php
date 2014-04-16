@@ -120,10 +120,30 @@ class RequestController extends RController
 		{
 			$model->attributes=$_POST['Request'];
 			if($model->save())
-				$this->redirect(array('CheckRequest'));
+				$this->redirect(array('CheckRequestStatus'));
 		}
 
 		$this->render('RequestForm',array(
+			'model'=>$model,
+		));
+	}
+        
+        public function actionCheckStatusForm($id)
+	{
+		$model=$this->loadModel($id);
+
+		// Uncomment the following line if AJAX validation is needed
+		$this->performAjaxValidation($model);
+
+		if(isset($_POST['Request']))
+		{       
+
+                        $model->attributes=$_POST['Request'];
+			if($model->save())
+				$this->redirect(array('CheckStatus'));
+		}
+
+		$this->render('CheckStatusForm',array(
 			'model'=>$model,
 		));
 	}
@@ -137,11 +157,11 @@ class RequestController extends RController
 
 		if(isset($_POST['Request']))
 		{
+                        $model->attributes=$_POST['Request'];
                     
                         $model->request_get_date = new CDbExpression('NOW()');
                         $model->user_accept_request = Yii::app()->user->username;
                         $model->request_status = 'accepted';
-                        $model->attributes=$_POST['DeviceType'];
                         
 			if($model->save())
 				$this->redirect(array('RequestGetRepair'));
@@ -191,7 +211,7 @@ class RequestController extends RController
                         
                         //$model->attributes=$_POST['Request'];
 			if($model->save())
-				$this->redirect(array('CloseJob'));
+				$this->redirect(array('ToClose'));
 		}
 
 		$this->render('EndRepairForm',array(
@@ -199,7 +219,30 @@ class RequestController extends RController
 		));
 	}
         
-        public function actionCloseJobForm($id)
+        public function actionClosedJobForm($id)
+	{
+		$model=$this->loadModel($id);
+
+		// Uncomment the following line if AJAX validation is needed
+		$this->performAjaxValidation($model);
+
+		if(isset($_POST['Request']))
+		{       
+                        $model->request_close_date = new CDbExpression('NOW()');
+                        $model->user_close = Yii::app()->user->username;
+                        $model->request_status = 'closed';
+                        
+                        //$model->attributes=$_POST['Request'];
+			if($model->save())
+				$this->redirect(array('ClosedJob'));
+		}
+
+		$this->render('ClosedJobForm',array(
+			'model'=>$model,
+		));
+	}
+        
+        public function actionToCloseForm($id)
 	{
 		$model=$this->loadModel($id);
 
@@ -214,10 +257,10 @@ class RequestController extends RController
                         
                         //$model->attributes=$_POST['Request'];
 			if($model->save())
-				$this->redirect(array('CloseJob'));
+				$this->redirect(array('ClosedJob'));
 		}
 
-		$this->render('CloseJobForm',array(
+		$this->render('ToCloseForm',array(
 			'model'=>$model,
 		));
 	}
@@ -362,11 +405,11 @@ class RequestController extends RController
             ));
         }
         
-        public function actionCheckRequest() {
+        public function actionCheckStatus() {
             
             $model = new Request();
             
-            $this->render('CheckRequest', array(
+            $this->render('CheckStatus', array(
                 'model' => $model
             ));
         }
@@ -385,9 +428,16 @@ class RequestController extends RController
             ));
         }
         
-        public function actionCloseJob() {
+        public function actionClosedJob() {
             $model = new Request();
-            $this->render('CloseJob', array(
+            $this->render('ClosedJob', array(
+                'model' => $model
+            ));
+        }
+        
+        public function actionToClose() {
+            $model = new Request();
+            $this->render('ToClose', array(
                 'model' => $model
             ));
         }
