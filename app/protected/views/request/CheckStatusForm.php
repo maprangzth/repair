@@ -83,7 +83,7 @@ if(Yii::app()->user->isGuest) {
 	</div>
         
         <div class="row">
-		<?php echo $form->labelEx($model,'E-mail'); ?>
+		<?php echo $form->labelEx($model,'request_email'); ?>
 		<?php echo $form->textField($model,'request_email', array(
                             'disabled' => 'disabled',
                             'size' => 107,
@@ -92,14 +92,14 @@ if(Yii::app()->user->isGuest) {
 	</div>
         
 	<div class="row">
-		<?php echo $form->labelEx($model,'request_problem'); ?>
+		<?php echo $form->labelEx($model,'Problem'); ?>
 		<?php echo $form->textField($model,'request_problem', array(
                             'disabled' => 'disabled', 'size' => 107,)); ?>
 		<?php echo $form->error($model,'request_problem'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'request_detail'); ?>
+		<?php echo $form->labelEx($model,'Detail'); ?>
 		<?php echo $form->textArea($model,'request_detail', array(
                             'disabled' => "disabled",
                             'rows'=>6,
@@ -148,7 +148,7 @@ if(Yii::app()->user->isGuest) {
 	</div>
         
         <div class="row">
-                <?php echo $form->labelEx($model,'request_by_user'); ?>
+                <?php echo $form->labelEx($model,'Request by'); ?>
                 <?php echo $form->textField($model,'request_by_user',array(
                     'disabled' => 'disabled',
                     'size' => 50,
