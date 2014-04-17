@@ -120,7 +120,7 @@ class RequestController extends RController
 		{
 			$model->attributes=$_POST['Request'];
 			if($model->save())
-				$this->redirect(array('CheckRequestStatus'));
+				$this->redirect(array('CheckStatus'));
 		}
 
 		$this->render('RequestForm',array(
