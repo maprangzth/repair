@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Host: localhost
--- Generation Time: Apr 16, 2014 at 06:10 PM
+-- Generation Time: Apr 18, 2014 at 07:39 AM
 -- Server version: 5.0.51
 -- PHP Version: 5.2.6
 
@@ -1188,23 +1188,18 @@ CREATE TABLE IF NOT EXISTS `profiles` (
   `user_id` int(11) NOT NULL auto_increment,
   `lastname` varchar(50) NOT NULL default '',
   `firstname` varchar(50) NOT NULL default '',
-  `employee_number` int(6) unsigned zerofill NOT NULL,
-  `extension_number` int(5) unsigned zerofill NOT NULL,
-  `location_id` varchar(50) NOT NULL,
-  `department_id` varchar(50) NOT NULL,
-  PRIMARY KEY  (`user_id`),
-  UNIQUE KEY `employee_number` (`employee_number`)
+  PRIMARY KEY  (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 -- 
 -- Dumping data for table `profiles`
 -- 
 
-INSERT INTO `profiles` VALUES (1, 'Admin', 'Administrator', 000000, 00000, '0', '0');
-INSERT INTO `profiles` VALUES (2, 'Demo', 'Demo', 000001, 33333, '3', '0');
-INSERT INTO `profiles` VALUES (3, 'Trainee', 'ITStudent', 000006, 77634, '6', '0');
-INSERT INTO `profiles` VALUES (4, 'Trainee', 'ITStudent', 000003, 77277, '3', '0');
-INSERT INTO `profiles` VALUES (5, 'Souwannachairob', 'Monfangmickarush', 115256, 77945, '3', '3');
+INSERT INTO `profiles` VALUES (1, 'Admin', 'Administrator');
+INSERT INTO `profiles` VALUES (2, 'Demo', 'Demo');
+INSERT INTO `profiles` VALUES (3, 'Trainee', 'ITStudent');
+INSERT INTO `profiles` VALUES (4, 'Trainee', 'ITStudent');
+INSERT INTO `profiles` VALUES (5, 'Souwannachairob', 'Monfangmickarush');
 
 -- --------------------------------------------------------
 
@@ -1240,10 +1235,6 @@ CREATE TABLE IF NOT EXISTS `profiles_fields` (
 
 INSERT INTO `profiles_fields` VALUES (1, 'lastname', 'Last Name', 'VARCHAR', '50', '3', 1, '', '', 'Incorrect Last Name (length between 3 and 50 characters).', '', '', '', '', 1, 3);
 INSERT INTO `profiles_fields` VALUES (2, 'firstname', 'First Name', 'VARCHAR', '50', '3', 1, '', '', 'Incorrect First Name (length between 3 and 50 characters).', '', '', '', '', 0, 3);
-INSERT INTO `profiles_fields` VALUES (3, 'employee_number', 'En.', 'INTEGER', '6', '6', 1, '', '', 'Please type your en.', '', '', '', '', 2, 3);
-INSERT INTO `profiles_fields` VALUES (4, 'extension_number', 'Ext.', 'INTEGER', '5', '5', 1, '', '', 'Please input your ext.', '', '', '', '', 3, 3);
-INSERT INTO `profiles_fields` VALUES (5, 'location_id', 'Location', 'INTEGER', '11', '1', 1, '', '1;2;3;4;5;6;7;8;9;10', 'Please select your location.', '', '', 'UWrelBelongsTo', '{"modelName":"Location","optionName":"location_name","emptyField":"Plaese select your location.","relationName":"locations","htmlOptions":"array(''style''=>''width: 250px;'')"}', 4, 3);
-INSERT INTO `profiles_fields` VALUES (6, 'department_id', 'Department', 'INTEGER', '10', '1', 1, '', '', 'Please select your department.', '', '', 'UWrelBelongsTo', '{"modelName":"Department","optionName":"department_name","emptyField":"Not fond","relationName":"departments"}', 5, 3);
 
 -- --------------------------------------------------------
 
@@ -1280,7 +1271,7 @@ CREATE TABLE IF NOT EXISTS `requests` (
   KEY `location_request` (`location_id`),
   KEY `department_request` (`department_id`),
   KEY `device_request` (`device_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 -- 
 -- Dumping data for table `requests`
@@ -1345,8 +1336,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 -- 
 
-INSERT INTO `users` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', '2014-03-25 16:43:29', '2014-04-16 16:42:26', 1, 1);
-INSERT INTO `users` VALUES (2, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'demo@example.com', '099f825543f7850cc038b90aaff39fac', '2014-03-25 16:43:29', '2014-04-02 15:58:58', 0, 1);
+INSERT INTO `users` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', '2014-03-25 16:43:29', '2014-04-18 06:39:18', 1, 1);
+INSERT INTO `users` VALUES (2, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'demo@example.com', '099f825543f7850cc038b90aaff39fac', '2014-03-25 16:43:29', '2014-04-18 06:39:11', 0, 1);
 INSERT INTO `users` VALUES (3, 'it_student_b6', 'f65c10ef2cf4fb089208c220296240a7', 'itstudent.trainee@wdc.com', 'a68e114ebb1a165db672404d5ac74fbd', '2014-04-01 16:28:03', '2014-04-07 17:25:25', 0, 1);
 INSERT INTO `users` VALUES (4, 'it_student_b3', 'f65c10ef2cf4fb089208c220296240a7', 'itstudent.trainee3@wdc.com', 'e783f5e5e3c282f7b672def73d7856e7', '2014-04-01 16:32:39', '0000-00-00 00:00:00', 0, 1);
 INSERT INTO `users` VALUES (5, 'Monfang_S', '1364768a5062610cb8aff90cb9ff097b', 'Monfangmickarush.Souwannachairob@wdc.com', '890462578c764b355f9342f4c338fa27', '2014-04-04 15:08:09', '2014-04-09 17:34:49', 0, 1);

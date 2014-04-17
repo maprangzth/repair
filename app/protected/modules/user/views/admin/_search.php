@@ -12,7 +12,7 @@
 
     <div class="row">
         <?php echo $form->label($model,'username'); ?>
-        <?php echo $form->textField($model,'username',array('size'=>20,'maxlength'=>20)); ?>
+        <?php echo $form->textField($model,'username',array('size'=>60,'maxlength'=>20)); ?>
     </div>
 
     <div class="row">
@@ -20,6 +20,7 @@
         <?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>128)); ?>
     </div>
     
+    <?php /*
     <div class="row">
         <?php echo $form->label($model,'profile.employee_number'); ?>
         <?php echo $form->textField($model,'employee_number',array('size'=>20,'maxlength'=>6)); ?>
@@ -29,7 +30,7 @@
         <?php echo $form->label($model,'profile.extension_number'); ?>
         <?php echo $form->textField($model,'extension_number',array('size'=>20,'maxlength'=>5)); ?>
     </div>
-    
+    */ ?>
     <div class="row">
         <?php echo $form->label($model,'activkey'); ?>
         <?php echo $form->textField($model,'activkey',array('size'=>60,'maxlength'=>128)); ?>

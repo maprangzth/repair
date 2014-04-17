@@ -2,11 +2,13 @@
 
 class User extends CActiveRecord
 {
+        /*
         public $employee_number;
 	public $extension_number;
         public $location_id;
         public $department_id;
-        
+        */
+    
 	const STATUS_NOACTIVE=0;
 	const STATUS_ACTIVE=1;
 	const STATUS_BANNED=-1;
@@ -66,7 +68,7 @@ class User extends CActiveRecord
                         array('lastvisit_at', 'default', 'value' => '0000-00-00 00:00:00', 'setOnEmpty' => true, 'on' => 'insert'),
 			array('username, email, superuser, status', 'required'),
 			array('superuser, status', 'numerical', 'integerOnly'=>true),
-			array('id, username, password, email, activkey, create_at, lastvisit_at, superuser, status,employee_number, extension_number, location_id, department_id', 'safe', 'on'=>'search'),
+			array('id, username, password, email, activkey, create_at, lastvisit_at, superuser, status', 'safe', 'on'=>'search'), //,employee_number, extension_number, location_id, department_id
 		):((Yii::app()->user->id==$this->id)?array(
 			array('username, email', 'required'),
 			array('username', 'length', 'max'=>20, 'min' => 3,'message' => UserModule::t("Incorrect username (length between 3 and 20 characters).")),
@@ -105,8 +107,9 @@ class User extends CActiveRecord
 			'activkey' => UserModule::t("activation key"),
 			'createtime' => UserModule::t("Registration date"),
 			'create_at' => UserModule::t("Registration date"),
-                        'employee_number' => UserModule::t("En."),
-			'extension_number' => UserModule::t("Ext."),
+                        
+                        //'employee_number' => UserModule::t("En."),
+			//'extension_number' => UserModule::t("Ext."),
 			
 			'lastvisit_at' => UserModule::t("Last visit"),
 			'superuser' => UserModule::t("Superuser"),
@@ -181,8 +184,8 @@ class User extends CActiveRecord
         $criteria->compare('lastvisit_at',$this->lastvisit_at,true);
         $criteria->compare('superuser',$this->superuser);
         $criteria->compare('status',$this->status);
-        $criteria->compare('profile.employee_number',$this->employee_number,true);
-	$criteria->compare('profile.extension_number',$this->extension_number,true);
+        //$criteria->compare('profile.employee_number',$this->employee_number,true);
+	//$criteria->compare('profile.extension_number',$this->extension_number,true);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria'=>$criteria,

@@ -10,11 +10,12 @@ class UserIdentity extends CUserIdentity
 	private $_id;
         private $_email;
         
+        /*
         private $location_id;
         private $department_id;
         private $employee_number;
         private $extension_number;
-
+        */
 
         const ERROR_EMAIL_INVALID=3;
 	const ERROR_STATUS_NOTACTIV=4;
@@ -50,19 +51,25 @@ class UserIdentity extends CUserIdentity
 			$this->_id=$user->id;
 			$this->username=$user->username;
                         $this->_email=$user->email;
+                        /*
                         $this->location_id=$user->location_id;
                         $this->location_id=$user->location_id;
                         $this->department_id=$user->department_id;
                         $this->extension_number=$user->extension_number;
                         $this->employee_number=$user->employee_number;
+                         * 
+                         */
 			$this->errorCode=self::ERROR_NONE;
                         
                         Yii::app()->session['username'] = $user->username;
                         Yii::app()->session['email'] = $user->email;
+                        /*
                         Yii::app()->session['location_id'] = $user->location_id;
                         Yii::app()->session['department_id'] = $user->department_id;
                         Yii::app()->session['extension_number'] = $user->extension_number;
                         Yii::app()->session['employee_number'] = $user->employee_number;
+                         * 
+                         */
 		}
 		return !$this->errorCode;
 	}

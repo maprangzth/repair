@@ -41,6 +41,7 @@ class Profile extends UActiveRecord
 			$float = array();		
 			$decimal = array();
 			$rules = array(
+                            /*
                                 array('location_id,department_id', 'required'),
 				array('employee_number,extension_number', 'numerical', 'integerOnly'=>true),
 				array('employee_number', 'length', 'min'=>6,'max'=>6),
@@ -48,6 +49,8 @@ class Profile extends UActiveRecord
 				array('extension_number', 'length', 'min'=>5,'max'=>5),
 				array('extension_number', 'unique'),
 				array('employee_number, extension_number', 'safe', 'on'=>'search'),
+                             * 
+                             */
 			);
 			
 			$model=$this->getFields();

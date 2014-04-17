@@ -48,6 +48,7 @@ $('.search-form form').submit(function(){
 			'value' => 'CHtml::link(UHtml::markSearch($data,"username"),array("admin/view","id"=>$data->id))',
                         'htmlOptions'=>array('style'=>'text-align:left','width'=>100),
 		),
+                /*
                 array(
 			'name'=>'employee_number',
 			'value'=>'$data->profile->employee_number',
@@ -58,6 +59,8 @@ $('.search-form form').submit(function(){
 			'value'=>'$data->profile->extension_number',
                         'htmlOptions'=>array('style'=>'text-align:center','width'=>50),
 		),
+                 * 
+                 */
 		array(
 			'name'=>'email',
 			'type'=>'raw',
