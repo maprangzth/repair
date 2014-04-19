@@ -8,7 +8,10 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Repair System',
-
+        // กำหนด default ภาษา
+        //'language' => 'th',
+        // ตั้งค่า timeZone
+        'timeZone'=>'Asia/Bangkok',
 	// preloading 'log' component
 	'preload'=>array('log'),
 
@@ -110,7 +113,7 @@ return array(
         'authManager'=>array(
             'class'=>'RDbAuthManager',
             'connectionID'=>'db',
-            'defaultRoles'=>array('Authenticated', 'Guest','EmloyeeWD'),
+            'defaultRoles'=>array('Authenticated', 'Guest'),
             'itemTable'=>'authitem',
             'itemChildTable'=>'authitemchild',
             'assignmentTable'=>'authassignment',
@@ -138,7 +141,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=db_repair',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => 'root',
+			'password' => 'IT@helpdesk',
 			'charset' => 'utf8',
 		),
 		
@@ -167,6 +170,6 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'adminEmail'=>'k.kamsamur@gmail.com',
 	),
 );

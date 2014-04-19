@@ -218,6 +218,16 @@ if(!Yii::app()->user->isGuest) {
 		<?php echo $form->error($model,'user_close'); ?>
 	</div>
         
+        <div class="row">
+		<?php echo $form->labelEx($model,'request_end_remark'); ?>
+		<?php echo $form->textArea($model,'request_end_remark', array(
+                            //'disabled' => "disabled",
+                            'rows'=>6,
+                            'cols'=>82,
+            )); ?>
+		<?php echo $form->error($model,'request_repair_detail'); ?>
+	</div>
+    
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Close Job'); ?>
 	</div>

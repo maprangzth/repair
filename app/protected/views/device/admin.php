@@ -56,10 +56,6 @@ $.fn.yiiGridView.export = function() {
 
 <h1>Manage Devices</h1>
 
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
 <div class="button">
 <?php echo CHtml::button('Export to excel (.csv)', array('id'=>'export-button','class'=>'span-3 button')); ?>
 </div>
@@ -93,6 +89,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                 array(
 			'name'=>'device_model_name',
 			'value'=>'$data->device_models->device_model_name',
+		),
+                array(
+			'name'=>'device_owner',
+			'value'=>'$data->device_owner',
 		),
 		/*
 		'device_create_at',

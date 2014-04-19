@@ -34,7 +34,7 @@ class RightsModule extends CWebModule
 	*/
 	public $helpdeskName = 'Helpdesk';
         public $helpdeskMgrName = 'Helpdesk-Mgr-Eng-Clerk';
-        public $employeeName = 'EmployeeWD';
+        //public $employeeName = 'EmployeeWD';
 	/**
 	* @property string the name of the user model class.
 	*/
@@ -133,7 +133,7 @@ class RightsModule extends CWebModule
 					'authenticatedName'=>$this->authenticatedName,
                                         'helpdeskName'=>$this->helpdeskName,
                                         'helpdeskMgrName'=>  $this->helpdeskMgrName,
-                                        'employeeName'=>  $this->employeeName,
+                                        //'employeeName'=>  $this->employeeName,
 					'guestName'=>Yii::app()->user->guestName,
 					'defaultRoles'=>Yii::app()->authManager->defaultRoles,
 				),

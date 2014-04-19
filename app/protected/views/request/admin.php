@@ -1,8 +1,14 @@
 <?php
+$this->pageTitle=Yii::app()->name . ' - Manage Repair';
+$this->breadcrumbs=array(
+	'ManageRepair',
+);
+?>
+<?php
 
 /* @var $this RequestController */
 /* @var $model Request */
-
+/*
 $this->breadcrumbs=array(
 	'Requests'=>array('index'),
 	'Manage',
@@ -42,7 +48,7 @@ $.fn.yiiGridView.export = function() {
 ");
 ?>
 
-<h1>Manage Requests</h1>
+<h1>Manage Repair</h1>
 <?php /*
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">

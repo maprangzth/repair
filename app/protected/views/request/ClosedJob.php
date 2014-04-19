@@ -43,8 +43,8 @@ $this->breadcrumbs=array(
                 )
             ),
             array(
-                'name' => 'request_create_date',
-                'value' => '$data->request_create_date',
+                'name' => 'request_close_date',
+                'value' => '$data->request_close_date',
                 'htmlOptions' => array(
                     'width' => '125px',
                     'align' => 'center'

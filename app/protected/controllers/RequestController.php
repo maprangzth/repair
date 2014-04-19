@@ -205,11 +205,13 @@ class RequestController extends RController
 
 		if(isset($_POST['Request']))
 		{       
+                        
+                        $model->attributes=$_POST['Request'];
+                    
                         $model->request_end_repair_date = new CDbExpression('NOW()');
                         //$model->user_close = Yii::app()->user->username;
                         $model->request_status = 'completed';
                         
-                        //$model->attributes=$_POST['Request'];
 			if($model->save())
 				$this->redirect(array('ToClose'));
 		}
@@ -228,6 +230,8 @@ class RequestController extends RController
 
 		if(isset($_POST['Request']))
 		{       
+                        $model->attributes=$_POST['Request'];
+                        
                         $model->request_close_date = new CDbExpression('NOW()');
                         $model->user_close = Yii::app()->user->username;
                         $model->request_status = 'closed';
@@ -251,9 +255,12 @@ class RequestController extends RController
 
 		if(isset($_POST['Request']))
 		{       
+                    
+                        $model->attributes=$_POST['Request'];
+                    
                         $model->request_close_date = new CDbExpression('NOW()');
                         $model->user_close = Yii::app()->user->username;
-                        $model->request_status = 'close';
+                        $model->request_status = 'closed';
                         
                         //$model->attributes=$_POST['Request'];
 			if($model->save())
