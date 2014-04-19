@@ -28,7 +28,7 @@ $this->breadcrumbs=array(
                 'name' => 'request_problem',
                 'value' => '$data->request_problem',
                 'htmlOptions' => array(
-                    'width' => '300px'
+                    'width' => '200px'
                 )
             ),
             array(
@@ -49,7 +49,15 @@ $this->breadcrumbs=array(
                 'name' => 'request_create_date',
                 'value' => '$data->request_create_date',
                 'htmlOptions' => array(
-                    'width' => '125px',
+                    'width' => '145px',
+                    'align' => 'center'
+                )
+            ),
+            array(
+                'name' => 'request_start_repair_date',
+                'value' => '$data->request_start_repair_date',
+                'htmlOptions' => array(
+                    'width' => '145px',
                     'align' => 'center'
                 )
             ),
@@ -57,7 +65,7 @@ $this->breadcrumbs=array(
                 'name' => 'request_end_repair_date',
                 'value' => '$data->request_end_repair_date',
                 'htmlOptions' => array(
-                    'width' => '125px',
+                    'width' => '145px',
                     'align' => 'center'
                 )
             ),

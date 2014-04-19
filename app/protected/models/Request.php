@@ -105,7 +105,7 @@ class Request extends CActiveRecord
 			'device_id' => 'Device',
 			'request_problem' => 'Problem',
 			'request_detail' => 'Detail',
-			'request_remark' => 'Remark',
+			'request_remark' => 'Accept Remark',
 			'request_create_date' => 'Request date',
 			'request_get_date' => 'Accept date',
 			'user_accept_request' => 'Accept by',

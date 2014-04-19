@@ -29,6 +29,7 @@ $this->menu=array(
 		'device_create_at',
 		'device_buy_date',
 		'device_warranty_expire',
-		'device_remark',
+		'device_owner',
+                'device_remark',
 	),
 )); ?>

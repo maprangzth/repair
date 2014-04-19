@@ -23,11 +23,13 @@
 <body>
 
 <div class="container" id="page">
-
+        <?php /*
 	<div id="header">
             <?php echo CHtml::image(Yii::app()->request->baseUrl."/images/cover-wd.png","IT-Helpdesk : Call center 77277"); ?>
 	</div><!-- header -->
-
+         */ ?>
+         <?php echo CHtml::image(Yii::app()->request->baseUrl."/images/cover-wd.png","IT-Helpdesk : Call center 77277"); ?>
+    
 	<div id="mainMbMenu">
 		<?php $this->widget('application.extensions.mbmenu.MbMenu',array(
                         'activeCssClass'=>'active',
@@ -47,10 +49,10 @@
                                 array('label'=>'To Complete', 'url'=>array('/request/EndRepair'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                                 array('label'=>'Waiting To Close', 'url'=>array('/request/ToClose'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                             
-                                array('label'=>'IT-Helpdesk Manage',
+                                array('label'=>'Helpdesk Manage',
                                     'items'=>array(
                                         array('label'=>'Closed Job', 'url'=>array('/request/ClosedJob'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
-                                        array('label'=>'Repair', 'url'=>array('/request/admin'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
+                                        array('label'=>'Manage Repair', 'url'=>array('/request/admin'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                                         array('label'=>'Location', 'url'=>array('/location/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                                         array('label'=>'Department', 'url'=>array('/department/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                                         array('label'=>'Device', 'url'=>array('/device/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
@@ -110,10 +112,10 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-            Copyright &copy; <?php echo date('Y'); ?> 
+            <b> Copyright &copy; <?php echo date('Y'); ?> 
             <a href="http://www.sut.ac.th" target="_blank">Suranaree University of Technology</a>
             || <a href="http://wdth.wdc.com/" target="_blank">Western Digital (Thailand) Co.Ltd.</a>
-		All Rights Reserved.
+            All Rights Reserved. </b>
 	</div><!-- footer -->
 
 </div><!-- page -->

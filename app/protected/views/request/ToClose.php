@@ -60,7 +60,7 @@ $this->breadcrumbs=array(
              */
             array(
                 'name' => 'request_start_repair_date',
-                'value' => '$data->request_create_date',
+                'value' => '$data->request_start_repair_date',
                 'htmlOptions' => array(
                     'width' => '165px',
                     'align' => 'center'
@@ -68,7 +68,7 @@ $this->breadcrumbs=array(
             ),
             array(
                 'name' => 'request_end_repair_date',
-                'value' => '$data->request_create_date',
+                'value' => '$data->request_end_repair_date',
                 'htmlOptions' => array(
                     'width' => '165px',
                     'align' => 'center'
