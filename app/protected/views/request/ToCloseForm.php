@@ -6,7 +6,7 @@
 
 $this->breadcrumbs=array(
 	'Requests',
-	'Close Job',
+	'CloseJob',
 );
 if(!Yii::app()->user->isGuest) {
 	$this->layout='//layouts/column2';

@@ -117,7 +117,7 @@ class Request extends CActiveRecord
 			'request_answer' => 'Cause symptoms',
 			'request_repair_detail' => 'Repair detail',
 			'request_status' => 'Status',
-			'request_end_remark' => 'End remark',
+			'request_end_remark' => 'Close job remark',
                         'device_code' => 'Device',
                         'location_name' => 'Location',
                     
