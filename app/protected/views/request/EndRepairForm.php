@@ -6,7 +6,7 @@
 
 $this->breadcrumbs=array(
 	'Requests'=>array('RequestGetRequest'),
-	'End Request',
+	'EndRepair',
 );
 if(!Yii::app()->user->isGuest) {
 	$this->layout='//layouts/column2';
@@ -19,7 +19,7 @@ if(!Yii::app()->user->isGuest) {
 }
 ?>
 
-<h1>End Request # <?php echo $model->devices->device_code; ?></h1>
+<h1>End Repair # <?php echo $model->devices->device_code; ?></h1>
 
 <div class="form">
 
