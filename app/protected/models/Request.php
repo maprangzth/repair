@@ -137,7 +137,7 @@ class Request extends CActiveRecord
 	 * based on the search/filter conditions.
 	 */
         
-        /*
+        
 	public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
@@ -193,33 +193,6 @@ class Request extends CActiveRecord
                 ));
 	}
         
-         * 
-         */
-        
-        public function search() {
-            $criteria=new CDbCriteria;
-
-            $criteria->compare('id',$this->id);
-            $criteria->compare('request_by_user',$this->request_by_user,true);
-            $criteria->compare('request_en',$this->request_en,true);
-            $criteria->compare('request_ext',$this->request_ext,true);
-            $criteria->compare('request_email',$this->request_email,true);
-            $criteria->compare('location_id',$this->location_id);
-            $criteria->compare('department_id',$this->department_id);
-            $criteria->compare('device_id',$this->device_id);
-            $criteria->compare('request_problem',$this->request_problem,true);
-            $criteria->compare('request_detail',$this->request_detail,true);
-            $criteria->compare('request_remark',$this->request_remark,true);
-            
-            return new CActiveDataProvider(get_class($this), array(
-                    'pagination'=>array(
-                            'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
-                    ),
-                    'criteria'=>$criteria,
-            ));
-        }
-
-
         public function searchRequest() {
             $criteria = new CDbCriteria();
             $criteria->condition = "request_status = 'waiting'";
