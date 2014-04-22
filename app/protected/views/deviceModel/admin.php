@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List DeviceModel', 'url'=>array('index')),
+	//array('label'=>'List DeviceModel', 'url'=>array('index')),
 	array('label'=>'Create DeviceModel', 'url'=>array('create')),
 );
 

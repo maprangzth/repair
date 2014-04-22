@@ -49,7 +49,7 @@ $.fn.yiiGridView.export = function() {
 ?>
 
 <h1>Manage Repair</h1>
-<?php /*
+
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
@@ -57,16 +57,16 @@ $.fn.yiiGridView.export = function() {
 )); ?>
 </div><!-- search-form -->
 </br></br>
- * 
- */
-?>
+
 <div class="button">
 <?php echo CHtml::button('Export to excel (.csv)', array('id'=>'export-button','class'=>'span-3 button')); ?>
 </div>
 </br>
 </br>
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php 
+$pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
+$this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'request-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
@@ -110,7 +110,7 @@ $.fn.yiiGridView.export = function() {
 		array(
                         'class'=>'CButtonColumn',
                         'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,50=>50,100=>100,150=>150),array(
-                                  'onchange'=>"$.fn.yiiGridView.update('device-grid',{ data:{pageSize: $(this).val() }})",
+                                  'onchange'=>"$.fn.yiiGridView.update('request-grid',{ data:{pageSize: $(this).val() }})",
                     )),
                 ),
 	),

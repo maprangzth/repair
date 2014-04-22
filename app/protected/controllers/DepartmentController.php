@@ -74,7 +74,7 @@ class DepartmentController extends RController
 		{
 			$model->attributes=$_POST['Department'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('admin'));
 		}
 
 		$this->render('create',array(
@@ -98,7 +98,7 @@ class DepartmentController extends RController
 		{
 			$model->attributes=$_POST['Department'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('admin'));
 		}
 
 		$this->render('update',array(

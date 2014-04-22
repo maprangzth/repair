@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List DeviceBrand', 'url'=>array('index')),
+	//array('label'=>'List DeviceBrand', 'url'=>array('index')),
 	array('label'=>'Create DeviceBrand', 'url'=>array('create')),
 	array('label'=>'View DeviceBrand', 'url'=>array('view', 'id'=>$model->id)),
 	array('label'=>'Manage DeviceBrand', 'url'=>array('admin')),

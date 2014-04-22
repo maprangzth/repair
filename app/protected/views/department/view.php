@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Department', 'url'=>array('index')),
+	//array('label'=>'List Department', 'url'=>array('index')),
 	array('label'=>'Create Department', 'url'=>array('create')),
 	array('label'=>'Update Department', 'url'=>array('update', 'id'=>$model->id)),
 	array('label'=>'Delete Department', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),

@@ -74,7 +74,7 @@ class DeviceBrandController extends RController
 			$model->attributes=$_POST['DeviceBrand'];
                         $model->device_brand_name = strtoupper($model->device_brand_name);
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('admin'));
 		}
 
 		$this->render('create',array(
@@ -99,7 +99,7 @@ class DeviceBrandController extends RController
 			$model->attributes=$_POST['DeviceBrand'];
                         $model->device_brand_name = strtoupper($model->device_brand_name);
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('admin'));
 		}
 
 		$this->render('update',array(

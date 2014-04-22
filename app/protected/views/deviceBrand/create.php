@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List DeviceBrand', 'url'=>array('index')),
+	//array('label'=>'List DeviceBrand', 'url'=>array('index')),
 	array('label'=>'Manage DeviceBrand', 'url'=>array('admin')),
 );
 ?>

@@ -136,6 +136,8 @@ class Request extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
+        
+        /*
 	public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
@@ -153,7 +155,10 @@ class Request extends CActiveRecord
 		$criteria->compare('request_problem',$this->request_problem,true);
 		$criteria->compare('request_detail',$this->request_detail,true);
 		$criteria->compare('request_remark',$this->request_remark,true);
-		$criteria->compare('request_create_date',$this->request_create_date,true);
+                
+		//$criteria->compare('request_create_date',$this->request_create_date,true);
+                $criteria->mergeWith($this->dateRangeSearchCriteria('request_create_date', $this->request_create_date));
+                
 		$criteria->compare('request_get_date',$this->request_get_date,true);
 		$criteria->compare('user_accept_request',$this->user_accept_request,true);
 		$criteria->compare('request_start_repair_date',$this->request_start_repair_date,true);
@@ -180,10 +185,40 @@ class Request extends CActiveRecord
                         $criteria->compare('locations.location_name',$this->location_name,true);
                 }
 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
+		return new CActiveDataProvider(get_class($this), array(
+                        'pagination'=>array(
+                                'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+                        ),
+                        'criteria'=>$criteria,
+                ));
 	}
+        
+         * 
+         */
+        
+        public function search() {
+            $criteria=new CDbCriteria;
+
+            $criteria->compare('id',$this->id);
+            $criteria->compare('request_by_user',$this->request_by_user,true);
+            $criteria->compare('request_en',$this->request_en,true);
+            $criteria->compare('request_ext',$this->request_ext,true);
+            $criteria->compare('request_email',$this->request_email,true);
+            $criteria->compare('location_id',$this->location_id);
+            $criteria->compare('department_id',$this->department_id);
+            $criteria->compare('device_id',$this->device_id);
+            $criteria->compare('request_problem',$this->request_problem,true);
+            $criteria->compare('request_detail',$this->request_detail,true);
+            $criteria->compare('request_remark',$this->request_remark,true);
+            
+            return new CActiveDataProvider(get_class($this), array(
+                    'pagination'=>array(
+                            'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+                    ),
+                    'criteria'=>$criteria,
+            ));
+        }
+
 
         public function searchRequest() {
             $criteria = new CDbCriteria();
@@ -388,6 +423,19 @@ class Request extends CActiveRecord
 
             return $link;
         }
+        
+        /**
+        * Model behaviors
+        */
+        public function behaviors()
+        {
+            return array(
+                'dateRangeSearch'=>array(
+                    'class'=>'application.components.behaviors.EDateRangeSearchBehavior',
+                ),
+            );
+        }
+        
         
 	/**
 	 * Returns the static model of the specified AR class.
