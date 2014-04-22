@@ -9,9 +9,9 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Device', 'url'=>array('index')),
+	//array('label'=>'List Device', 'url'=>array('index')),
 	array('label'=>'Create Device', 'url'=>array('create')),
-	array('label'=>'View Device', 'url'=>array('view', 'id'=>$model->id)),
+	//array('label'=>'View Device', 'url'=>array('view', 'id'=>$model->id)),
 	array('label'=>'Manage Device', 'url'=>array('admin')),
 );
 ?>

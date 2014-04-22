@@ -25,3 +25,36 @@ Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
 should you have any questions.</p>
  */
 ?>
+<?php /*
+<h1>Yii CJuiDatePicker: Default</h1>
+
+<?php
+$this->widget('zii.widgets.jui.CJuiDatePicker',array(
+    'name'=>'datepicker',
+    // additional javascript options for the date picker plugin
+    'options'=>array(
+        'showAnim'=>'fadeIn',//'slide','fold','slideDown','fadeIn','blind','bounce','clip','drop'
+    ),
+    'htmlOptions'=>array(
+        'style'=>'height:20px;',
+    ),
+));
+?>
+
+<h1>Yii CJuiDatePicker: Date Format</h1>
+
+<?php
+$this->widget('zii.widgets.jui.CJuiDatePicker',array(
+    'name'=>'datepicker-date-format',    
+    'value'=>date('d/m/Y'),
+    'options'=>array(        
+        'showButtonPanel'=>true,
+        'dateFormat'=>'yy-mm-dd',//Date format 'mm/dd/yy','yy-mm-dd','d M, y','d MM, y','DD, d MM, yy'
+    ),
+    'htmlOptions'=>array(
+        'style'=>''
+    ),
+));
+ * 
+ */
+?>

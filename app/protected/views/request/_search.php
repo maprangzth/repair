@@ -11,7 +11,8 @@
 	'action'=>Yii::app()->createUrl($this->route),
 	'method'=>'get',
 )); ?>
-
+        <?php 
+        /*
 	<div class="row">
 		<?php echo $form->label($model,'id'); ?>
 		<?php echo $form->textField($model,'id'); ?>
@@ -126,10 +127,33 @@
 		<?php echo $form->label($model,'request_end_remark'); ?>
 		<?php echo $form->textArea($model,'request_end_remark',array('rows'=>6, 'cols'=>50)); ?>
 	</div>
-
-	<div class="row buttons">
+        */ 
+        ?>
+    
+        <div class="row">
+		<?php echo $form->label($model,'request_create_date'); ?>
+                <?php
+                    // Date range search inputs
+                    $attribute = 'request_create_date';
+                    for ($i = 0; $i <= 1; $i++)
+                    {
+                        echo ($i == 0 ? Yii::t('main', 'From:') : Yii::t('main', 'To:'));
+                        $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                            'id'=>CHtml::activeId($model, $attribute.'_'.$i),
+                            'model'=>$model,
+                            //'value'=>date('Y-m-d H:i:s'),
+                            'attribute'=>$attribute."[$i]",
+                            'options'=>array(
+                                'dateFormat'=>'yy-mm-dd',//Date format 'mm/dd/yy','yy-mm-dd','d M, y','d MM, y','DD, d MM, yy'
+                            ),
+                        )); 
+                    }
+                ?>
+            
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>
+    
+	
 
 <?php $this->endWidget(); ?>
 

@@ -15,7 +15,7 @@ $this->breadcrumbs=array(
         {
                 font-size: 12px;
                 margin: 0px;
-                width: 910px;
+                width: 960px;
                 text-align: left;
                 border-collapse: collapse;
         }

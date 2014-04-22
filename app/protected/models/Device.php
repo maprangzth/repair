@@ -48,7 +48,7 @@ class Device extends CActiveRecord
 			array('location_id, device_type_id, device_brand_id, device_model_id, device_code', 'required'),
 			array('location_id, device_type_id, device_brand_id, device_model_id', 'numerical', 'integerOnly'=>true),
 			array('device_code', 'length', 'max'=>50),
-			array('device_code', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u','message' => "Incorrect symbols (A-z0-9_)."),
+			//array('device_code', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u','message' => "Incorrect symbols (A-z0-9_)."),
 			array('device_code', 'unique'),
 			array('device_create_at', 'default', 'value' => date('Y-m-d H:i:s'), 'setOnEmpty' => true, 'on' => 'insert'),
 			array('device_buy_date,device_warranty_expire', 'default', 'value' => '0000-00-00 00:00:00', 'setOnEmpty' => true, 'on' => 'insert'),

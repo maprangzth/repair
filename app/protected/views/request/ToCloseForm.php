@@ -11,7 +11,7 @@ $this->breadcrumbs=array(
 if(!Yii::app()->user->isGuest) {
 	$this->layout='//layouts/column2';
         $this->menu=array(
-                array('label'=>'List Request', 'url'=>array('CloseJob')),
+                array('label'=>'List Request', 'url'=>array('ToClose')),
                 //array('label'=>'Create Request', 'url'=>array('create')),
                 //array('label'=>'View Request', 'url'=>array('view', 'id'=>$model->id)),
                 array('label'=>'Manage Request', 'url'=>array('admin')),
