@@ -138,7 +138,13 @@ class DepartmentController extends RController
 	{
 		$model=new Department('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Department']))
+		
+                if (isset($_GET['pageSize'])) {
+                    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+                    unset($_GET['pageSize']);
+                }
+                
+                if(isset($_GET['Department']))
 			$model->attributes=$_GET['Department'];
 
 		$this->render('admin',array(

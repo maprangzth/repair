@@ -50,11 +50,19 @@
 		<?php echo $form->textField($model,'location_id'); ?>
 		<?php echo $form->error($model,'location_id'); ?>
 	</div>
-
+        
+        <?php /*
 	<div class="row">
 		<?php echo $form->labelEx($model,'department_id'); ?>
 		<?php echo $form->textField($model,'department_id'); ?>
 		<?php echo $form->error($model,'department_id'); ?>
+	</div>
+        */ ?>
+        
+        <div class="row">
+		<?php echo $form->labelEx($model,'request_department'); ?>
+		<?php echo $form->textField($model,'request_department'); ?>
+		<?php echo $form->error($model,'request_department'); ?>
 	</div>
 
 	<div class="row">

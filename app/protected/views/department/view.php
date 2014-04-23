@@ -3,8 +3,8 @@
 /* @var $model Department */
 
 $this->breadcrumbs=array(
-	'Departments'=>array('index'),
-	$model->id,
+	'Departments',
+	$model->department_name,
 );
 
 $this->menu=array(

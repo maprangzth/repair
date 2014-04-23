@@ -3,8 +3,8 @@
 /* @var $model Device */
 
 $this->breadcrumbs=array(
-	'Devices'=>array('index'),
-	$model->id,
+	'Devices',
+	$model->device_code,
 );
 
 $this->menu=array(

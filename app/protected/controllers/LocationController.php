@@ -139,7 +139,13 @@ class LocationController extends RController
 	{
 		$model=new Location('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Location']))
+		
+                if (isset($_GET['pageSize'])) {
+                    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+                    unset($_GET['pageSize']);
+                }
+                
+                if(isset($_GET['Location']))
 			$model->attributes=$_GET['Location'];
 
 		$this->render('admin',array(

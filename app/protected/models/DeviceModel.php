@@ -99,9 +99,12 @@ class DeviceModel extends CActiveRecord
                         $criteria->compare('device_brands.device_brand_name',$this->device_brand_name,true);
                 }
 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
+		return new CActiveDataProvider(get_class($this), array(
+                        'pagination'=>array(
+                                'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+                        ),
+                        'criteria'=>$criteria,
+                ));
 	}
 
 	/**

@@ -3,8 +3,8 @@
 /* @var $model Device */
 
 $this->breadcrumbs=array(
-	'Devices'=>array('index'),
-	$model->id=>array('view','id'=>$model->id),
+	'Devices',
+	//$model->id=>array('view','id'=>$model->id),
 	'Update',
 );
 
@@ -16,6 +16,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Device <?php echo $model->id; ?></h1>
+<h1>Update Device #<?php echo $model->device_code; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

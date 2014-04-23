@@ -3,7 +3,7 @@
 /* @var $model DeviceModel */
 
 $this->breadcrumbs=array(
-	'Device Models'=>array('index'),
+	'Device Models',
 	'Manage',
 );
 
@@ -28,7 +28,9 @@ $('.search-form form').submit(function(){
 
 <h1>Manage Device Models</h1>
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php 
+$pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
+$this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'device-model-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
@@ -39,7 +41,10 @@ $('.search-form form').submit(function(){
 		),
 		'device_model_name',
 		array(
-			'class'=>'CButtonColumn',
-		),
+                        'class'=>'CButtonColumn',
+                        'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,50=>50,100=>100,150=>150),array(
+                                  'onchange'=>"$.fn.yiiGridView.update('device-model-grid',{ data:{pageSize: $(this).val() }})",
+                    )),
+                ),
 	),
 )); ?>

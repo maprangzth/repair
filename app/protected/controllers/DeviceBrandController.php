@@ -139,7 +139,13 @@ class DeviceBrandController extends RController
 	{
 		$model=new DeviceBrand('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['DeviceBrand']))
+		
+                if (isset($_GET['pageSize'])) {
+                    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+                    unset($_GET['pageSize']);
+                }
+                
+                if(isset($_GET['DeviceBrand']))
 			$model->attributes=$_GET['DeviceBrand'];
 
 		$this->render('admin',array(

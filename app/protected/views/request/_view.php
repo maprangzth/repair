@@ -30,8 +30,14 @@
 	<?php echo CHtml::encode($data->location_id); ?>
 	<br />
 
+        <?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('department_id')); ?>:</b>
 	<?php echo CHtml::encode($data->department_id); ?>
+	<br />
+        */ ?>
+        
+        <b><?php echo CHtml::encode($data->getAttributeLabel('request_department')); ?>:</b>
+	<?php echo CHtml::encode($data->request_department); ?>
 	<br />
 
 	<?php /*

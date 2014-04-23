@@ -3,7 +3,7 @@
 /* @var $model DeviceModel */
 
 $this->breadcrumbs=array(
-	'Device Models'=>array('index'),
+	'Device Models',
 	'Create',
 );
 

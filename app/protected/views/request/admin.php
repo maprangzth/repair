@@ -51,13 +51,14 @@ $.fn.yiiGridView.export = function() {
 <h1>Manage Repair</h1>
 
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
+
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
 )); ?>
 </div><!-- search-form -->
-</br></br>
-
+</br>
+</br>
 <div class="button">
 <?php echo CHtml::button('Export to excel (.csv)', array('id'=>'export-button','class'=>'span-3 button')); ?>
 </div>

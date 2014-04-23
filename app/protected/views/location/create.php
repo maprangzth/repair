@@ -3,7 +3,7 @@
 /* @var $model Location */
 
 $this->breadcrumbs=array(
-	'Locations'=>array('index'),
+	'Locations',
 	'Create',
 );
 

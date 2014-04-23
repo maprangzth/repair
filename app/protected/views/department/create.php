@@ -3,7 +3,7 @@
 /* @var $model Department */
 
 $this->breadcrumbs=array(
-	'Departments'=>array('index'),
+	'Departments',
 	'Create',
 );
 
