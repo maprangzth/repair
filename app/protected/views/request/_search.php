@@ -42,12 +42,20 @@
 		<?php echo $form->label($model,'location_id'); ?>
 		<?php echo $form->textField($model,'location_id'); ?>
 	</div>
-
+        
+         /* 
 	<div class="row">
 		<?php echo $form->label($model,'department_id'); ?>
 		<?php echo $form->textField($model,'department_id'); ?>
 	</div>
-
+         * 
+        <div class="row">
+		<?php echo $form->label($model,'request_department'); ?>
+		<?php echo $form->textField($model,'request_department'); ?>
+	</div>
+         * 
+        */
+        /*
 	<div class="row">
 		<?php echo $form->label($model,'device_id'); ?>
 		<?php echo $form->textField($model,'device_id'); ?>

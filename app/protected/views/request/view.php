@@ -5,7 +5,7 @@
 
 $this->breadcrumbs=array(
 	'Requests'=>array('index'),
-	$model->id,
+	$model->devices->device_code,
 );
 if(!Yii::app()->user->isGuest) {
 	$this->layout='//layouts/column2';
@@ -30,7 +30,8 @@ $this->menu=array(
 		'request_ext',
 		'request_email',
 		'locations.location_name',
-		'departments.department_name',
+		//'departments.department_name',
+                'request_department',
 		'devices.device_code',
 		'request_problem',
 		'request_detail',

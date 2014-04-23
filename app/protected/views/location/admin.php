@@ -3,7 +3,7 @@
 /* @var $model Location */
 
 $this->breadcrumbs=array(
-	'Locations'=>array('index'),
+	'Locations',
 	'Manage',
 );
 
@@ -29,14 +29,19 @@ $('.search-form form').submit(function(){
 <h1>Manage Locations</h1>
 
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php 
+$pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
+$this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'location-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
 		'location_name',
 		array(
-			'class'=>'CButtonColumn',
-		),
+                        'class'=>'CButtonColumn',
+                        'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,50=>50,100=>100,150=>150),array(
+                                  'onchange'=>"$.fn.yiiGridView.update('location-grid',{ data:{pageSize: $(this).val() }})",
+                    )),
+                ),
 	),
 )); ?>

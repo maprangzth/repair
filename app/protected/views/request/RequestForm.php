@@ -65,10 +65,19 @@ if(!Yii::app()->user->isGuest) {
 		<?php echo $form->error($model,'location_id'); ?>
 	</div>
         
+        <?php /*
 	<div class="row">
 		<?php echo $form->labelEx($model,'department_id'); ?>
 		<?php echo $form->dropDownList($model,'department_id', CHtml::listData(Department::model()->findAll(array('order' => 'department_name ASC')), 'id', 'department_name'), array('empty'=>'Please select your department.','style'=>'width:250px;')); ?>
 		<?php echo $form->error($model,'department_id'); ?>
+	</div> 
+         */
+         ?>
+        
+        <div class="row">
+		<?php echo $form->labelEx($model,'request_department'); ?>
+		<?php echo $form->textField($model,'request_department',array('size'=>36,'maxlength'=>125)); ?>
+		<?php echo $form->error($model,'request_department'); ?>
 	</div>
 
 	<div class="row">

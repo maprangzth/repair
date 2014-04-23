@@ -138,7 +138,13 @@ class DeviceTypeController extends RController
 	{
 		$model=new DeviceType('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['DeviceType']))
+		
+                if (isset($_GET['pageSize'])) {
+                    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+                    unset($_GET['pageSize']);
+                }
+                
+                if(isset($_GET['DeviceType']))
 			$model->attributes=$_GET['DeviceType'];
 
 		$this->render('admin',array(

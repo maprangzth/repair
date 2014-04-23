@@ -27,7 +27,7 @@ class Department extends CActiveRecord
 		return array(
 			array('department_name', 'required'),
 			array('department_name', 'length', 'max'=>50),
-			array('department_name', 'match', 'pattern' => '/^[A-Za-z]+$/u','message' => "Incorrect symbols (A-z)."),
+			//array('department_name', 'match', 'pattern' => '/^[A-Za-z]+$/u','message' => "Incorrect symbols (A-z)."),
 			array('department_name', 'unique'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -80,9 +80,12 @@ class Department extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('department_name',$this->department_name,true);
 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
+		return new CActiveDataProvider(get_class($this), array(
+                        'pagination'=>array(
+                                'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+                        ),
+                        'criteria'=>$criteria,
+                ));
 	}
 
 	/**

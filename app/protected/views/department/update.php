@@ -3,8 +3,8 @@
 /* @var $model Department */
 
 $this->breadcrumbs=array(
-	'Departments'=>array('index'),
-	$model->id=>array('view','id'=>$model->id),
+	'Departments',
+	//$model->id=>array('view','id'=>$model->id),
 	'Update',
 );
 
@@ -16,6 +16,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Department <?php echo $model->id; ?></h1>
+<h1>Update Department #<?php echo $model->department_name; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

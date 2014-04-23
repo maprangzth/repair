@@ -72,6 +72,7 @@ if(!Yii::app()->user->isGuest) {
 		<?php echo $form->error($model,'location_id'); ?>
 	</div>
 
+	<?php /*
 	<div class="row">
 		<?php echo $form->labelEx($model,'Department'); ?>
 		<?php echo $form->textField($model,'department_id', array(
@@ -80,6 +81,16 @@ if(!Yii::app()->user->isGuest) {
                             'value' => $model->departments->department_name,
                 )); ?>
 		<?php echo $form->error($model,'department_id'); ?>
+	</div>
+        */ ?>
+
+        <div class="row">
+		<?php echo $form->labelEx($model,'request_department'); ?>
+		<?php echo $form->textField($model,'request_department', array(
+                            'disabled' => 'disabled',
+                            'size' => 50,
+                )); ?>
+		<?php echo $form->error($model,'request_department'); ?>
 	</div>
         
         <div class="row">

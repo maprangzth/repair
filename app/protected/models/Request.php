@@ -55,11 +55,14 @@ class Request extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('request_by_user, request_en, request_ext, location_id, department_id, device_id, request_problem, request_detail', 'required'),
-			array('request_en, request_ext, location_id, department_id, device_id', 'numerical', 'integerOnly'=>true),
+			array('request_by_user, request_en, request_ext, location_id, request_department, device_id, request_problem, request_detail', 'required'),
+			array('request_en, request_ext, location_id, device_id', 'numerical', 'integerOnly'=>true),
 			array('request_by_user, user_accept_request, user_repair, user_close', 'length', 'max'=>50),
-                    
+                        
+                        array('request_en', 'length', 'min'=>6,'max'=>6),
+                        array('request_ext', 'length', 'min'=>5,'max'=>5),
 			array('request_email', 'length', 'max'=>125),
+                        array('request_department', 'length', 'max'=>125),
 			array('request_problem', 'length', 'max'=>500),
                         array('request_remark', 'length', 'max'=>500),
                         array('request_answer', 'length', 'max'=>500),
@@ -71,7 +74,7 @@ class Request extends CActiveRecord
 			array('request_get_date, request_start_repair_date, request_end_repair_date, request_close_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, request_by_user, request_en, device_code, location_name, request_ext, request_email, location_id, department_id, device_id, request_problem, request_detail, request_remark, request_create_date, request_get_date, user_accept_request, request_start_repair_date, user_repair, request_end_repair_date, request_close_date, user_close, request_answer, request_repair_detail, request_status, request_end_remark', 'safe', 'on'=>'search'),
+			array('id, request_by_user, request_en, device_code, location_name, request_ext, request_email, location_id, request_department, device_id, request_problem, request_detail, request_remark, request_create_date, request_get_date, user_accept_request, request_start_repair_date, user_repair, request_end_repair_date, request_close_date, user_close, request_answer, request_repair_detail, request_status, request_end_remark', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -83,7 +86,7 @@ class Request extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'departments' => array(self::BELONGS_TO, 'Department', 'department_id'),
+			//'departments' => array(self::BELONGS_TO, 'Department', 'department_id'),
 			'devices' => array(self::BELONGS_TO, 'Device', 'device_id'),
 			'locations' => array(self::BELONGS_TO, 'Location', 'location_id'),
 		);
@@ -101,7 +104,7 @@ class Request extends CActiveRecord
 			'request_ext' => 'Ext',
 			'request_email' => 'E-mail',
 			'location_id' => 'Location',
-			'department_id' => 'Department',
+			'request_department' => 'Department',
 			'device_id' => 'Device',
 			'request_problem' => 'Problem',
 			'request_detail' => 'Detail',
@@ -150,7 +153,8 @@ class Request extends CActiveRecord
 		$criteria->compare('request_ext',$this->request_ext,true);
 		$criteria->compare('request_email',$this->request_email,true);
 		$criteria->compare('location_id',$this->location_id);
-		$criteria->compare('department_id',$this->department_id);
+		//$criteria->compare('department_id',$this->department_id); 
+                $criteria->compare('request_department',$this->request_department,true);
 		$criteria->compare('device_id',$this->device_id);
 		$criteria->compare('request_problem',$this->request_problem,true);
 		$criteria->compare('request_detail',$this->request_detail,true);
@@ -202,7 +206,8 @@ class Request extends CActiveRecord
             $criteria->compare('request_ext',$this->request_ext);
             $criteria->compare('request_email',$this->request_email,true);
             $criteria->compare('location_id',$this->location_id);
-            $criteria->compare('department_id',$this->department_id);
+            //$criteria->compare('department_id',$this->department_id);
+            $criteria->compare('request_department',$this->request_department,true);
             $criteria->compare('device_id',$this->device_id);
             $criteria->compare('request_problem',$this->request_problem,true);
             $criteria->compare('request_detail',$this->request_detail,true);
@@ -234,7 +239,8 @@ class Request extends CActiveRecord
             $criteria->compare('request_ext',$this->request_ext);
             $criteria->compare('request_email',$this->request_email,true);
             $criteria->compare('location_id',$this->location_id);
-            $criteria->compare('department_id',$this->department_id);
+            //$criteria->compare('department_id',$this->department_id);
+            $criteria->compare('request_department',$this->request_department,true);
             $criteria->compare('device_id',$this->device_id);
             $criteria->compare('request_problem',$this->request_problem,true);
             $criteria->compare('request_detail',$this->request_detail,true);
@@ -268,7 +274,8 @@ class Request extends CActiveRecord
             $criteria->compare('request_ext',$this->request_ext);
             $criteria->compare('request_email',$this->request_email,true);
             $criteria->compare('location_id',$this->location_id);
-            $criteria->compare('department_id',$this->department_id);
+            //$criteria->compare('department_id',$this->department_id);
+            $criteria->compare('request_department',$this->request_department,true);
             $criteria->compare('device_id',$this->device_id);
             $criteria->compare('request_problem',$this->request_problem,true);
             $criteria->compare('request_detail',$this->request_detail,true);

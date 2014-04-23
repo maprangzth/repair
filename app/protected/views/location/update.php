@@ -3,8 +3,8 @@
 /* @var $model Location */
 
 $this->breadcrumbs=array(
-	'Locations'=>array('index'),
-	$model->id=>array('view','id'=>$model->id),
+	'Locations',
+	//$model->id=>array('view','id'=>$model->id),
 	'Update',
 );
 

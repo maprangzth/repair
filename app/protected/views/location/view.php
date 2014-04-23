@@ -3,8 +3,8 @@
 /* @var $model Location */
 
 $this->breadcrumbs=array(
-	'Locations'=>array('index'),
-	$model->id,
+	'Locations',
+	$model->location_name,
 );
 
 $this->menu=array(
