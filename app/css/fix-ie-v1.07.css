@@ -1,0 +1,85 @@
+@charset "utf-8";
+/* CSS Document */
+
+a>* { display: inline !important; }
+*+html a>* { display: inline-blcok; }
+[class*="member-log-off"] a>* { display: block !important; }
+a header, a header>*, a header+* { display: inline; }
+*+html a header>* { display: block; }
+a>img { display: inline-block; }
+article[class^="hl-ch"] { width: 276px !important; height: 280px !important; padding: 0 12px; }
+[id="sec-entertain"] article[class^="hl-ch"] { height: 260px !important; }
+article[class^="hl-ch"] h3, article[class^="hl-ch"] h4, article[class^="hl-ch"] p { padding-left: 0 !important; padding-right: 0 !important; }
+article[class^="hl-ch"] img { margin-left: -12px; margin-right: -12px; margin-bottom: 9px !important; }
+*+html article[class^="hl-ch"] img { margin-bottom: 0 !important; }
+article[class^="hl-ch"] h3:after, article[class^="hl-ch"] h4:after { content: ' '; display: block; clear: both; margin-bottom: 3px; }
+[id="sec-campus"] [class*="_s-mg-r0x"] [class*="tab-arti133"] article p>a>*:after {content: ' '; display: block; }
+[id="sec-entertain"] div+div+div [class*="_s-mg-r0x"] ul>li a>b:after {content: ' '; display: block; }
+
+*+html [id="sec-entertain"] [class*="_s-mg-r0x"] [class*="list-text"],
+*+html [id="sec-entertain"] [class*="_ch-grid-4-8"]>div:first-child ul>li
+{ height: 1%;}
+
+*+html [id="sec-entertain"] div+div+div [class*="_s-mg-r0x"] ul>li p>a>*,
+*+html article[class^="hl-ch"] h3, *+html article[class^="hl-ch"] h4
+{ display: block !important;}
+
+section[id*="sec-"] div article { overflow: hidden; }
+[id="sec-entertain"] div article { overflow: visible !important; }
+[id*="tab-sport"]>div:first-child>div[class*="_s-mg-r0x"]>ul { margin-bottom: 25px; }
+.ico-hot>a { padding-right: 22px; }
+
+[class*="tab-arti140"] a { line-height: 14px !important; }
+*+html [class*="tab-arti140"] a>h4 { display: inline-block; line-height: 14px !important; }
+*+html [id="sec-campus"] [class*="_s-mg-r0x"] [class*="tab-arti133"] article p>a>* { display: block !important;}
+[class*="tab-arti140"] a>h4 { margin-left: 0; }
+
+*+html [id="sec-webboard"]>h2:first-child+*>*>* { height: 1%;}
+*+html [class*="slider-page"]>div:first-child { height: 1%; clear: both; padding-bottom: 10px; }
+*+html [class*="slider-page"]>div:first-child+* { float: left; height: 1%; }
+*+html [class="slider-page"]>footer { display: block; clear: both; height: 30px; background: #fdebd4;  }
+*+html [id="tab-variety-weekend"]>footer { bottom: 40px !important; overflow: visible; }
+*+html [id="tab-variety-weekend"]>footer>*:first-child { display: block; width: 634px; margin-right: 0; height: 30px; }
+*+html [class="slider-page"]>footer>*+*>*+* { background-position: -78px -361px; }
+*+html [class="slider-page"]>footer>*+*>*+*+* { margin-right: 0; }
+*+html [id="tab-news"]>footer>*+*>*+*+* { background-position: -160px -361px; }
+*+html [id="tab-entertainment"]>footer>*+*>*+*+* { background-position: -160px -421px !important; }
+*+html [id="tab-music"]>footer>*+*>*+*+* { background-position: -160px -661px !important; }
+*+html [id*="tab-variety"]>footer>*+*>*+*+* { background-position: -160px -481px !important; }
+*+html [id*="tab-game"]>footer>*+*>*+*+* { background-position: -160px -541px !important; }
+*+html [id*="tab-sport"]>footer>*+*>*+*+* { background-position: -160px -601px !important; }
+*+html article[class^="hl-ch"]>a>header>h4 { display: block; }
+
+*+html [id*="tab-sport"]>div:first-child { height: 288px; } 
+
+*+html [id="tab-news"]>div:first-child, *+html [id="tab-entertainment"]>div:first-child, *+html [id="tab-music"]>div:first-child, *+html [id="tab-variety"]>div:first-child, *+html [id="tab-game"]>div:first-child, *+html [id="tab-sport-2table"]>div:first-child { float: left; height: 290px; }
+*+html [id="tab-music"] ul[class*="list-text-short"] { border-top: none; }
+*+html [id="tab-music"] ul[class*="list-text-short"]>li:first-child, *+html [id="tab-music"] ul[class*="list-text-short"]>li:first-child+li { border-top: solid 1px #d7d7d7; }
+*+html [id="tab-music"] ul[class*="list-text-short"]>li { width: 138px !important; }
+*+html [id="tab-variety"] div>header { margin-bottom: -15px; }
+*+html div[id*="sec-"]>footer>*:first-child, *+html section[id*="sec-"]>footer>*:first-child, *+html div>section[id*="sec-"]+footer>*:first-child { line-height: 24px; }
+*+html div[id*="sec-"]>footer>*:first-child, *+html section[id*="sec-"]>footer>*:first-child, *+html div>section[id*="sec-"]+footer>*:first-child { line-height: 24px; }
+*+html section[id*="sec-"]>footer>div>*, *+html div>section[id*="sec-"]+footer>div>* { display: block; float: left; line-height: 28px !important; }
+*+html section[id*="sec-"]>footer>div>a, *+html div>section[id*="sec-"]+footer>div>a { line-height: 28px; }
+*+html [id="tab-variety-weekend"]>*:first-child>*:first-child+*>*:first-child { height: 1%; clear: left; }
+
+*+html [id="sec-men"] .ads { top: 82px !important; }
+*+html [id="sec-entertain"] .ads { top: 82px; }
+*+html [id="sec-gallery"] .ads { top: 83px; }
+*+html [id="sec-game"] .ads { top: 419px; }
+*+html [id="sec-money"] .ads { top: 292px; }
+
+[id="tab-variety"]>*:first-child>*+*+*>*:first-child, [id*="tab-sport"]>*:first-child>*+*+*>*:first-child, [id="tab-game"]>*:first-child>*+*+*>*:first-child,
+[id="tab-music"]>*:first-child>*+*+*>*:first-child+ul, [id="tab-variety-weekend"]>*:first-child>*+*+*>*:first-child
+{ margin-bottom: 15px !important; }
+
+*+html .go-to-top { top: 22px; }
+
+*+html [id="tab-variety"]>*:first-child>*+*+*>*:first-child { height: 120px; }
+*+html [id="tab-variety-weekend"]>*:first-child>[class*="_s-mg-r0x"]>*:first-child { height: 120px; }
+*+html [id="sec-travel"] h2+div>div:first-child+*+*>h3+* article { height: 140px !important; }
+*+html [id="sec-entertain"] ul[class*="list-ent-song"] { margin-bottom: 5px;}
+*+html [id="sec-women"]>h2:first-child+*>*>*+* article { height: 126px; }
+*+html [id="sec-webboard"]>div>div>div>div { height: 1%; }
+*+html [id="sec-webboard"]>div>div:first-child>div:first-child+div>* { height: 190px; }
+*+html [id="sec-entertain"]>[class*="_ch-grid-4-4-4x"] [class*="tab-arti133-2"] article>a>span { top: 1px;}

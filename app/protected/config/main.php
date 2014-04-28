@@ -8,7 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Repair System',
-        'defaultController' => 'Request/RequestForm',   // <--- add this line and replace with correct controller/action
+        //'defaultController' => 'Request/RequestForm',   // <--- add this line and replace with correct controller/action
         // กำหนด default ภาษา
         //'language' => 'th',
         // ตั้งค่า timeZone

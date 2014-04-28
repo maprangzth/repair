@@ -38,6 +38,9 @@ class Request extends CActiveRecord
     
         public $device_code; 
         public $location_name;
+        //public $helpdesk_repair;
+
+
 
         /**
 	 * @return string the associated database table name
@@ -56,7 +59,7 @@ class Request extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('request_by_user, request_en, request_ext, location_id, request_department, device_id, request_problem, request_detail', 'required'),
-			array('request_en, request_ext, location_id, device_id', 'numerical', 'integerOnly'=>true),
+			array('request_en, request_ext, location_id, device_id, helpdesk_repair', 'numerical', 'integerOnly'=>true),
 			array('request_by_user, user_accept_request, user_repair, user_close', 'length', 'max'=>50),
                         
                         array('request_en', 'length', 'min'=>6,'max'=>6),
@@ -74,7 +77,7 @@ class Request extends CActiveRecord
 			array('request_get_date, request_start_repair_date, request_end_repair_date, request_close_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, request_by_user, request_en, device_code, location_name, request_ext, request_email, location_id, request_department, device_id, request_problem, request_detail, request_remark, request_create_date, request_get_date, user_accept_request, request_start_repair_date, user_repair, request_end_repair_date, request_close_date, user_close, request_answer, request_repair_detail, request_status, request_end_remark', 'safe', 'on'=>'search'),
+			array('id, request_by_user, request_en, device_code, location_name, request_ext, request_email, location_id, request_department, device_id, request_problem, request_detail, request_remark, request_create_date, request_get_date, user_accept_request, request_start_repair_date, user_repair, helpdesk_repair, request_end_repair_date, request_close_date, user_close, request_answer, request_repair_detail, request_status, request_end_remark', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -89,6 +92,7 @@ class Request extends CActiveRecord
 			//'departments' => array(self::BELONGS_TO, 'Department', 'department_id'),
 			'devices' => array(self::BELONGS_TO, 'Device', 'device_id'),
 			'locations' => array(self::BELONGS_TO, 'Location', 'location_id'),
+                        'helpdesk_repairs' => array(self::BELONGS_TO, 'Location', 'helpdesk_repair'),
 		);
 	}
 
@@ -103,7 +107,7 @@ class Request extends CActiveRecord
 			'request_en' => 'En',
 			'request_ext' => 'Ext',
 			'request_email' => 'E-mail',
-			'location_id' => 'Location',
+			'location_id' => 'Location (User)',
 			'request_department' => 'Department',
 			'device_id' => 'Device',
 			'request_problem' => 'Problem',
@@ -113,11 +117,12 @@ class Request extends CActiveRecord
 			'request_get_date' => 'Accept date',
 			'user_accept_request' => 'Accept by',
 			'request_start_repair_date' => 'Start repair date',
-			'user_repair' => 'Repair by',
+			'user_repair' => 'Repair by (User)',
+                        'helpdesk_repair' => 'Repair by (Helpdesk)',
 			'request_end_repair_date' => 'End repair date',
 			'request_close_date' => 'Close job date',
 			'user_close' => 'Close job by',
-			'request_answer' => 'Cause symptoms',
+			'request_answer' => 'Cause',
 			'request_repair_detail' => 'Repair detail',
 			'request_status' => 'Status',
 			'request_end_remark' => 'Close job remark',
@@ -167,6 +172,7 @@ class Request extends CActiveRecord
 		$criteria->compare('user_accept_request',$this->user_accept_request,true);
 		$criteria->compare('request_start_repair_date',$this->request_start_repair_date,true);
 		$criteria->compare('user_repair',$this->user_repair,true);
+                //$criteria->compare('helpdesk_repair',$this->helpdesk_repair,true);
 		$criteria->compare('request_end_repair_date',$this->request_end_repair_date,true);
 		$criteria->compare('request_close_date',$this->request_close_date,true);
 		$criteria->compare('user_close',$this->user_close,true);
@@ -188,7 +194,14 @@ class Request extends CActiveRecord
                         $criteria->with = array('locations');
                         $criteria->compare('locations.location_name',$this->location_name,true);
                 }
-
+                
+                if($this->helpdesk_repair)
+                {
+                        $criteria->together  =  true;
+                        $criteria->with = array('helpdesk_repairs');
+                        $criteria->compare('helpdesk_repairs.location_name',$this->helpdesk_repair,true);
+                }
+                
 		return new CActiveDataProvider(get_class($this), array(
                         'pagination'=>array(
                                 'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
@@ -217,6 +230,7 @@ class Request extends CActiveRecord
             $criteria->compare('user_accept_request',$this->user_accept_request,true);
             $criteria->compare('request_start_repair_date',$this->request_start_repair_date,true);
             $criteria->compare('user_repair',$this->user_repair,true);
+            $criteria->compare('helpdesk_repair',$this->helpdesk_repair,true);
             $criteria->compare('request_end_repair_date',$this->request_end_repair_date,true);
             $criteria->compare('request_close_date',$this->request_close_date,true);
             $criteria->compare('user_close',$this->user_close,true);
@@ -250,6 +264,7 @@ class Request extends CActiveRecord
             $criteria->compare('user_accept_request',$this->user_accept_request,true);
             $criteria->compare('request_start_repair_date',$this->request_start_repair_date,true);
             $criteria->compare('user_repair',$this->user_repair,true);
+            $criteria->compare('helpdesk_repair',$this->helpdesk_repair,true);
             $criteria->compare('request_end_repair_date',$this->request_end_repair_date,true);
             $criteria->compare('request_close_date',$this->request_close_date,true);
             $criteria->compare('user_close',$this->user_close,true);
@@ -285,6 +300,7 @@ class Request extends CActiveRecord
             $criteria->compare('user_accept_request',$this->user_accept_request,true);
             $criteria->compare('request_start_repair_date',$this->request_start_repair_date,true);
             $criteria->compare('user_repair',$this->user_repair,true);
+            $criteria->compare('helpdesk_repair',$this->helpdesk_repair,true);
             $criteria->compare('request_end_repair_date',$this->request_end_repair_date,true);
             $criteria->compare('request_close_date',$this->request_close_date,true);
             $criteria->compare('user_close',$this->user_close,true);

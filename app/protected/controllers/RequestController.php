@@ -343,6 +343,7 @@ class RequestController extends RController
                     'request_start_repair_date',
                     'request_end_repair_date',
                     'user_repair',
+                    'helpdesk_repairs.location_name',
                     'request_close_date',
                     'user_close',
                     'request_status',

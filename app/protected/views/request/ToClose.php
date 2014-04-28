@@ -17,7 +17,7 @@ $this->breadcrumbs=array(
                     'type' => 'html',
                     'value' => array($model, 'getButtonCloseJobView'),
                     'htmlOptions' => array(
-                        'width' => '100px',
+                        'width' => '150px',
                         'align' => 'center'
                     )
             ),
@@ -29,24 +29,28 @@ $this->breadcrumbs=array(
                 )
             ),
             array(
-                'name' => 'location_id',
-                'value' => '$data->locations->location_name',
-                'htmlOptions' => array(
-                    'width' => '65px'
-                )
-            ),
-            array(
                 'name' => 'request_by_user',
                 'value' => '$data->request_by_user',
                 'htmlOptions' => array(
-                    'width' => '100px'
+                    'width' => '150px'
                 )
             ),
             array(
 			'name'=>'request_email',
 			'type'=>'raw',
 			'value'=>'CHtml::link(UHtml::markSearch($data,"request_email"), "mailto:".$data->request_email)',
+                        'htmlOptions' => array(
+                            'width' => '250px'
+                        )
             ),
+            array(
+                'name' => 'helpdesk_repair',
+                'value' => '$data->helpdesk_repairs->location_name',
+                'htmlOptions' => array(
+                    'width' => '65px'
+                )
+            ),
+            
             /*
             array(
                 'name' => 'request_create_date',
@@ -58,6 +62,7 @@ $this->breadcrumbs=array(
             ),
              * 
              */
+            /*
             array(
                 'name' => 'request_start_repair_date',
                 'value' => '$data->request_start_repair_date',
@@ -66,11 +71,13 @@ $this->breadcrumbs=array(
                     'align' => 'center'
                 )
             ),
+             * 
+             */
             array(
                 'name' => 'request_end_repair_date',
                 'value' => '$data->request_end_repair_date',
                 'htmlOptions' => array(
-                    'width' => '165px',
+                    'width' => '145px',
                     'align' => 'center'
                 )
             ),

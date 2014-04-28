@@ -154,7 +154,65 @@ if(!Yii::app()->user->isGuest) {
 		<?php echo $form->error($model,'request_answer'); ?>
 	</div>
         */ ?>
+        <div class="column">
+		<?php echo $form->labelEx($model,'En'); ?>
+		<?php echo $form->textField($model,'request_en',array(
+                            'disabled' => 'disabled',
+                            'size' => 50,
+                )); ?>
+		<?php echo $form->error($model,'request_en'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'Ext'); ?>
+		<?php echo $form->textField($model,'request_ext', array(
+                            'disabled' => 'disabled',
+                            'size' => 50,
+                )); ?>
+		<?php echo $form->error($model,'request_ext'); ?>
+	</div>
+        
+	<div class="column">
+		<?php echo $form->labelEx($model,'Location'); ?>
+		<?php echo $form->textField($model,'location_id', array(
+                            'disabled' => 'disabled',
+                            'size' => 50,
+                            'value' => $model->locations->location_name,
+                )); ?>
+		<?php echo $form->error($model,'location_id'); ?>
+	</div>
+
+	<?php /*
+	<div class="row">
+		<?php echo $form->labelEx($model,'Department'); ?>
+		<?php echo $form->textField($model,'department_id', array(
+                            'disabled' => 'disabled',
+                            'size' => 50,
+                            'value' => $model->departments->department_name,
+                )); ?>
+		<?php echo $form->error($model,'department_id'); ?>
+	</div>
+        */ ?>
+
         <div class="row">
+		<?php echo $form->labelEx($model,'request_department'); ?>
+		<?php echo $form->textField($model,'request_department', array(
+                            'disabled' => 'disabled',
+                            'size' => 50,
+                )); ?>
+		<?php echo $form->error($model,'request_department'); ?>
+	</div>
+        
+        <div class="row">
+		<?php echo $form->labelEx($model,'E-mail'); ?>
+		<?php echo $form->textField($model,'request_email', array(
+                            'disabled' => 'disabled',
+                            'size' => 107,
+                )); ?>
+		<?php echo $form->error($model,'request_email'); ?>
+	</div>
+        
+	<div class="row">
 		<?php echo $form->labelEx($model,'request_problem'); ?>
 		<?php echo $form->textField($model,'request_problem', array(
                             'disabled' => 'disabled', 'size' => 107,)); ?>

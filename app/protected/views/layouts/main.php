@@ -3,9 +3,13 @@
 <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="repair-system-wd">
 	<meta name="author" content="k.kamsamur@gmail.com">
+        
+        <?php $baseUrl = Yii::app()->request->baseUrl; ?>
 
 	<!-- blueprint CSS framework -->
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
@@ -16,6 +20,8 @@
         
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
+        
+        <link href="/css/fix-ie-v1.07.css" rel="stylesheet" type="text/css"/>
         
         <link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/images/favicon.ico" type="image/x-icon" />
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
@@ -55,7 +61,7 @@
                                         array('label'=>'Closed Job', 'url'=>array('/request/ClosedJob'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                                         array('label'=>'Manage Repair', 'url'=>array('/request/admin'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                                         array('label'=>'Location', 'url'=>array('/location/admin'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
-                                        array('label'=>'Department', 'url'=>array('/department/admin'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
+                                        //array('label'=>'Department', 'url'=>array('/department/index'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                                         array('label'=>'Device', 'url'=>array('/device/admin'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                                         array('label'=>'Device Type', 'url'=>array('/devicetype/admin'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),
                                         array('label'=>'Device Brand', 'url'=>array('/devicebrand/admin'), 'visible'=>Yii::app()->user->checkAccess(Rights::module()->helpdeskName)),

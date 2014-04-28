@@ -29,13 +29,6 @@ $this->breadcrumbs=array(
                 )
             ),
             array(
-                'name' => 'location_id',
-                'value' => '$data->locations->location_name',
-                'htmlOptions' => array(
-                    'width' => '65px'
-                )
-            ),
-            array(
                 'name' => 'request_by_user',
                 'value' => '$data->request_by_user',
                 'htmlOptions' => array(
@@ -43,10 +36,17 @@ $this->breadcrumbs=array(
                 )
             ),
             array(
-                'name' => 'request_create_date',
-                'value' => '$data->request_create_date',
+                'name' => 'location_id',
+                'value' => '$data->locations->location_name',
                 'htmlOptions' => array(
-                    'width' => '125px',
+                    'width' => '50px'
+                )
+            ),
+            array(
+                'name' => 'request_get_date',
+                'value' => '$data->request_get_date',
+                'htmlOptions' => array(
+                    'width' => '95px',
                     'align' => 'center'
                 )
             ),

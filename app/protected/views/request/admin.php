@@ -82,8 +82,12 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		'request_ext',
 		'request_email',
 		array(
-                        'name'=>'location_name',
+                        'name'=>'location_id',
                         'value'=>'$data->locations->location_name',
+                ),
+                array(
+                        'name'=>'helpdesk_repair',
+                        'value'=>'$data->helpdesk_repairs->location_name',
                 ),
                 array(
                     'name' => 'request_status',

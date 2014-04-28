@@ -6,25 +6,25 @@
 
 $this->breadcrumbs=array(
 	'Requests',
-	'CheckStatusForm',
+	'Closed Job',
 );
-if(Yii::app()->user->isGuest) {
+if(!Yii::app()->user->isGuest) {
 	$this->layout='//layouts/column2';
         $this->menu=array(
-                array('label'=>'List Request', 'url'=>array('CheckStatus')),
+                array('label'=>'List Request', 'url'=>array('ClosedJob')),
                 //array('label'=>'Create Request', 'url'=>array('create')),
                 //array('label'=>'View Request', 'url'=>array('view', 'id'=>$model->id)),
-                //array('label'=>'Manage Request', 'url'=>array('admin')),
+                array('label'=>'Manage Request', 'url'=>array('admin')),
         );
 }
 ?>
 
-<h1>Detail request #<?php echo $model->devices->device_code; ?></h1>
+<h1>Closed Job # <?php echo $model->devices->device_code; ?></h1>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'request-CheckStatusForm-form',
+	'id'=>'request-RequestGetRequestForm-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// See class documentation of CActiveForm for details on this,
@@ -47,7 +47,7 @@ if(Yii::app()->user->isGuest) {
 	<div class="column">
 		<?php echo $form->labelEx($model,'En'); ?>
 		<?php echo $form->textField($model,'request_en',array(
-                            'disabled' => 'disabled',
+                            //'disabled' => 'disabled',
                             'size' => 50,
                 )); ?>
 		<?php echo $form->error($model,'request_en'); ?>
@@ -56,7 +56,7 @@ if(Yii::app()->user->isGuest) {
 	<div class="row">
 		<?php echo $form->labelEx($model,'Ext'); ?>
 		<?php echo $form->textField($model,'request_ext', array(
-                            'disabled' => 'disabled',
+                            //'disabled' => 'disabled',
                             'size' => 50,
                 )); ?>
 		<?php echo $form->error($model,'request_ext'); ?>
@@ -72,7 +72,7 @@ if(Yii::app()->user->isGuest) {
 		<?php echo $form->error($model,'location_id'); ?>
 	</div>
 
-        <?php /*
+	<?php /*
 	<div class="row">
 		<?php echo $form->labelEx($model,'Department'); ?>
 		<?php echo $form->textField($model,'department_id', array(
@@ -94,10 +94,10 @@ if(Yii::app()->user->isGuest) {
 	</div>
         
         <div class="row">
-		<?php echo $form->labelEx($model,'request_email'); ?>
+		<?php echo $form->labelEx($model,'E-mail'); ?>
 		<?php echo $form->textField($model,'request_email', array(
                             'disabled' => 'disabled',
-                            'size' => 108,
+                            'size' => 107,
                 )); ?>
 		<?php echo $form->error($model,'request_email'); ?>
 	</div>
@@ -105,14 +105,15 @@ if(Yii::app()->user->isGuest) {
 	<div class="row">
 		<?php echo $form->labelEx($model,'Problem'); ?>
 		<?php echo $form->textField($model,'request_problem', array(
-                            'disabled' => 'disabled', 'size' => 108,)); ?>
+                            //'disabled' => 'disabled', 'size' => 107,
+                            )); ?>
 		<?php echo $form->error($model,'request_problem'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Detail'); ?>
 		<?php echo $form->textArea($model,'request_detail', array(
-                            'disabled' => "disabled",
+                            //'disabled' => "disabled",
                             'rows'=>6,
                             'cols'=>82,
             )); ?>
@@ -159,7 +160,7 @@ if(Yii::app()->user->isGuest) {
 	</div>
         
         <div class="row">
-                <?php echo $form->labelEx($model,'Request by'); ?>
+                <?php echo $form->labelEx($model,'Request By'); ?>
                 <?php echo $form->textField($model,'request_by_user',array(
                     'disabled' => 'disabled',
                     'size' => 50,
@@ -201,20 +202,48 @@ if(Yii::app()->user->isGuest) {
                 )); ?>
 		<?php echo $form->error($model,'user_repair'); ?>
 	</div>
-      
+        
         <div class="row">
             <?php echo $form->labelEx($model, 'request_end_repair_date'); ?>
             <?php echo $form->textField($model, 'request_end_repair_date', array(
                             'disabled' => 'disabled',
-                            'size' => 108
+                            'size' => 107
             )); ?>
             <?php echo $form->error($model,'request_end_repair_date'); ?>
 	</div>
     
-        <div class="row buttons">
-		<?php echo CHtml::submitButton('Back'); ?>
+        <div class="column">
+            <?php echo $form->labelEx($model, 'request_close_date'); ?>
+            <?php echo $form->textField($model, 'request_close_date', array(
+                            'disabled' => 'disabled',
+                            'size' => 50
+            )); ?>
+            <?php echo $form->error($model,'request_close_date'); ?>
 	</div>
-
+        
+        <div class="row">
+		<?php echo $form->labelEx($model,'user_close'); ?>
+		<?php echo $form->textField($model,'user_close', array(
+                            'disabled' => 'disabled',
+                            'size' => 50,
+                )); ?>
+		<?php echo $form->error($model,'user_close'); ?>
+	</div>
+        
+        <div class="row">
+		<?php echo $form->labelEx($model,'Close job remark'); ?>
+		<?php echo $form->textArea($model,'request_end_remark', array(
+                            'disabled' => "disabled",
+                            'rows'=>6,
+                            'cols'=>82,
+            )); ?>
+		<?php echo $form->error($model,'request_repair_detail'); ?>
+	</div>
+    
+	<div class="row buttons">
+		<?php echo CHtml::submitButton('Submit'); ?>
+	</div>
+        
         <?php echo $form->hiddenField($model, 'request_status'); ?>
         
 <?php $this->endWidget(); ?>
