@@ -2,21 +2,21 @@
 -- version 2.10.3
 -- http://www.phpmyadmin.net
 -- 
--- โฮสต์: localhost
--- เวลาในการสร้าง: 
--- รุ่นของเซิร์ฟเวอร์: 5.0.51
--- รุ่นของ PHP: 5.2.6
+-- Host: localhost
+-- Generation Time: Apr 25, 2014 at 05:46 PM
+-- Server version: 5.0.51
+-- PHP Version: 5.2.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 -- 
--- ฐานข้อมูล: `db_repair`
+-- Database: `db_repair`
 -- 
 
 -- --------------------------------------------------------
 
 -- 
--- โครงสร้างตาราง `authassignment`
+-- Table structure for table `authassignment`
 -- 
 
 DROP TABLE IF EXISTS `authassignment`;
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `authassignment` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- 
--- dump ตาราง `authassignment`
+-- Dumping data for table `authassignment`
 -- 
 
 INSERT INTO `authassignment` VALUES ('Admin', '1', NULL, 'N;');
@@ -55,11 +55,13 @@ INSERT INTO `authassignment` VALUES ('Helpdesk', '12', NULL, 'N;');
 INSERT INTO `authassignment` VALUES ('Helpdesk', '13', NULL, 'N;');
 INSERT INTO `authassignment` VALUES ('Helpdesk', '14', NULL, 'N;');
 INSERT INTO `authassignment` VALUES ('Helpdesk', '15', NULL, 'N;');
+INSERT INTO `authassignment` VALUES ('Admin', '14', NULL, 'N;');
+INSERT INTO `authassignment` VALUES ('Helpdesk', '16', NULL, 'N;');
 
 -- --------------------------------------------------------
 
 -- 
--- โครงสร้างตาราง `authitem`
+-- Table structure for table `authitem`
 -- 
 
 DROP TABLE IF EXISTS `authitem`;
@@ -73,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `authitem` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- 
--- dump ตาราง `authitem`
+-- Dumping data for table `authitem`
 -- 
 
 INSERT INTO `authitem` VALUES ('Admin', 2, 'Administrator', NULL, 'N;');
@@ -134,11 +136,19 @@ INSERT INTO `authitem` VALUES ('Request.EndRepair', 0, NULL, NULL, 'N;');
 INSERT INTO `authitem` VALUES ('Request.CloseJobForm', 0, NULL, NULL, 'N;');
 INSERT INTO `authitem` VALUES ('Request.CloseJob', 0, NULL, NULL, 'N;');
 INSERT INTO `authitem` VALUES ('Request.CheckStatus', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Device.Export', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Device.GetExportFile', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.ClosedJobForm', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.ToCloseForm', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.Export', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.GetExportFile', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.ClosedJob', 0, NULL, NULL, 'N;');
+INSERT INTO `authitem` VALUES ('Request.ToClose', 0, NULL, NULL, 'N;');
 
 -- --------------------------------------------------------
 
 -- 
--- โครงสร้างตาราง `authitemchild`
+-- Table structure for table `authitemchild`
 -- 
 
 DROP TABLE IF EXISTS `authitemchild`;
@@ -150,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `authitemchild` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- 
--- dump ตาราง `authitemchild`
+-- Dumping data for table `authitemchild`
 -- 
 
 INSERT INTO `authitemchild` VALUES ('Guest', 'Request.CheckStatus');
@@ -168,6 +178,8 @@ INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Department.View');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Device.Admin');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Device.Create');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Device.Delete');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Device.Export');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Device.GetExportFile');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Device.Index');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Device.Update');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Device.View');
@@ -201,37 +213,43 @@ INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.CheckRequestStatus');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.CheckRequestStatusForm');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.CheckStatus');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.CheckStatusForm');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.ClosedJob');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.ClosedJobForm');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.CloseJob');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.CloseJobForm');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.Create');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.Delete');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.EndRepair');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.EndRepairForm');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.Export');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.GetExportFile');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.Index');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.RequestForm');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.RequestGetRepair');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.RequestGetRepairForm');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.RequestGetRequest');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.RequestGetRequestForm');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.ToClose');
+INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.ToCloseForm');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.Update');
 INSERT INTO `authitemchild` VALUES ('Helpdesk', 'Request.View');
 
 -- --------------------------------------------------------
 
 -- 
--- โครงสร้างตาราง `departments`
+-- Table structure for table `departments`
 -- 
 
 DROP TABLE IF EXISTS `departments`;
 CREATE TABLE IF NOT EXISTS `departments` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
-  `department_name` varchar(50) NOT NULL COMMENT 'Department',
+  `department_name` varchar(50) collate utf8_unicode_ci NOT NULL COMMENT 'Department',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `department_name_UNIQUE` (`department_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=96 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=96 ;
 
 -- 
--- dump ตาราง `departments`
+-- Dumping data for table `departments`
 -- 
 
 INSERT INTO `departments` VALUES (14, '1ST LEVEL DRIVE FAILURE ANALYSIS');
@@ -333,31 +351,31 @@ INSERT INTO `departments` VALUES (95, 'WYKO/AFM');
 -- --------------------------------------------------------
 
 -- 
--- โครงสร้างตาราง `devices`
+-- Table structure for table `devices`
 -- 
 
 DROP TABLE IF EXISTS `devices`;
 CREATE TABLE IF NOT EXISTS `devices` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
-  `device_code` varchar(50) NOT NULL COMMENT 'Device Code',
+  `device_code` varchar(50) collate utf8_unicode_ci NOT NULL COMMENT 'Device Code',
   `device_type_id` int(11) NOT NULL COMMENT 'Device Type',
   `device_brand_id` int(11) NOT NULL COMMENT 'Device Brand',
   `device_model_id` int(11) NOT NULL COMMENT 'Device Model',
   `location_id` int(11) NOT NULL COMMENT 'Location',
   `device_create_at` timestamp NOT NULL default CURRENT_TIMESTAMP COMMENT 'Create at',
-  `device_owner` varchar(255) NOT NULL COMMENT 'Device  Owner',
+  `device_owner` varchar(255) collate utf8_unicode_ci NOT NULL COMMENT 'Device  Owner',
   `device_buy_date` timestamp NOT NULL default '0000-00-00 00:00:00' COMMENT 'Device buy date',
   `device_warranty_expire` timestamp NOT NULL default '0000-00-00 00:00:00' COMMENT 'Device warranty expire',
-  `device_remark` varchar(255) NOT NULL COMMENT 'Remark',
+  `device_remark` varchar(255) collate utf8_unicode_ci NOT NULL COMMENT 'Remark',
   PRIMARY KEY  (`id`),
   KEY `device_type_device` (`device_type_id`),
   KEY `device_location_device` (`location_id`),
   KEY `device_model_device` (`device_model_id`),
   KEY `device_brand_device` (`device_brand_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=727 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=740 ;
 
 -- 
--- dump ตาราง `devices`
+-- Dumping data for table `devices`
 -- 
 
 INSERT INTO `devices` VALUES (1, 'DELL', 1, 2, 1, 6, '2014-03-31 11:24:55', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'IT-Helpdesk Spare B6');
@@ -617,7 +635,7 @@ INSERT INTO `devices` VALUES (255, 'WDTN041', 6, 6, 12, 4, '0000-00-00 00:00:00'
 INSERT INTO `devices` VALUES (256, 'WDTN00110', 6, 6, 12, 4, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
 INSERT INTO `devices` VALUES (257, 'WDT12-190', 6, 6, 12, 4, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
 INSERT INTO `devices` VALUES (258, 'WDT00760', 6, 6, 12, 4, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
-INSERT INTO `devices` VALUES (259, 'wdt4l00032', 6, 6, 12, 4, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
+INSERT INTO `devices` VALUES (259, 'WDT4L00032', 6, 6, 12, 4, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
 INSERT INTO `devices` VALUES (260, 'WDT6L14-0115', 6, 6, 12, 6, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
 INSERT INTO `devices` VALUES (261, 'WDT6L14-0006', 6, 6, 12, 6, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
 INSERT INTO `devices` VALUES (262, 'WDT6L14-0007', 6, 6, 12, 6, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
@@ -1052,7 +1070,7 @@ INSERT INTO `devices` VALUES (690, 'WDT02488', 1, 2, 3, 4, '0000-00-00 00:00:00'
 INSERT INTO `devices` VALUES (691, 'WDT002275', 1, 2, 3, 4, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
 INSERT INTO `devices` VALUES (692, 'WDT02480', 1, 2, 3, 4, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
 INSERT INTO `devices` VALUES (693, 'WDT02293', 1, 2, 3, 4, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
-INSERT INTO `devices` VALUES (694, 'wdt02289', 1, 2, 3, 4, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
+INSERT INTO `devices` VALUES (694, 'WDT02289', 1, 2, 3, 4, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
 INSERT INTO `devices` VALUES (695, 'WDT02490', 1, 2, 3, 4, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
 INSERT INTO `devices` VALUES (696, 'WDT02411', 1, 2, 3, 4, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
 INSERT INTO `devices` VALUES (697, 'WDT102508', 1, 2, 3, 4, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
@@ -1065,7 +1083,7 @@ INSERT INTO `devices` VALUES (703, 'WDT02288', 1, 2, 3, 4, '0000-00-00 00:00:00'
 INSERT INTO `devices` VALUES (704, 'WDT02313', 1, 2, 3, 4, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
 INSERT INTO `devices` VALUES (705, 'WDT02445', 1, 2, 3, 4, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
 INSERT INTO `devices` VALUES (706, 'wdt00329', 1, 2, 3, 4, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
-INSERT INTO `devices` VALUES (707, 'wdt02505', 1, 2, 3, 4, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
+INSERT INTO `devices` VALUES (707, 'WDT02505', 1, 2, 3, 4, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
 INSERT INTO `devices` VALUES (708, 'WDT02377', 1, 2, 4, 4, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
 INSERT INTO `devices` VALUES (709, 'WDT02668', 1, 2, 4, 4, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
 INSERT INTO `devices` VALUES (710, 'WDT02624', 1, 2, 4, 4, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
@@ -1085,23 +1103,32 @@ INSERT INTO `devices` VALUES (723, 'SORTINGTB4-9217', 1, 1, 10, 4, '0000-00-00 0
 INSERT INTO `devices` VALUES (724, 'WDT02605', 1, 2, 4, 6, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
 INSERT INTO `devices` VALUES (725, 'WDT3_00616', 1, 2, 2, 6, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
 INSERT INTO `devices` VALUES (726, 'WDT02387', 1, 2, 3, 6, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
+INSERT INTO `devices` VALUES (727, 'WDT6L14-0210', 1, 2, 13, 6, '2014-04-23 14:14:04', 'Den Srisawang                  ', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'New computer');
+INSERT INTO `devices` VALUES (728, 'WDT6L14-0211', 1, 2, 13, 6, '2014-04-23 14:14:35', 'Natdhanaipol Naksub       ', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'New computer');
+INSERT INTO `devices` VALUES (733, 'WDT4L00510', 6, 6, 12, 6, '2014-04-23 15:25:07', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'ASUS P5QG41T-M LX');
+INSERT INTO `devices` VALUES (734, 'WDT4OA14-0296', 1, 2, 1, 6, '2014-04-24 09:46:26', 'Prachak_S', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
+INSERT INTO `devices` VALUES (735, 'WDT4L00523', 6, 6, 12, 6, '2014-04-24 15:52:50', 'Waranya_J', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
+INSERT INTO `devices` VALUES (736, 'WDTN00496', 1, 2, 9, 6, '2014-04-25 08:02:37', 'Toolong teardown', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
+INSERT INTO `devices` VALUES (737, 'WDT6L14-0126', 1, 2, 1, 6, '2014-04-25 08:13:16', 'Aimamorn_S', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
+INSERT INTO `devices` VALUES (738, 'WDT6L14-0120', 1, 2, 1, 6, '2014-04-25 08:13:36', 'Aimamorn_S', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
+INSERT INTO `devices` VALUES (739, 'WDT3_00210', 1, 2, 7, 2, '2014-04-25 11:02:52', 'Taverit_B', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
 -- 
--- โครงสร้างตาราง `device_brands`
+-- Table structure for table `device_brands`
 -- 
 
 DROP TABLE IF EXISTS `device_brands`;
 CREATE TABLE IF NOT EXISTS `device_brands` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
-  `device_brand_name` varchar(50) NOT NULL COMMENT 'Device Brand',
+  `device_brand_name` varchar(50) collate utf8_unicode_ci NOT NULL COMMENT 'Device Brand',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `device_brand_name` (`device_brand_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 -- 
--- dump ตาราง `device_brands`
+-- Dumping data for table `device_brands`
 -- 
 
 INSERT INTO `device_brands` VALUES (1, 'ACER');
@@ -1114,21 +1141,21 @@ INSERT INTO `device_brands` VALUES (4, 'TOSHIBA');
 -- --------------------------------------------------------
 
 -- 
--- โครงสร้างตาราง `device_models`
+-- Table structure for table `device_models`
 -- 
 
 DROP TABLE IF EXISTS `device_models`;
 CREATE TABLE IF NOT EXISTS `device_models` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
   `device_brand_id` int(11) NOT NULL COMMENT 'Device Brand',
-  `device_model_name` varchar(50) NOT NULL COMMENT 'Device Model',
+  `device_model_name` varchar(50) collate utf8_unicode_ci NOT NULL COMMENT 'Device Model',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `device_model_name` (`device_model_name`),
   KEY `device_model_device_brand_id` (`device_brand_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
 
 -- 
--- dump ตาราง `device_models`
+-- Dumping data for table `device_models`
 -- 
 
 INSERT INTO `device_models` VALUES (1, 2, 'Optiplex 3010');
@@ -1143,23 +1170,24 @@ INSERT INTO `device_models` VALUES (9, 2, 'Optiplex 210L');
 INSERT INTO `device_models` VALUES (10, 1, 'Veriton S661');
 INSERT INTO `device_models` VALUES (11, 1, 'Veriton M661');
 INSERT INTO `device_models` VALUES (12, 6, 'Computer sets');
+INSERT INTO `device_models` VALUES (13, 2, 'Optiplex 7010');
 
 -- --------------------------------------------------------
 
 -- 
--- โครงสร้างตาราง `device_types`
+-- Table structure for table `device_types`
 -- 
 
 DROP TABLE IF EXISTS `device_types`;
 CREATE TABLE IF NOT EXISTS `device_types` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
-  `device_type_name` varchar(50) NOT NULL COMMENT 'Device Type',
+  `device_type_name` varchar(50) collate utf8_unicode_ci NOT NULL COMMENT 'Device Type',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `device_type_name` (`device_type_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 -- 
--- dump ตาราง `device_types`
+-- Dumping data for table `device_types`
 -- 
 
 INSERT INTO `device_types` VALUES (4, 'Accessories');
@@ -1172,19 +1200,19 @@ INSERT INTO `device_types` VALUES (3, 'Printer');
 -- --------------------------------------------------------
 
 -- 
--- โครงสร้างตาราง `locations`
+-- Table structure for table `locations`
 -- 
 
 DROP TABLE IF EXISTS `locations`;
 CREATE TABLE IF NOT EXISTS `locations` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
-  `location_name` varchar(50) NOT NULL COMMENT 'Location',
+  `location_name` varchar(50) collate utf8_unicode_ci NOT NULL COMMENT 'Location',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `location_name` (`location_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 -- 
--- dump ตาราง `locations`
+-- Dumping data for table `locations`
 -- 
 
 INSERT INTO `locations` VALUES (1, 'Building 1');
@@ -1198,19 +1226,19 @@ INSERT INTO `locations` VALUES (7, 'NAVA');
 -- --------------------------------------------------------
 
 -- 
--- โครงสร้างตาราง `profiles`
+-- Table structure for table `profiles`
 -- 
 
 DROP TABLE IF EXISTS `profiles`;
 CREATE TABLE IF NOT EXISTS `profiles` (
   `user_id` int(11) NOT NULL auto_increment,
-  `lastname` varchar(50) NOT NULL default '',
-  `firstname` varchar(50) NOT NULL default '',
+  `lastname` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
+  `firstname` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
   PRIMARY KEY  (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 -- 
--- dump ตาราง `profiles`
+-- Dumping data for table `profiles`
 -- 
 
 INSERT INTO `profiles` VALUES (1, 'Admin', 'Administrator');
@@ -1226,13 +1254,13 @@ INSERT INTO `profiles` VALUES (10, 'Namtapee', 'Wichcha');
 INSERT INTO `profiles` VALUES (11, 'Ngamchan', 'Surachai');
 INSERT INTO `profiles` VALUES (12, 'Pankasem', 'Attaphol');
 INSERT INTO `profiles` VALUES (13, 'Klungchamnan', 'Phattarakorn');
-INSERT INTO `profiles` VALUES (14, 'Khudruan', 'Chunthira');
 INSERT INTO `profiles` VALUES (15, 'Summakuant', 'Sathit');
+INSERT INTO `profiles` VALUES (16, 'Khudruan', 'Chunthira');
 
 -- --------------------------------------------------------
 
 -- 
--- โครงสร้างตาราง `profiles_fields`
+-- Table structure for table `profiles_fields`
 -- 
 
 DROP TABLE IF EXISTS `profiles_fields`;
@@ -1258,7 +1286,7 @@ CREATE TABLE IF NOT EXISTS `profiles_fields` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 -- 
--- dump ตาราง `profiles_fields`
+-- Dumping data for table `profiles_fields`
 -- 
 
 INSERT INTO `profiles_fields` VALUES (1, 'lastname', 'Last Name', 'VARCHAR', '50', '3', 1, '', '', 'Incorrect Last Name (length between 3 and 50 characters).', '', '', '', '', 1, 3);
@@ -1267,56 +1295,58 @@ INSERT INTO `profiles_fields` VALUES (2, 'firstname', 'First Name', 'VARCHAR', '
 -- --------------------------------------------------------
 
 -- 
--- โครงสร้างตาราง `requests`
+-- Table structure for table `requests`
 -- 
 
 DROP TABLE IF EXISTS `requests`;
 CREATE TABLE IF NOT EXISTS `requests` (
   `id` int(11) NOT NULL auto_increment COMMENT 'ID',
-  `request_by_user` varchar(50) character set utf8 NOT NULL COMMENT 'Requested by',
-  `request_en` int(11) NOT NULL COMMENT 'En.',
-  `request_ext` int(5) NOT NULL COMMENT 'Ext.',
-  `request_email` varchar(125) character set utf8 NOT NULL COMMENT 'E-mail',
+  `request_by_user` varchar(50) collate utf8_unicode_ci NOT NULL COMMENT 'Requested by',
+  `request_en` int(6) unsigned zerofill NOT NULL COMMENT 'En.',
+  `request_ext` int(5) unsigned zerofill NOT NULL COMMENT 'Ext.',
+  `request_email` varchar(125) collate utf8_unicode_ci NOT NULL COMMENT 'E-mail',
   `location_id` int(11) NOT NULL COMMENT 'Location',
-  `department_id` int(11) NOT NULL COMMENT 'Department',
+  `request_department` varchar(125) collate utf8_unicode_ci NOT NULL COMMENT 'Department',
   `device_id` int(11) NOT NULL COMMENT 'Device',
-  `request_problem` varchar(500) character set utf8 NOT NULL COMMENT 'Requests problem',
-  `request_detail` text character set utf8 NOT NULL COMMENT 'Requests detail',
-  `request_remark` text character set utf8 NOT NULL COMMENT 'Requests remark',
+  `request_problem` varchar(500) collate utf8_unicode_ci NOT NULL COMMENT 'Requests problem',
+  `request_detail` text collate utf8_unicode_ci NOT NULL COMMENT 'Requests detail',
+  `request_remark` text collate utf8_unicode_ci NOT NULL COMMENT 'Requests remark',
   `request_create_date` timestamp NOT NULL default CURRENT_TIMESTAMP COMMENT 'Requests date',
   `request_get_date` datetime NOT NULL COMMENT 'Accepted request date',
-  `user_accept_request` varchar(50) character set utf8 NOT NULL COMMENT 'Accepted by',
+  `user_accept_request` varchar(50) collate utf8_unicode_ci NOT NULL COMMENT 'Accepted by',
   `request_start_repair_date` datetime NOT NULL COMMENT 'Start repair date',
-  `user_repair` varchar(50) character set utf8 NOT NULL COMMENT 'Repair by',
+  `user_repair` varchar(50) collate utf8_unicode_ci NOT NULL COMMENT 'Repair by',
+  `helpdesk_repair` varchar(11) collate utf8_unicode_ci NOT NULL,
   `request_end_repair_date` datetime NOT NULL COMMENT 'End repair date',
   `request_close_date` datetime NOT NULL COMMENT 'Close job date',
-  `user_close` varchar(50) character set utf8 NOT NULL COMMENT 'Close job by',
-  `request_answer` text character set utf8 NOT NULL COMMENT 'Cause symptoms',
-  `request_repair_detail` text character set utf8 NOT NULL COMMENT 'Repair detail',
-  `request_status` enum('waiting','accepted','pending','forward','repair_out','completed','closed') character set utf8 NOT NULL COMMENT 'Requests status',
-  `request_end_remark` text character set utf8 NOT NULL COMMENT 'End remark',
+  `user_close` varchar(50) collate utf8_unicode_ci NOT NULL COMMENT 'Close job by',
+  `request_answer` text collate utf8_unicode_ci NOT NULL COMMENT 'Cause symptoms',
+  `request_repair_detail` text collate utf8_unicode_ci NOT NULL COMMENT 'Repair detail',
+  `request_status` enum('waiting','accepted','pending','forward','repair_out','completed','closed') collate utf8_unicode_ci NOT NULL COMMENT 'Requests status',
+  `request_end_remark` text collate utf8_unicode_ci NOT NULL COMMENT 'End remark',
   PRIMARY KEY  (`id`),
   KEY `location_request` (`location_id`),
-  KEY `department_request` (`department_id`),
   KEY `device_request` (`device_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
 
 -- 
--- dump ตาราง `requests`
+-- Dumping data for table `requests`
 -- 
 
-INSERT INTO `requests` VALUES (1, 'Komsan_k', 111111, 11111, 'k.kamsamur@gmail.com', 6, 3, 223, 'Test', 'Test', '', '2014-04-10 12:31:39', '2014-04-10 16:23:24', 'admin', '2014-04-10 16:24:39', 'admin', '2014-04-10 16:24:50', '2014-04-10 16:33:08', 'admin', '', '', 'closed', '');
-INSERT INTO `requests` VALUES (2, 'Komsan_k', 111111, 11111, 'k.kamsamur@gmail.com', 6, 35, 217, 'Test', 'Test', 'Can''t repair your computer No. WDT4L00323', '2014-04-10 12:34:22', '2014-04-10 16:28:02', 'admin', '2014-04-10 16:30:31', 'admin', '2014-04-10 16:30:34', '0000-00-00 00:00:00', '', '', '', 'completed', '');
-INSERT INTO `requests` VALUES (3, 'Komsan_k', 111111, 11111, 'k.kamsamur@gmail.com', 1, 37, 231, 'Test', 'test', '', '2014-04-10 12:38:11', '2014-04-10 16:55:13', 'admin', '2014-04-10 16:55:21', 'admin', '2014-04-10 16:55:52', '0000-00-00 00:00:00', 'admin', 'test', '', 'completed', '');
-INSERT INTO `requests` VALUES (4, 'Komsan_k', 111111, 11111, 'k.kamsamur@gmail.com', 4, 33, 726, 'Test', 'Test', '', '2014-04-10 12:44:04', '2014-04-10 16:55:28', 'admin', '2014-04-16 11:22:00', 'admin', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '', 'pending', '');
-INSERT INTO `requests` VALUES (5, 'Komsan_k', 111111, 11111, 'k.kamsamur@gmail.com', 7, 37, 205, 'Test', 'Test', 'Test', '2014-04-10 13:03:22', '2014-04-16 11:20:55', 'admin', '2014-04-16 16:32:00', 'admin', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '', 'pending', '');
-INSERT INTO `requests` VALUES (6, 'witthawin n', 123435, 77634, 'witthawin01@gmail.com', 6, 3, 1, 'Upgrade Windows 7', 'Upgrade Ram and Install windows 7', 'Ok', '2014-04-19 17:46:14', '2014-04-19 18:05:42', 'administrator', '2014-04-19 18:08:00', 'administrator', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', 'Install windows 7 and upgrade ram', '', 'pending', '');
-INSERT INTO `requests` VALUES (7, 'witthawin n', 123456, 77654, 'witthawin01@gmail.com', 6, 63, 1, 'เปิดไม่ติด', 'เปิดเครื่องไม่ได้', 'ok', '2014-04-19 17:49:52', '2014-04-19 18:06:01', 'administrator', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '', 'accepted', '');
+INSERT INTO `requests` VALUES (4, 'Den Srisawang                  ', 103784, 77914, 'Kamonnit.Siriphureethananon@wdc.com', 4, 'CCE', 727, 'Install new windows and software', 'New computer', 'close', '2014-04-24 13:44:01', '2014-04-24 13:52:50', 'sathit_s', '2014-04-24 13:53:06', 'sathit_s', '', '2014-04-24 13:53:17', '2014-04-25 10:31:31', 'it_student_b6', 'done', 'Done', 'closed', '');
+INSERT INTO `requests` VALUES (5, 'Natdhanaipol Naksub       ', 104583, 77913, 'Natdhanaipol.Naksub@wdc.com       ', 4, 'CCE', 728, 'Install new windows and software', 'Set new computer ', 'Done', '2014-04-24 13:51:39', '2014-04-24 13:53:41', 'sathit_s', '2014-04-24 13:54:05', 'sathit_s', '', '2014-04-24 13:54:20', '2014-04-25 08:56:39', 'it_student_b6', 'Done', 'Done', 'closed', '');
+INSERT INTO `requests` VALUES (7, 'Thongsak_c', 306149, 76030, 'Thongsak.Chantaloeng@wdc.com', 2, 'HSA TOOLING ONLINE', 734, 'HDD Bad', 'Chang HDD ', 'Install new windows and software ', '2014-04-24 14:13:11', '2014-04-24 14:13:42', 'sathit_s', '2014-04-24 14:13:54', 'sathit_s', '', '2014-04-24 14:14:05', '2014-04-25 08:56:43', 'it_student_b6', 'Done', 'Done', 'closed', '');
+INSERT INTO `requests` VALUES (8, 'Amphol_W', 118155, 74188, '', 6, 'PDE_RE', 735, 'Upgrade Windows', 'Upgrade From Windows XP to Windows 7', '', '2014-04-24 15:55:11', '2014-04-24 15:55:30', 'administrator', '2014-04-24 16:04:03', 'it_student_b6', '', '2014-04-25 10:24:43', '2014-04-25 10:31:07', 'it_student_b6', '', '', 'closed', 'Get Device back by : Amphol_W');
+INSERT INTO `requests` VALUES (9, 'Jittrakorn_M', 146094, 74625, '', 6, 'Tooling', 736, 'Blue screen', 'ใช้งานอยู่แล้วขึ้น Blue screen (กะกลางคืน)', 'Helpdesk B#6', '2014-04-25 08:05:07', '2014-04-25 08:06:36', 'it_student_b6', '2014-04-25 15:23:52', 'sathit_s', '6', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', 'check HDD', '', 'pending', '');
+INSERT INTO `requests` VALUES (10, 'Chatchai_M', 157334, 74944, '', 6, 'ACFA', 738, 'Install new Windows 7', 'Non-AHCI Mode', '', '2014-04-25 08:14:33', '2014-04-25 08:16:56', 'it_student_b6', '2014-04-25 15:56:12', 'it_student_b6', '6', '2014-04-25 16:25:31', '2014-04-25 16:30:34', 'it_student_b6', '', '', 'closed', 'รับเครื่องกลับไปแล้ว Chatchai_M');
+INSERT INTO `requests` VALUES (11, 'chatcahi_M', 157334, 74944, '', 6, 'ACFA', 737, 'Install new Windows 7', 'Non-AHCI Mode', '', '2014-04-25 08:15:57', '2014-04-25 08:17:03', 'it_student_b6', '2014-04-25 15:56:04', 'it_student_b6', '6', '2014-04-25 15:56:25', '2014-04-25 16:30:41', 'it_student_b6', '', '', 'closed', 'รับเครื่องกลับไปแล้ว Chatchai_M');
+INSERT INTO `requests` VALUES (12, 'Yupawadee R.', 105473, 77360, '', 6, 'Tooling PM & Setup', 387, 'เครื่องเปิดไม่ได้', 'รีบๆหน่อยนะค่ะ', '', '2014-04-25 09:01:19', '2014-04-25 09:04:17', 'it_student_b6', '2014-04-25 15:22:28', 'it_student_b6', '6', '2014-04-25 15:22:34', '2014-04-25 15:31:55', 'it_student_b6', '', '', 'closed', 'รับเครื่องกลับไปแล้ว');
+INSERT INTO `requests` VALUES (13, 'Thongsak_C', 036149, 76030, 'Thongsak.Chantaloeng@wdc.com', 2, 'HVM', 739, 'Install new Windows 7', 'Merge partition (Current OS Drive) and backup data.', '', '2014-04-25 11:08:09', '2014-04-25 11:10:32', 'it_student_b6', '0000-00-00 00:00:00', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '', 'accepted', '');
 
 -- --------------------------------------------------------
 
 -- 
--- โครงสร้างตาราง `rights`
+-- Table structure for table `rights`
 -- 
 
 DROP TABLE IF EXISTS `rights`;
@@ -1328,7 +1358,7 @@ CREATE TABLE IF NOT EXISTS `rights` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- 
--- dump ตาราง `rights`
+-- Dumping data for table `rights`
 -- 
 
 INSERT INTO `rights` VALUES ('Admin', 2, 0);
@@ -1341,7 +1371,7 @@ INSERT INTO `rights` VALUES ('EmployeeWD', 2, 3);
 -- --------------------------------------------------------
 
 -- 
--- โครงสร้างตาราง `users`
+-- Table structure for table `users`
 -- 
 
 DROP TABLE IF EXISTS `users`;
@@ -1360,18 +1390,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `email` (`email`),
   KEY `status` (`status`),
   KEY `superuser` (`superuser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 -- 
--- dump ตาราง `users`
+-- Dumping data for table `users`
 -- 
 
-INSERT INTO `users` VALUES (1, 'administrator', '76d59a58572554b8e2b230b3b3ded930', 'webmaster@example.com', '4d4a7239fed2a14a27c8475f103689e7', '2014-04-18 00:00:00', '2014-04-20 11:32:51', 1, 1);
+INSERT INTO `users` VALUES (1, 'administrator', '76d59a58572554b8e2b230b3b3ded930', 'webmaster@example.com', '4d4a7239fed2a14a27c8475f103689e7', '2014-04-18 00:00:00', '2014-04-25 16:08:35', 1, 1);
 INSERT INTO `users` VALUES (2, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'demo@example.com', '099f825543f7850cc038b90aaff39fac', '2014-04-18 00:00:00', '0000-00-00 00:00:00', 0, 1);
-INSERT INTO `users` VALUES (3, 'it_student_b6', 'f65c10ef2cf4fb089208c220296240a7', 'itstudent.trainee@wdc.com', 'a68e114ebb1a165db672404d5ac74fbd', '2014-04-18 00:00:00', '0000-00-00 00:00:00', 0, 1);
+INSERT INTO `users` VALUES (3, 'it_student_b6', 'f65c10ef2cf4fb089208c220296240a7', 'itstudent.trainee@wdc.com', 'a68e114ebb1a165db672404d5ac74fbd', '2014-04-18 00:00:00', '2014-04-25 16:43:49', 0, 1);
 INSERT INTO `users` VALUES (4, 'it_student_b3', 'f65c10ef2cf4fb089208c220296240a7', 'itstudent.trainee3@wdc.com', 'e783f5e5e3c282f7b672def73d7856e7', '2014-04-18 00:00:00', '0000-00-00 00:00:00', 0, 1);
-INSERT INTO `users` VALUES (5, 'Monfang_S', '1364768a5062610cb8aff90cb9ff097b', 'Monfangmickarush.Souwannachairob@wdc.com', '890462578c764b355f9342f4c338fa27', '2014-04-18 00:00:00', '0000-00-00 00:00:00', 0, 1);
-INSERT INTO `users` VALUES (6, 'it_student_b4', 'f65c10ef2cf4fb089208c220296240a7', 'itstudent.trainee4@wdc.com', '51f94f3306cd5d73e187188332858e20', '2014-04-18 00:00:00', '0000-00-00 00:00:00', 0, 1);
+INSERT INTO `users` VALUES (5, 'Monfang_S', '1364768a5062610cb8aff90cb9ff097b', 'Monfangmickarush.Souwannachairob@wdc.com', '890462578c764b355f9342f4c338fa27', '2014-04-18 00:00:00', '2014-04-23 16:38:14', 0, 1);
+INSERT INTO `users` VALUES (6, 'it_student_b4', 'f65c10ef2cf4fb089208c220296240a7', 'itstudent.trainee4@wdc.com', '51f94f3306cd5d73e187188332858e20', '2014-04-18 00:00:00', '2014-04-24 09:32:48', 0, 1);
 INSERT INTO `users` VALUES (7, 'santi_pr', '42f749ade7f9e195bf475f37a44cafcb', 'Santi.Prasopnetr@wdc.com', '4232df204fb941cb553d205f1db88f24', '2014-04-18 00:00:00', '0000-00-00 00:00:00', 0, 1);
 INSERT INTO `users` VALUES (8, 'poobase_p', '42f749ade7f9e195bf475f37a44cafcb', 'Poobase.Panitchaiyaboon@wdc.com', '0a9ad50853657a0795fbb452ee7ea11f', '2014-04-18 00:00:00', '0000-00-00 00:00:00', 0, 1);
 INSERT INTO `users` VALUES (9, 'santi_s', '42f749ade7f9e195bf475f37a44cafcb', 'Santi.Suksap@wdc.com', '1128f5acd25c5ead1d0b528ac9b31017', '2014-04-18 00:00:00', '0000-00-00 00:00:00', 0, 1);
@@ -1379,8 +1409,8 @@ INSERT INTO `users` VALUES (10, 'wichcha_n', '42f749ade7f9e195bf475f37a44cafcb',
 INSERT INTO `users` VALUES (11, 'surachai_n', '42f749ade7f9e195bf475f37a44cafcb', 'Surachai.Ngamchan@wdc.com', '4867a24a59c6be71a7a0bdc4b88b4d46', '2014-04-18 00:00:00', '0000-00-00 00:00:00', 0, 1);
 INSERT INTO `users` VALUES (12, 'attaphol_p', '42f749ade7f9e195bf475f37a44cafcb', 'Attaphol.Pankasem@wdc.com', 'bc1501258d58ef7163aa72e7366cd9b2', '2014-04-18 00:00:00', '0000-00-00 00:00:00', 0, 1);
 INSERT INTO `users` VALUES (13, 'phattarakorn_k', '42f749ade7f9e195bf475f37a44cafcb', 'Phattarakorn.Klungchamnan@wdc.com', 'c81971fff842ff18430b29e4fb746149', '2014-04-18 00:00:00', '0000-00-00 00:00:00', 0, 1);
-INSERT INTO `users` VALUES (14, 'chunthira_k', '42f749ade7f9e195bf475f37a44cafcb', 'Chunthira.Khudruan@wdc.com', 'b21ad2bd725024a6c0ce59e076d81256', '2014-04-18 00:00:00', '0000-00-00 00:00:00', 0, 1);
-INSERT INTO `users` VALUES (15, 'sathit_s', '42f749ade7f9e195bf475f37a44cafcb', 'Sathit.Summakuant@wdc.com', '14484e314ad9043d828fc08f280d1eef', '2014-04-18 00:00:00', '0000-00-00 00:00:00', 0, 1);
+INSERT INTO `users` VALUES (15, 'sathit_s', '639f670b03608cfb82b7f3e9d11475de', 'Sathit.Summakuant@wdc.com', 'ce49677270a491da6a23f5b2183687ce', '2014-04-18 00:00:00', '2014-04-25 15:22:16', 0, 1);
+INSERT INTO `users` VALUES (16, 'Chunthira_K', '0750b522f254f3137d0b2de7155c0448', 'Chunthira.Khudruan@wdc.com', 'ecc89a5ca1d5a23cb093c28bf77f6e75', '2014-04-24 09:27:53', '2014-04-24 09:31:29', 1, 1);
 
 -- 
 -- Constraints for dumped tables
@@ -1411,6 +1441,5 @@ ALTER TABLE `profiles`
 -- Constraints for table `requests`
 -- 
 ALTER TABLE `requests`
-  ADD CONSTRAINT `department_request` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `device_request` FOREIGN KEY (`device_id`) REFERENCES `devices` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `location_request` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
